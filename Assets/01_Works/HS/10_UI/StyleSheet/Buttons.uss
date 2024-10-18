@@ -1,0 +1,8 @@
+.Button {
+    background-color: rgba(188, 188, 188, 0);
+    background-image: url("project://database/Assets/99_Packages/microwave.png?fileID=21300000&guid=03ba0e6c21ed87543ab7d948df0dfde3&type=3#microwave");
+    -unity-background-image-tint-color: rgb(0, 255, 255);
+    color: rgb(255, 255, 255);
+    flex-grow: 0;
+    flex-basis: 56px;
+}
