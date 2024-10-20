@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78f0858f38c86034b94a2328d7a64e34, type: 3}
-  m_Name: ToolInfoSO
+  m_Script: {fileID: 11500000, guid: 1486e263e7016b643b78c6fb1c6caafd, type: 3}
+  m_Name: 61750563-8f2b-412b-aa87-a662ed33a941_item
   m_EditorClassIdentifier: 
-  poolingFolder: Assets/01_Works/HS/08_SO/Pool
-  poolAssetName: PoolManager.asset
-  typeFolder: Types
-  itemFolder: Items
+  poolType: {fileID: 11400000, guid: bbab8884c67330a4c99d74aa66a36311, type: 2}
+  prefab: {fileID: 0}
+  initCount: 0

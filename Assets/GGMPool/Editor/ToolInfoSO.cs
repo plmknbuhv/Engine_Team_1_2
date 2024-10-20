@@ -4,7 +4,7 @@ using UnityEngine;
 public class ToolInfoSO : ScriptableObject
 {
     [Header("PoolManager")]
-    public string poolingFolder = "Assets/08SO/Pool";
+    public string poolingFolder = "Assets/01_Works/HS/08_SO/Pool";
     public string poolAssetName = "PoolManager.asset";
     public string typeFolder = "Types";
     public string itemFolder = "Items";

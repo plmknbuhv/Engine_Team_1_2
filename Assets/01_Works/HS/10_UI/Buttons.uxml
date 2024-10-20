@@ -2,6 +2,6 @@
     <Style src="project://database/Assets/01_Works/HS/10_UI/StyleSheet/Buttons.uss?fileID=7433441132597879392&amp;guid=a53455434f8f79b48a2897e7bfb37fe4&amp;type=3#Buttons" />
     <ui:VisualElement name="Container" style="flex-direction: row; justify-content: space-between; height: 53px;">
         <ui:Button display-tooltip-when-elided="true" focusable="true" class="Button" />
-        <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" class="Button" />
+        <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" text="냉장고연" class="Button" style="font-size: 71px;" />
     </ui:VisualElement>
 </ui:UXML>
