@@ -129,6 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 530860840276510875}
   - component: {fileID: 6035257803451071170}
+  - component: {fileID: 4802918946372364717}
   m_Layer: 0
   m_Name: Tower
   m_TagString: Untagged
@@ -180,3 +181,19 @@ MonoBehaviour:
     minNormalAngle: 0
     maxNormalAngle: 0
   _colliders: []
+--- !u!114 &4802918946372364717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6402802781511159479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b12bb62f7c561f4ca3672ba7647b313, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolManager: {fileID: 0}
+  _bulletType: {fileID: 0}
+  attackCooldown: 0
+  damage: 0

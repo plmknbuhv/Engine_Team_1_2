@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
+    public TowerAnimation TowerAnimation { get; private set; }
+    
     public float detectRadius;
     public ContactFilter2D contactFilter;
     
@@ -9,6 +11,7 @@ public class Tower : MonoBehaviour
 
     private void Awake()
     {
+        TowerAnimation = GetComponentInChildren<TowerAnimation>();
         _colliders = new Collider2D[20];
     }
 
@@ -17,11 +20,11 @@ public class Tower : MonoBehaviour
         SearchTarget();
     }
 
-    public Collider2D SearchTarget()
+    private void SearchTarget()
     {
         int count = Physics2D.OverlapCircle(transform.position, detectRadius, contactFilter, _colliders);
 
-        if (count < 1) return null;
+        if (count < 1) return;
 
         float shortDistance = Vector3.Distance(transform.position, _colliders[0].transform.position);
         Collider2D nearTarget = _colliders[0];
@@ -35,8 +38,6 @@ public class Tower : MonoBehaviour
                 nearTarget = _colliders[i];
             }  
         }
-
-        return nearTarget;
     }
     
 #if UNITY_EDITOR

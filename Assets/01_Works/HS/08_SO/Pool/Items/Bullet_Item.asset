@@ -9,7 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 317ebf221effd784cbbcd79a9c8894f7, type: 3}
-  m_Name: 1f13d438-9a7d-46bf-a036-6b3543167250_type
+  m_Script: {fileID: 11500000, guid: 1486e263e7016b643b78c6fb1c6caafd, type: 3}
+  m_Name: Bullet_Item
   m_EditorClassIdentifier: 
-  typeName: 1f13d438-9a7d-46bf-a036-6b3543167250
+  poolType: {fileID: 11400000, guid: 71b7c8b68566ac64dabfe4e664a71062, type: 2}
+  prefab: {fileID: 713612944978617109, guid: cd3ecb7f1bc950c40898dcf75f2d9ab9, type: 3}
+  initCount: 5
