@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 6472710741839002914}
   - component: {fileID: 726691735058781862}
   - component: {fileID: 3310982569379234731}
-  - component: {fileID: 7366805087460842869}
   m_Layer: 0
   m_Name: Visual
   m_TagString: Untagged
@@ -107,18 +106,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &7366805087460842869
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2361003648700000019}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c7858a2d8855684ea5e0938553cbb32, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6402802781511159479
 GameObject:
   m_ObjectHideFlags: 0
@@ -165,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e7cf5f974c733b4aba6b262ee591b9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectRadius: 20
+  detectRadius: 12.5
   contactFilter:
     useTriggers: 0
     useLayerMask: 1
@@ -193,7 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b12bb62f7c561f4ca3672ba7647b313, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolManager: {fileID: 0}
-  _bulletType: {fileID: 0}
-  attackCooldown: 0
-  damage: 0
+  poolManager: {fileID: 11400000, guid: 928c52471a99fba4a983ede3b8649ab4, type: 2}
+  bulletType: {fileID: 11400000, guid: 71b7c8b68566ac64dabfe4e664a71062, type: 2}
+  attackCooldown: 3
+  damage: 5

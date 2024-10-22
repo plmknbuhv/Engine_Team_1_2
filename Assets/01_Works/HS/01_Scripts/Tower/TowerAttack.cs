@@ -1,6 +1,5 @@
 using GGMPool;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class TowerAttack : MonoBehaviour
 {
@@ -24,14 +23,12 @@ public class TowerAttack : MonoBehaviour
         if (_attackTimer >= attackCooldown && _tower._colliders[0] != null)
         {
             Attack();
-            
             _attackTimer = 0f;
         }
     }
 
-    private void Attack()
+    public void Attack()
     {
-        _tower.TowerAnimation.isAttackAnim = true;
         var bullet = poolManager.Pop(bulletType) as Bullet;
         
         var targetDir = _tower._colliders[0].transform.position - transform.position;

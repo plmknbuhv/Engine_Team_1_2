@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
-    public TowerAnimation TowerAnimation { get; private set; }
-    
     public float detectRadius;
     public ContactFilter2D contactFilter;
     
@@ -11,7 +9,6 @@ public class Tower : MonoBehaviour
 
     private void Awake()
     {
-        TowerAnimation = GetComponentInChildren<TowerAnimation>();
         _colliders = new Collider2D[20];
     }
 
@@ -36,7 +33,7 @@ public class Tower : MonoBehaviour
             {
                 shortDistance = distance;
                 nearTarget = _colliders[i];
-            }  
+            }
         }
     }
     
