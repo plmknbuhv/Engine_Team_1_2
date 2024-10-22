@@ -1,48 +1,30 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
-    public float detectRadius;
-    public ContactFilter2D contactFilter;
-    
-    public Collider2D[] _colliders;
+    private Dictionary<Type, ITowerComponent> _components;
 
     private void Awake()
     {
-        _colliders = new Collider2D[20];
-    }
-
-    private void Update()
-    {
-        SearchTarget();
-    }
-
-    private void SearchTarget()
-    {
-        int count = Physics2D.OverlapCircle(transform.position, detectRadius, contactFilter, _colliders);
-
-        if (count < 1) return;
-
-        float shortDistance = Vector3.Distance(transform.position, _colliders[0].transform.position);
-        Collider2D nearTarget = _colliders[0];
-
-        for (int i = 1; i < count; i++)
-        {
-            var distance = Vector3.Distance(transform.position, _colliders[i].transform.position);
-            if (shortDistance > distance)
-            {
-                shortDistance = distance;
-                nearTarget = _colliders[i];
-            }
-        }
+        _components = new Dictionary<Type, ITowerComponent>();
+    
+        GetComponentsInChildren<ITowerComponent>().ToList()
+            .ForEach(x => _components.Add(x.GetType(), x));
+    
+        _components.Values.ToList().ForEach(compo => compo.Initialize(this));
     }
     
-#if UNITY_EDITOR
-    protected virtual void OnDrawGizmosSelected()
+    public T GetCompo<T>() where T : class
     {
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, detectRadius);
-        Gizmos.color = Color.white;
+        Type type = typeof(T);
+        if (_components.TryGetValue(type,out ITowerComponent compo))
+        {
+            return compo as T;
+        }
+    
+        return default;
     }
-#endif
 }
