@@ -11,10 +11,12 @@ public enum  FoodType
 }
 
 [CreateAssetMenu(menuName = "SO/FoodDataSO")]
-public class FoodDataSO : ScriptableObject
+public class FoodDataSO : ScriptableObject 
 {
     public FoodType foodType;
     public Sprite sprite;
-    public float damage;
-    public float attackCooldown
+    public float attackCooldown;
+    public int damage;
+    public int width;
+    public int height;
 }

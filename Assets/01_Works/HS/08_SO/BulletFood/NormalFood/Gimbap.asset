@@ -12,5 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f84b2b87726812a499221051a9f6e6f8, type: 3}
   m_Name: Gimbap
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 12c2682d2f5dec74eb8ca81c3076e20a, type: 3}
   foodType: 2
+  sprite: {fileID: 21300000, guid: 12c2682d2f5dec74eb8ca81c3076e20a, type: 3}
+  attackCooldown: 2
+  damage: 10
+  width: 1
+  height: 1

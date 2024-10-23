@@ -8,24 +8,11 @@ public class TowerAttack : MonoBehaviour , ITowerComponent
     
     [SerializeField] private PoolManagerSO poolManager;
     [SerializeField] private PoolTypeSO bulletType;
-    [SerializeField] private float attackCooldown;
-    private float _attackTimer;
     
     public void Initialize(Tower tower)
     {
         _tower = tower;
         _enemyChecker = _tower.GetCompo<EnemyChecker>();
-    }
-
-    private void Update()
-    {
-        _attackTimer += Time.deltaTime;
-
-        if (_attackTimer >= attackCooldown && _enemyChecker.Targets.Count > 0)
-        {
-            Attack();
-            _attackTimer = 0f;
-        }
     }
 
     public void Attack(FoodType foodType)
