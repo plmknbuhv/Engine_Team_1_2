@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InventorySystem : MonoBehaviour
+public class InventorySystemManager : MonoBehaviour
 {
-    [SerializeField] private int gridWidth = 10;
-    [SerializeField] private int gridHeight = 5;
+    [SerializeField] private int gridWidth;
+    [SerializeField] private int gridHeight ;
     private bool[,] _isOccupiedSlots;
 
     public bool CanPlaceItem(int itemWidth, int itemHeight, int xPos, int yPos)

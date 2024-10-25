@@ -111,7 +111,7 @@ Transform:
   m_GameObject: {fileID: 6402802781511159479}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 6.25, z: 0}
+  m_LocalPosition: {x: 0, y: 6.3, z: 0}
   m_LocalScale: {x: 1.4, y: 1.4, z: 1.4}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -145,8 +145,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   poolManager: {fileID: 11400000, guid: 928c52471a99fba4a983ede3b8649ab4, type: 2}
   bulletType: {fileID: 11400000, guid: 71b7c8b68566ac64dabfe4e664a71062, type: 2}
-  attackCooldown: 3
-  damage: 5
 --- !u!1 &8234733368516566513
 GameObject:
   m_ObjectHideFlags: 0
@@ -158,6 +156,7 @@ GameObject:
   - component: {fileID: 9159941574535657144}
   - component: {fileID: 7979676503913716339}
   - component: {fileID: 353780959852012987}
+  - component: {fileID: 1551551017089734322}
   m_Layer: 0
   m_Name: EnemyChecker
   m_TagString: Untagged
@@ -192,17 +191,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c23342c1eb5e544081d1aa2f8f44437, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectRadius: 0
   contactFilter:
     useTriggers: 0
-    useLayerMask: 0
+    useLayerMask: 1
     useDepth: 0
     useOutsideDepth: 0
     useNormalAngle: 0
     useOutsideNormalAngle: 0
     layerMask:
       serializedVersion: 2
-      m_Bits: 0
+      m_Bits: 128
     minDepth: 0
     maxDepth: 0
     minNormalAngle: 0
@@ -236,9 +234,36 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 8.16
+--- !u!50 &1551551017089734322
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8234733368516566513}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7a2a3dab52566e4faa2587f8d061755, type: 3}
+  m_Name: FoodDataListSO
+  m_EditorClassIdentifier: 
+  normalFoodDataList:
+  - {fileID: 11400000, guid: 2ec89a3104e17c944bc0f71623aa96ad, type: 2}
+  - {fileID: 11400000, guid: e8bccd9ac6bc90b4a92a704219052848, type: 2}
+  - {fileID: 11400000, guid: 2ff2116887328364daeb998e06898dbe, type: 2}
+  - {fileID: 11400000, guid: 54e9f673f8e58d9479e352eb8afec53c, type: 2}
+  - {fileID: 11400000, guid: 3642015792e12d64fb1545b59a9edc10, type: 2}
+  - {fileID: 11400000, guid: 1ca0e0412c0b69140b5719f9c6b3cb0e, type: 2}
+  fusionFoodDataList: []
