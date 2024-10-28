@@ -9,13 +9,18 @@ public class ShopManager : MonoSingleton<ShopManager>
     [SerializeField] private List<FoodDataSO> shopFoodList = new List<FoodDataSO>();
     [SerializeField] private List<TextMeshProUGUI> foodPriceTextList = new List<TextMeshProUGUI>();
     [SerializeField] private TextMeshProUGUI goldValueText;
-
+    
     [SerializeField] private int gold;
-
+    
     public int Gold
     {
         get => gold;
-        set => gold = value > 0 ? value : 0;
+        set
+        {
+            gold = value > 0 ? value : 0;
+            
+            goldValueText.text = gold.ToString();
+        }
     }
 
     public void ReRollShop()

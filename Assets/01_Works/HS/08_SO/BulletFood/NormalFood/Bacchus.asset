@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f84b2b87726812a499221051a9f6e6f8, type: 3}
+  m_Name: Bacchus
+  m_EditorClassIdentifier: 
+  foodType: 8
+  sprite: {fileID: 21300000, guid: 7e3cc3099cba14346bb4bca656113df9, type: 3}
+  attackCooldown: 3
+  damage: 25
+  width: 1
+  height: 2

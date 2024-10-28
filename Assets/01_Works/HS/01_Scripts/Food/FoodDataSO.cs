@@ -7,7 +7,18 @@ public enum  FoodType
     GimBap,
     HotDog,
     Pizza,
-    Yogurt
+    Yogurt,
+    Cider,
+    Cheese,
+    Bacchus,
+    Mandu,
+    Ramen,
+    CheesePizza,
+    GimBap2XL,
+    TwoEgg,
+    BacchusCider,
+    PizzaPan,
+    RamenMandu
 }
 
 [CreateAssetMenu(menuName = "SO/FoodDataSO")]

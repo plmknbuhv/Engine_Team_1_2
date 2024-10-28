@@ -8900,7 +8900,8 @@ MonoBehaviour:
   - {fileID: 499256593}
   - {fileID: 845482649}
   - {fileID: 676789373}
-  gold: 0
+  goldValueText: {fileID: 265602064}
+  gold: 5
 --- !u!1001 &1893471676
 PrefabInstance:
   m_ObjectHideFlags: 0
