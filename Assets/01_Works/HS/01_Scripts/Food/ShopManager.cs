@@ -29,7 +29,8 @@ public class ShopManager : MonoSingleton<ShopManager>
 
     public void ReRollShop()
     {
-        shopFoodList.Clear();
+        ClearShop();
+        
         List<FoodDataSO> foodDataList = foodDataListSO.normalFoodDataList; 
 
         for (int i = 0; i < 4; i++)
@@ -42,10 +43,20 @@ public class ShopManager : MonoSingleton<ShopManager>
         }
     }
 
+    private void ClearShop()
+    {
+        foreach (var food in shopFoodList)
+        {
+            poolManager.Push(food);
+        }
+        shopFoodList.Clear();
+    }
+
     private void CreateFoodItem(FoodDataSO foodData, int number)
     {
         var food = poolManager.Pop(bulletType) as Food;
+        shopFoodList.Add(food);
         food.SetUpFood(foodData);
-        
+        food.transform.localPosition = new Vector3(-11.48f, 5.25f - number * 3.56f);
     }
 }
