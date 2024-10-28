@@ -1,14 +1,18 @@
-using System.Collections;
 using System.Collections.Generic;
+using GGMPool;
 using TMPro;
 using UnityEngine;
 
 public class ShopManager : MonoSingleton<ShopManager>
 {
     [SerializeField] private FoodDataListSO foodDataListSO;
-    [SerializeField] private List<FoodDataSO> shopFoodList = new List<FoodDataSO>();
+    [SerializeField] private List<Food> shopFoodList = new List<Food>();
+    
     [SerializeField] private List<TextMeshProUGUI> foodPriceTextList = new List<TextMeshProUGUI>();
     [SerializeField] private TextMeshProUGUI goldValueText;
+    
+    [SerializeField] private PoolManagerSO poolManager;
+    [SerializeField] private PoolTypeSO bulletType;
     
     [SerializeField] private int gold;
     
@@ -31,9 +35,17 @@ public class ShopManager : MonoSingleton<ShopManager>
         for (int i = 0; i < 4; i++)
         {
             var ranIndex = Random.Range(0, foodDataList.Count);
-            shopFoodList.Add(foodDataList[ranIndex]);
+            CreateFoodItem(foodDataList[ranIndex], i);
+            
             var foodPrice = foodDataList[ranIndex].height * foodDataList[ranIndex].width;
             foodPriceTextList[i].text = foodPrice.ToString();
         }
+    }
+
+    private void CreateFoodItem(FoodDataSO foodData, int number)
+    {
+        var food = poolManager.Pop(bulletType) as Food;
+        food.SetUpFood(foodData);
+        
     }
 }
