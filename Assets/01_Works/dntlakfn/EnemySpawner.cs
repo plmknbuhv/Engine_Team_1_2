@@ -32,6 +32,7 @@ public class EnemySpawner : MonoBehaviour
         if(enemyCount >= waveManager.Waves[wave])
         {
             wave++;
+            enemyCount = 0;
             waveManager.WaveEnd();
         }
     }
