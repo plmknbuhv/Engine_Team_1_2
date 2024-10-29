@@ -1,31 +1,40 @@
+using GGMPool;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Refrigerator : Enemy
+public class Refrigerator : Enemy, IPoolable
 {
+    [field: SerializeField] public PoolTypeSO PoolType { get; set; }
     
-    public override void UniqueSkill()
+    public GameObject GameObject => gameObject;
+
+    public void ResetItem()
     {
         
     }
 
+    public void SetUpPool(Pool pool)
+    {
+        
+    }
+
+    public override void GetDamage(int damage, float knockbackPower, Action action = null)
+    {
+        base.GetDamage(damage, knockbackPower, action);
+    }
+
+
     private void Update()
     {
-        timer += Time.deltaTime;
-        if (timer > 5)
+        if(Input.GetKeyDown(KeyCode.A)) // ÅÂ½ºÆ®
         {
-            //StartCoroutine("a");
-            
+            GetDamage(10, 3);
         }
         
     }
 
 
-    //public IEnumerator a()
-    //{
-    //    yield return new WaitForSeconds(0.5f);
-    //    transform.position = new Vector3(Random.Range(-5, 5), transform.position.y);
-    //    timer = 0;
-    //}
+    
 }
