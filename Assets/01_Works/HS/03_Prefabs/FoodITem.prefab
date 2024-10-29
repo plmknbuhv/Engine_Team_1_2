@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 165834928487026646}
   - component: {fileID: 6475962313056809240}
   - component: {fileID: 5778602298436416659}
+  - component: {fileID: 3697667120414007535}
   m_Layer: 8
-  m_Name: Item
+  m_Name: FoodItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -154,5 +155,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ee190f5e4c6a02c418786d74ade478a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <PoolType>k__BackingField: {fileID: 11400000, guid: 13b61eab7a932874a9ea858af921911c, type: 2}
+--- !u!114 &3697667120414007535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3644635408488318414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36e8dd8fc4d3ed8459f238aabc7bcc4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
