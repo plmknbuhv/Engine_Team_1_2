@@ -194,10 +194,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f89f8fc1ac604104e85c06fc4d413bf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.3
+  speed: 1
   maxHp: 100
   hp: 100
-  <PoolType>k__BackingField: {fileID: 0}
+  <PoolType>k__BackingField: {fileID: 11400000, guid: 247d1c7a1b13b8940acee336063fa29e, type: 2}
 --- !u!1001 &7788588673688425265
 PrefabInstance:
   m_ObjectHideFlags: 0

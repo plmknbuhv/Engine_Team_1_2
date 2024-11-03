@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour
     private bool isGetDamage = false;
     protected Rigidbody2D rb;
     protected Animator animator;
+    protected Transform target;
     
 
 
@@ -22,6 +23,7 @@ public class Enemy : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        target = FindAnyObjectByType<Tower>().transform;
         hp = maxHp;
     }
 
@@ -35,7 +37,7 @@ public class Enemy : MonoBehaviour
                 isGetDamage = false;
             }
         }
-        transform.position += new Vector3(0, speed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
     }
 
     public virtual void GetDamage(int damage, float knockbackPower, Action action = null)
