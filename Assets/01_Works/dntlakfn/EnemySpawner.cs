@@ -18,6 +18,10 @@ public class EnemySpawner : MonoBehaviour
     private void Awake()
     {
         waveManager = FindAnyObjectByType<WaveManager>();
+        enemyType = waveManager.EnemyList[0];
+        wave = 1;
+        timer = 0;
+
     }
 
     private void Update()
@@ -33,6 +37,15 @@ public class EnemySpawner : MonoBehaviour
         {
             wave++;
             enemyCount = 0;
+            try
+            {
+                enemyType = waveManager.EnemyList[wave - 1];
+            }
+            catch
+            {
+                Debug.Log("¿Ã∞‘ ≥°");
+            }
+            
             waveManager.WaveEnd();
         }
     }

@@ -2958,6 +2958,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyList:
   - {fileID: 11400000, guid: 247d1c7a1b13b8940acee336063fa29e, type: 2}
+  - {fileID: 11400000, guid: db4e958d0e9d98e4788f65cc38fcee56, type: 2}
   t: {fileID: 293242816}
   startBtn: {fileID: 1678431420}
   isWaveStart: 0

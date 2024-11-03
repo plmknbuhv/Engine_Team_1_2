@@ -12,6 +12,7 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private t t;
     [SerializeField] private Button startBtn;
     public bool isWaveStart = false;
+    int wave = 1;
 
 
 
@@ -36,6 +37,8 @@ public class WaveManager : MonoBehaviour
         {
             isWaveStart = true;
             startBtn.gameObject.SetActive(false);
+
+            t.GetComponent<TextMeshProUGUI>().text = "Wave " + wave++;
 
             StartCoroutine(t.Show());
         }
