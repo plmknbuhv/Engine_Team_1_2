@@ -56,7 +56,6 @@ public class ShopManager : MonoSingleton<ShopManager>
     {
         var food = poolManager.Pop(bulletType) as Food;
         shopFoodList.Add(food);
-        food.SetUpFood(foodData);
 
         float xSpace = 0;
         float ySpace = 0;
@@ -67,5 +66,6 @@ public class ShopManager : MonoSingleton<ShopManager>
         
         Vector3 foodPosition = new Vector3(-11.48f - xSpace, 5.25f - number * 3.56f - ySpace);
         food.transform.localPosition = foodPosition;
+        food.SetUpFood(foodData);
     }
 }

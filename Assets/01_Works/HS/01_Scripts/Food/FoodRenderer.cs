@@ -1,14 +1,13 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class FoodRenderer : MonoBehaviour
 {
-    private ItemDragHandler _itemDragHandler;
+    private FoodDragHandler _foodDragHandler;
     public SpriteRenderer SpriteRenderer { get; private set;}
 
     private void Awake()
     {
-        _itemDragHandler = GetComponent<ItemDragHandler>();
+        _foodDragHandler = GetComponent<FoodDragHandler>();
         SpriteRenderer = GetComponent<SpriteRenderer>();
     }
 
@@ -19,11 +18,12 @@ public class FoodRenderer : MonoBehaviour
 
     private void AdjustFoodSize()
     {
-        if (!_itemDragHandler.IsDragging) return;
+        if (!_foodDragHandler.IsDragging) return;
         
-        float distance = Vector2.Distance(transform.position, _itemDragHandler.StartPosition);
-        float t = distance / 10;
-        float scaleValue = Mathf.Lerp(1.66f, 2f, t);
+        var distance = Vector2.Distance(transform.position, _foodDragHandler.startPosition);
+        var t = distance / 10;
+        var scaleValue = Mathf.Lerp(1.65f, 1.95f, t);
+        print(t);
         transform.localScale = new Vector3(scaleValue, scaleValue, 1);
     }
 }
