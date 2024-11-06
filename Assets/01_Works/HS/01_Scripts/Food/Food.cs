@@ -1,10 +1,11 @@
 using GGMPool;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Food : MonoBehaviour, IPoolable
 {
     private FoodType _foodType;
-    private FoodDataSO _foodDataSO;
+    public FoodDataSO foodDataSO;
     
     [field:SerializeField] public PoolTypeSO PoolType { get; private set; }
     public GameObject GameObject => gameObject;
@@ -23,12 +24,12 @@ public class Food : MonoBehaviour, IPoolable
     public void SetUpFood(FoodDataSO foodDataSO)
     {
         _foodDragHandler.startPosition = transform.position;
-        _foodDataSO = foodDataSO;
-        _foodType = _foodDataSO.foodType;
+        this.foodDataSO = foodDataSO;
+        _foodType = foodDataSO.foodType;
         gameObject.name = _foodType.ToString();
-        _spriteRenderer.sprite = _foodDataSO.sprite;
+        _spriteRenderer.sprite = foodDataSO.sprite;
         
-        var colliderSize = new Vector2(_foodDataSO.width * 0.5f, _foodDataSO.height * 0.5f);
+        var colliderSize = new Vector2(foodDataSO.width * 0.5f, foodDataSO.height * 0.5f);
         _boxCollider.size = colliderSize;
     }
     
