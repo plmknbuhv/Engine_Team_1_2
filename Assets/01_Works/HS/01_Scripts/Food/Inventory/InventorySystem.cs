@@ -27,4 +27,24 @@ public class InventorySystem : MonoBehaviour
             }
         }
     }
+
+    public void GetXY(Vector3 worldPosition, out int x, out int y)
+    {
+        x = Mathf.FloorToInt(worldPosition.x / gridWidth);
+        y = Mathf.FloorToInt(worldPosition.y / gridHeight);
+    }
+
+    public void EquipItem(int x, int y, int itemWidth, int itemHeight)
+    {
+        if (!(x >= 0 && y >= 0 && x < gridWidth && y < gridHeight)) return;
+        
+        print(_slotArray[x,y].name);
+    }
+
+    public void EquipItem(Vector3 worldPosition, int itemWidth, int itemHeight)
+    {
+        int x, y;
+        GetXY(worldPosition, out x, out y);
+        EquipItem(x, y, itemWidth, itemHeight);
+    }
 }
