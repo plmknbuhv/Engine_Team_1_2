@@ -1,4 +1,3 @@
- using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -26,6 +25,7 @@ public class FoodDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     public void OnDrag(PointerEventData eventData)
     {
         transform.position = GetMousePos();
+        _inventoryChecker.CheckInventorySlot();
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -33,7 +33,7 @@ public class FoodDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         IsDragging = false;
         _foodRenderer.SpriteRenderer.sortingOrder = 10;
 
-        _inventoryChecker.CheckInventory();
+        _inventoryChecker.CheckEquipInventory();
     }
 
     public Vector3 GetMousePos()

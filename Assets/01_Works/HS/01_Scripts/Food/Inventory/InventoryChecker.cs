@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class InventoryChecker : MonoBehaviour
@@ -12,7 +9,7 @@ public class InventoryChecker : MonoBehaviour
         _food = GetComponent<Food>();
     }
     
-    public void CheckInventory()
+    public void CheckEquipInventory()
     {
         for (int i = 0; i < 2; i++)
         {
@@ -21,10 +18,19 @@ public class InventoryChecker : MonoBehaviour
         }
     }
     
-    public Vector3 GetLocalMousePos(int inventoryNum)
+    private Vector3 GetLocalMousePos(int inventoryNum)
     {
         var targetTrm = FoodManager.Instance.inventoryList[inventoryNum].GetComponent<RectTransform>();
         RectTransformUtility.ScreenPointToLocalPointInRectangle(targetTrm, Input.mousePosition, Camera.main, out var localPoint);
         return localPoint / 67.5f;
+    }
+
+    public void CheckInventorySlot()
+    {
+        for (int i = 0; i < 2; i++)
+        {
+            FoodManager.Instance.inventoryList[i].CheckSlot(GetLocalMousePos(i),
+                _food.foodDataSO.width, _food.foodDataSO.height);
+        }
     }
 }

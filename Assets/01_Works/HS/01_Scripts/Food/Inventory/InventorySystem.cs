@@ -1,7 +1,5 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class InventorySystem : MonoBehaviour
 {
@@ -9,6 +7,7 @@ public class InventorySystem : MonoBehaviour
     [SerializeField] private int gridHeight;
     [SerializeField] private Slot slotPrefab;
     private Slot[,] _slotArray;
+    private List<Slot> _preSlotList = new List<Slot>();
 
     private void Awake()
     {
@@ -31,7 +30,7 @@ public class InventorySystem : MonoBehaviour
     private void GetXY(Vector3 worldPosition, out int x, out int y, int itemWidth, int itemHeight)
     {
         x = Mathf.FloorToInt(worldPosition.x - 0.5f * (itemWidth - 1));
-        y = Mathf.FloorToInt(worldPosition.y - 0.5f * (itemWidth - 1));
+        y = Mathf.FloorToInt(worldPosition.y - 0.5f * (itemHeight - 1));
     }
 
     private void EquipItem(int x, int y, int itemWidth, int itemHeight)
@@ -46,5 +45,28 @@ public class InventorySystem : MonoBehaviour
     {
         GetXY(worldPosition, out var x, out var y, itemWidth, itemHeight);
         EquipItem(x, y, itemWidth, itemHeight);
+    }
+
+    public void CheckSlot(Vector3 worldPosition, int itemWidth, int itemHeight)
+    {
+        GetXY(worldPosition, out var x, out var y, itemWidth, itemHeight);
+        
+        // if (_preSlotList.Count <= 0) return;
+        
+        foreach (var slot in _preSlotList)
+        {
+            slot.ResetSlotColor();
+        }
+        _preSlotList.Clear();
+        for (int i = y; i < y + itemHeight; i++)
+        {
+            for (int j = x; j < x + itemWidth; j++)
+            {
+                if (!(i >= 0 && j >= 0 && i < gridHeight && j < gridWidth)) return;
+
+                _slotArray[i, j].ShowSlotAvailability();
+                _preSlotList.Add(_slotArray[i, j]);
+            }
+        }
     }
 }

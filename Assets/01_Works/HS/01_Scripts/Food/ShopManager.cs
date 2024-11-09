@@ -29,6 +29,9 @@ public class ShopManager : MonoSingleton<ShopManager>
 
     public void ReRollShop()
     {
+        if (Gold < 1) return;
+        Gold--;
+        
         ClearShop();
         
         List<FoodDataSO> foodDataList = foodDataListSO.normalFoodDataList; 
