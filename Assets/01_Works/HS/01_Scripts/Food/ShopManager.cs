@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ShopManager : MonoSingleton<ShopManager>
 {
-    [SerializeField] private Canvas shopCanvas;
+    public Canvas shopCanvas;
     
     [SerializeField] private FoodDataListSO foodDataListSO;
     [SerializeField] private List<Food> shopFoodList = new List<Food>();
@@ -73,5 +73,18 @@ public class ShopManager : MonoSingleton<ShopManager>
         Vector3 foodPosition = new Vector3(-688.6971f- xSpace, 314.9529f + number * -213.5682f - ySpace);
         food.RectTransform.anchoredPosition = foodPosition;
         food.SetUpFood(foodData);
+    }
+
+    public void BuyFood(Food food)
+    {
+        if (Gold < food.foodDataSO.height * food.foodDataSO.width) return;
+
+        Gold -= food.foodDataSO.height * food.foodDataSO.width;
+        shopFoodList.Remove(food);
+    }
+
+    public bool CheckCanBuyFood(Food food)
+    {
+        return Gold >= food.foodDataSO.height * food.foodDataSO.width;
     }
 }

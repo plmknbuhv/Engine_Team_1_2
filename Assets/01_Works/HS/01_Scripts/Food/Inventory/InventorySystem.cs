@@ -33,16 +33,37 @@ public class InventorySystem : MonoBehaviour
         y = Mathf.FloorToInt(worldPosition.y - 0.5f * (itemHeight - 1));
     }
 
-    public bool EquipItem(Vector3 worldPosition, int itemWidth, int itemHeight)
+    public void EquipInventory(int x, int y,  int itemWidth, int itemHeight, Food food)
+    {
+        Vector3 slotPos = _slotArray[y, x].transform.position;
+        Vector3 equipPos = new Vector3(
+            slotPos.x + 0.5f * (itemWidth - 1),
+            slotPos.y + 0.5f * (itemHeight - 1));
+
+        food.transform.position = equipPos;
+        food.FoodDragHandler.returnPosition = equipPos;
+    }
+
+    public bool EquipItem(Vector3 worldPosition, int itemWidth, int itemHeight, Food food)
     {
         GetXY(worldPosition, out var x, out var y, itemWidth, itemHeight);
         if (!(x >= 0 && y >= 0 && x < gridWidth && y < gridHeight)) return false;
+        if (!ShopManager.Instance.CheckCanBuyFood(food)) return false;
+        
         if (CheckCanEquipItem(itemWidth, itemHeight))
         {
             foreach (var slot in _preSlotList)
             {
                 slot.isCanEquip = false;
+                slot.ResetSlotColor();
+                print(0);
             }
+
+            EquipInventory(x, y, itemWidth, itemHeight, food);
+
+            if (!food.isPurchased)
+                ShopManager.Instance.BuyFood(food);
+            
             return true;
         }
         return false;
@@ -88,6 +109,7 @@ public class InventorySystem : MonoBehaviour
         foreach (var slot in _preSlotList)
         {
             slot.ShowSlotAvailability();
+            print(1);
         }
     }
 }

@@ -1769,6 +1769,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c748fde45bd8b4c458a9bb01dbb97ed2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shopCanvas: {fileID: 140713173}
   foodDataListSO: {fileID: 11400000, guid: 6dbd221caa9916142899960a7356e336, type: 2}
   shopFoodList: []
   foodPriceTextList:
@@ -1779,7 +1780,7 @@ MonoBehaviour:
   goldValueText: {fileID: 265602064}
   poolManager: {fileID: 11400000, guid: 928c52471a99fba4a983ede3b8649ab4, type: 2}
   bulletType: {fileID: 11400000, guid: 13b61eab7a932874a9ea858af921911c, type: 2}
-  gold: 5
+  gold: 1234
 --- !u!1 &1959414347
 GameObject:
   m_ObjectHideFlags: 0

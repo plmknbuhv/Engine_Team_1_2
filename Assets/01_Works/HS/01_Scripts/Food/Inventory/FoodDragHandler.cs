@@ -8,6 +8,7 @@ public class FoodDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     private Food _food;
     
     [HideInInspector] public Vector3 startPosition;
+    [HideInInspector] public Vector3 returnPosition;
     
     public bool IsDragging { get; private set; }
 
@@ -33,11 +34,11 @@ public class FoodDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     public void OnEndDrag(PointerEventData eventData)
     {
         if (!_inventoryChecker.CheckEquipInventory())
-            transform.position = startPosition;
-        else
         {
-            
+            transform.position = returnPosition;
+            _inventoryChecker.CheckInventorySlot();
         }
+        
         
         _foodRenderer.SpriteRenderer.sortingOrder = 10;
         _foodRenderer.AdjustFoodSize();

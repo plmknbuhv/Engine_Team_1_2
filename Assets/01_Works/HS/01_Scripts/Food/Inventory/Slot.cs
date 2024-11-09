@@ -3,14 +3,12 @@ using UnityEngine.UI;
 
 public class Slot : MonoBehaviour
 {
-    private RectTransform _rectTransform;
     private Image _image;
     
     public bool isCanEquip = true;
 
     private void Awake()
     {
-        _rectTransform = GetComponent<RectTransform>();
         _image = GetComponent<Image>();
     }
 

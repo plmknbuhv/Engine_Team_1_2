@@ -24,7 +24,10 @@ public class FoodRenderer : MonoBehaviour
         
         var distance = Vector2.Distance(transform.position, _foodDragHandler.startPosition);
         var t = distance / 10;
-        var scaleValue = Mathf.Lerp(1.65f, 1.95f, t);
-        _food.RectTransform.sizeDelta = new Vector3(scaleValue, scaleValue, 1);
+        var scaleValue = Mathf.Lerp(1.52f, 1.97f, t);
+        var canvasRectTransform = ShopManager.Instance.shopCanvas.transform as RectTransform;
+        
+        _food.transform.localScale = new Vector3(scaleValue * (1f / canvasRectTransform.lossyScale.x),
+            scaleValue * (1f / canvasRectTransform.lossyScale.y));
     }
 }
