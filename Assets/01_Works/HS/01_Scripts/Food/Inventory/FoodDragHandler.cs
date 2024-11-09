@@ -1,13 +1,12 @@
-using System.Collections.Generic;
+ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class FoodDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     private FoodRenderer _foodRenderer;
-    private Food _food;
+    private InventoryChecker _inventoryChecker;
     
-    public List<InventorySystem> inventoryList = new List<InventorySystem>();
     [HideInInspector] public Vector3 startPosition;
     
     public bool IsDragging { get; private set; }
@@ -15,7 +14,7 @@ public class FoodDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     private void Awake()
     {
         _foodRenderer = GetComponent<FoodRenderer>();
-        _food = GetComponent<Food>();
+        _inventoryChecker = GetComponent<InventoryChecker>();
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -34,12 +33,7 @@ public class FoodDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         IsDragging = false;
         _foodRenderer.SpriteRenderer.sortingOrder = 10;
 
-        for (int i = 0; i < 2; i++)
-        {
-            print(GetLocalMousePos(i));
-            inventoryList[0].EquipItem(GetLocalMousePos(i),
-                _food.foodDataSO.width, _food.foodDataSO.height);
-        }
+        _inventoryChecker.CheckInventory();
     }
 
     public Vector3 GetMousePos()
@@ -47,11 +41,5 @@ public class FoodDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         var vec = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         vec.z = 0;
         return vec;
-    }
-
-    public Vector3 GetLocalMousePos(int inventoryNum)
-    {
-        var targetTrm = inventoryList[inventoryNum].transform;
-        return targetTrm.InverseTransformPoint(GetMousePos());
     }
 }

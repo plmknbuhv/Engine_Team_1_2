@@ -16,7 +16,7 @@ public class InventorySystem : MonoBehaviour
         SetUpInventory();
     }
 
-    public void SetUpInventory()
+    private void SetUpInventory()
     {
         for (int i = 0; i < gridHeight; i++)
         {
@@ -28,23 +28,23 @@ public class InventorySystem : MonoBehaviour
         }
     }
 
-    public void GetXY(Vector3 worldPosition, out int x, out int y)
+    private void GetXY(Vector3 worldPosition, out int x, out int y, int itemWidth, int itemHeight)
     {
-        x = Mathf.FloorToInt(worldPosition.x / gridWidth);
-        y = Mathf.FloorToInt(worldPosition.y / gridHeight);
+        x = Mathf.FloorToInt(worldPosition.x - 0.5f * (itemWidth - 1));
+        y = Mathf.FloorToInt(worldPosition.y - 0.5f * (itemWidth - 1));
     }
 
-    public void EquipItem(int x, int y, int itemWidth, int itemHeight)
+    private void EquipItem(int x, int y, int itemWidth, int itemHeight)
     {
         if (!(x >= 0 && y >= 0 && x < gridWidth && y < gridHeight)) return;
         
-        print(_slotArray[x,y].name);
+        print(x);
+        print(y);
     }
 
     public void EquipItem(Vector3 worldPosition, int itemWidth, int itemHeight)
     {
-        int x, y;
-        GetXY(worldPosition, out x, out y);
+        GetXY(worldPosition, out var x, out var y, itemWidth, itemHeight);
         EquipItem(x, y, itemWidth, itemHeight);
     }
 }

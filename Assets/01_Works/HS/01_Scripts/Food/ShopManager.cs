@@ -65,7 +65,7 @@ public class ShopManager : MonoSingleton<ShopManager>
             ySpace = 0.45f;
         
         Vector3 foodPosition = new Vector3(-11.48f - xSpace, 5.25f - number * 3.56f - ySpace);
-        food.transform.localPosition = foodPosition;
+        food.RectTransform.localPosition = foodPosition;
         food.SetUpFood(foodData);
     }
 }

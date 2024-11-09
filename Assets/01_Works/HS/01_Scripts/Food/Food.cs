@@ -13,12 +13,14 @@ public class Food : MonoBehaviour, IPoolable
     private SpriteRenderer _spriteRenderer;
     private FoodDragHandler _foodDragHandler;
     private BoxCollider2D _boxCollider;
+    public RectTransform RectTransform { get; private set; }
 
     private void Awake()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _foodDragHandler = GetComponent<FoodDragHandler>();
         _boxCollider = GetComponent<BoxCollider2D>();
+        RectTransform = GetComponent<RectTransform>();
     }
 
     public void SetUpFood(FoodDataSO foodDataSO)
