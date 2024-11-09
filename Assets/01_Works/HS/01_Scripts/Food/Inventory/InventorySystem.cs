@@ -33,40 +33,61 @@ public class InventorySystem : MonoBehaviour
         y = Mathf.FloorToInt(worldPosition.y - 0.5f * (itemHeight - 1));
     }
 
-    private void EquipItem(int x, int y, int itemWidth, int itemHeight)
-    {
-        if (!(x >= 0 && y >= 0 && x < gridWidth && y < gridHeight)) return;
-        
-        print(x);
-        print(y);
-    }
-
-    public void EquipItem(Vector3 worldPosition, int itemWidth, int itemHeight)
+    public bool EquipItem(Vector3 worldPosition, int itemWidth, int itemHeight)
     {
         GetXY(worldPosition, out var x, out var y, itemWidth, itemHeight);
-        EquipItem(x, y, itemWidth, itemHeight);
+        if (!(x >= 0 && y >= 0 && x < gridWidth && y < gridHeight)) return false;
+        if (CheckCanEquipItem(itemWidth, itemHeight))
+        {
+            foreach (var slot in _preSlotList)
+            {
+                slot.isCanEquip = false;
+            }
+            return true;
+        }
+        return false;
+    }
+
+    private bool CheckCanEquipItem(int itemWidth, int itemHeight)
+    {
+        if (_preSlotList.Count < itemWidth * itemHeight) return false;
+
+        bool isCanEquip = true;
+        foreach (var slot in _preSlotList)
+        {
+            if (!slot.isCanEquip)
+            {
+                isCanEquip = false;
+                break;
+            }
+        }
+        return isCanEquip;
     }
 
     public void CheckSlot(Vector3 worldPosition, int itemWidth, int itemHeight)
     {
         GetXY(worldPosition, out var x, out var y, itemWidth, itemHeight);
         
-        // if (_preSlotList.Count <= 0) return;
-        
         foreach (var slot in _preSlotList)
         {
             slot.ResetSlotColor();
         }
         _preSlotList.Clear();
+        
         for (int i = y; i < y + itemHeight; i++)
         {
             for (int j = x; j < x + itemWidth; j++)
             {
                 if (!(i >= 0 && j >= 0 && i < gridHeight && j < gridWidth)) return;
-
-                _slotArray[i, j].ShowSlotAvailability();
                 _preSlotList.Add(_slotArray[i, j]);
             }
+        }
+
+        if (_preSlotList.Count < itemWidth * itemHeight) return;
+
+        foreach (var slot in _preSlotList)
+        {
+            slot.ShowSlotAvailability();
         }
     }
 }

@@ -5,6 +5,7 @@ public class FoodDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 {
     private FoodRenderer _foodRenderer;
     private InventoryChecker _inventoryChecker;
+    private Food _food;
     
     [HideInInspector] public Vector3 startPosition;
     
@@ -12,6 +13,7 @@ public class FoodDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     private void Awake()
     {
+        _food = GetComponent<Food>();
         _foodRenderer = GetComponent<FoodRenderer>();
         _inventoryChecker = GetComponent<InventoryChecker>();
     }
@@ -24,16 +26,22 @@ public class FoodDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     public void OnDrag(PointerEventData eventData)
     {
-        transform.position = GetMousePos();
+        _food.RectTransform.position = GetMousePos();
         _inventoryChecker.CheckInventorySlot();
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        IsDragging = false;
+        if (!_inventoryChecker.CheckEquipInventory())
+            transform.position = startPosition;
+        else
+        {
+            
+        }
+        
         _foodRenderer.SpriteRenderer.sortingOrder = 10;
-
-        _inventoryChecker.CheckEquipInventory();
+        _foodRenderer.AdjustFoodSize();
+        IsDragging = false;
     }
 
     public Vector3 GetMousePos()

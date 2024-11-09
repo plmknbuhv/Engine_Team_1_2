@@ -9,13 +9,14 @@ public class InventoryChecker : MonoBehaviour
         _food = GetComponent<Food>();
     }
     
-    public void CheckEquipInventory()
+    public bool CheckEquipInventory()
     {
-        for (int i = 0; i < 2; i++)
-        {
-            FoodManager.Instance.inventoryList[i].EquipItem(GetLocalMousePos(i),
-                _food.foodDataSO.width, _food.foodDataSO.height);
-        }
+        bool isCanEquip = FoodManager.Instance.inventoryList[0].EquipItem(GetLocalMousePos(0), 
+                             _food.foodDataSO.width, _food.foodDataSO.height) ||
+                         FoodManager.Instance.inventoryList[1].EquipItem(GetLocalMousePos(1), 
+                             _food.foodDataSO.width, _food.foodDataSO.height);
+
+        return isCanEquip;
     }
     
     private Vector3 GetLocalMousePos(int inventoryNum)

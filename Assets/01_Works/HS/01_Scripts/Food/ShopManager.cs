@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class ShopManager : MonoSingleton<ShopManager>
 {
+    [SerializeField] private Canvas shopCanvas;
+    
     [SerializeField] private FoodDataListSO foodDataListSO;
     [SerializeField] private List<Food> shopFoodList = new List<Food>();
     
@@ -58,17 +60,18 @@ public class ShopManager : MonoSingleton<ShopManager>
     private void CreateFoodItem(FoodDataSO foodData, int number)
     {
         var food = poolManager.Pop(bulletType) as Food;
+        food.RectTransform.SetParent(shopCanvas.transform);
         shopFoodList.Add(food);
 
         float xSpace = 0;
         float ySpace = 0;
         if (foodData.width == 2)
-            xSpace = 0.45f;
+            xSpace = 26.9961f;
         if (foodData.height == 2)
-            ySpace = 0.45f;
+            ySpace = 26.9961f;
         
-        Vector3 foodPosition = new Vector3(-11.48f - xSpace, 5.25f - number * 3.56f - ySpace);
-        food.RectTransform.localPosition = foodPosition;
+        Vector3 foodPosition = new Vector3(-688.6971f- xSpace, 314.9529f + number * -213.5682f - ySpace);
+        food.RectTransform.anchoredPosition = foodPosition;
         food.SetUpFood(foodData);
     }
 }
