@@ -34,4 +34,10 @@ public class InventoryChecker : MonoBehaviour
                 _food.foodDataSO.width, _food.foodDataSO.height);
         }
     }
+
+    public void ResetSlotS()
+    {
+        FoodManager.Instance.inventoryList[0].ResetSlots();
+        FoodManager.Instance.inventoryList[1].ResetSlots();
+    }
 }

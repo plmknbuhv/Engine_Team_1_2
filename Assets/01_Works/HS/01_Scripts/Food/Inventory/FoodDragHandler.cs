@@ -23,6 +23,8 @@ public class FoodDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     {
         IsDragging = true;
         _foodRenderer.SpriteRenderer.sortingOrder = 20;
+        foreach (var slot in _food.slotList)
+            slot.isCanEquip = true;
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -36,16 +38,24 @@ public class FoodDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         if (!_inventoryChecker.CheckEquipInventory())
         {
             transform.position = returnPosition;
-            _inventoryChecker.CheckInventorySlot();
         }
         
-        
+        foreach (var slot in _food.slotList)
+        {
+            slot.isCanEquip = false;
+        }
+        _inventoryChecker.ResetSlotS();
         _foodRenderer.SpriteRenderer.sortingOrder = 10;
         _foodRenderer.AdjustFoodSize();
         IsDragging = false;
     }
 
-    public Vector3 GetMousePos()
+    private void RotateFood()
+    {
+              
+    }
+
+    private Vector3 GetMousePos()
     {
         var vec = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         vec.z = 0;

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using GGMPool;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -16,6 +17,8 @@ public class Food : MonoBehaviour, IPoolable
     private BoxCollider2D _boxCollider;
     public RectTransform RectTransform { get; private set; }
     public bool isPurchased;
+    
+    public List<Slot> slotList = new List<Slot>();
 
     private void Awake()
     {

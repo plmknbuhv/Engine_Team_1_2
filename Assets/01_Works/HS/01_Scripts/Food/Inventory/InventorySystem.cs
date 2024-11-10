@@ -37,11 +37,19 @@ public class InventorySystem : MonoBehaviour
     {
         Vector3 slotPos = _slotArray[y, x].transform.position;
         Vector3 equipPos = new Vector3(
-            slotPos.x + 0.5f * (itemWidth - 1),
-            slotPos.y + 0.5f * (itemHeight - 1));
+            slotPos.x + 0.56f * (itemWidth - 1),
+            slotPos.y + 0.56f * (itemHeight - 1));
 
         food.transform.position = equipPos;
         food.FoodDragHandler.returnPosition = equipPos;
+
+        for (int i = y; i < itemHeight + y; i++)
+        {
+            for (int j = x; j < itemWidth + x; j++)
+            {
+                food.slotList.Add(_slotArray[i, j]);
+            }
+        }
     }
 
     public bool EquipItem(Vector3 worldPosition, int itemWidth, int itemHeight, Food food)
@@ -53,12 +61,12 @@ public class InventorySystem : MonoBehaviour
         if (CheckCanEquipItem(itemWidth, itemHeight))
         {
             foreach (var slot in _preSlotList)
-            {
                 slot.isCanEquip = false;
-                slot.ResetSlotColor();
-                print(0);
-            }
 
+            foreach (var slot in food.slotList)
+                slot.isCanEquip = true;
+            
+            food.slotList.Clear();
             EquipInventory(x, y, itemWidth, itemHeight, food);
 
             if (!food.isPurchased)
@@ -109,7 +117,14 @@ public class InventorySystem : MonoBehaviour
         foreach (var slot in _preSlotList)
         {
             slot.ShowSlotAvailability();
-            print(1);
+        }
+    }
+
+    public void ResetSlots()
+    {
+        foreach (var slot in _slotArray)
+        {
+            slot.ResetSlotColor();
         }
     }
 }
