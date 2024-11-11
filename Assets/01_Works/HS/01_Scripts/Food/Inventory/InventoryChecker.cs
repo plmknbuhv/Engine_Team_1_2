@@ -12,9 +12,9 @@ public class InventoryChecker : MonoBehaviour
     public bool CheckEquipInventory()
     {
         bool isCanEquip = FoodManager.Instance.inventoryList[0].EquipItem(GetLocalMousePos(0), 
-                             _food.foodDataSO.width, _food.foodDataSO.height, _food) ||
+                             _food.width, _food.height, _food) ||
                          FoodManager.Instance.inventoryList[1].EquipItem(GetLocalMousePos(1), 
-                             _food.foodDataSO.width, _food.foodDataSO.height, _food);
+                             _food.width, _food.height, _food);
 
         return isCanEquip;
     }
@@ -31,11 +31,11 @@ public class InventoryChecker : MonoBehaviour
         for (int i = 0; i < 2; i++)
         {
             FoodManager.Instance.inventoryList[i].CheckSlot(GetLocalMousePos(i),
-                _food.foodDataSO.width, _food.foodDataSO.height);
+                _food.width, _food.height);
         }
     }
 
-    public void ResetSlotS()
+    public void ResetSlots()
     {
         FoodManager.Instance.inventoryList[0].ResetSlots();
         FoodManager.Instance.inventoryList[1].ResetSlots();

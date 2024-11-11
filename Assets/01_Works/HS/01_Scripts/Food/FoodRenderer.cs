@@ -15,16 +15,15 @@ public class FoodRenderer : MonoBehaviour
 
     private void Update()
     {
+        if (!_foodDragHandler.IsDragging) return;
         AdjustFoodSize();
     }
 
     public void AdjustFoodSize()
     {
-        if (!_foodDragHandler.IsDragging) return;
-        
         var distance = Vector2.Distance(transform.position, _foodDragHandler.startPosition);
         var t = distance / 10;
-        var scaleValue = Mathf.Lerp(1.52f, 1.97f, t);
+        var scaleValue = Mathf.Lerp(1.6f, 1.97f, t);
         var canvasRectTransform = ShopManager.Instance.shopCanvas.transform as RectTransform;
         
         _food.transform.localScale = new Vector3(scaleValue * (1f / canvasRectTransform.lossyScale.x),

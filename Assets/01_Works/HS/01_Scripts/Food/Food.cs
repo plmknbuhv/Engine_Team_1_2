@@ -17,6 +17,8 @@ public class Food : MonoBehaviour, IPoolable
     private BoxCollider2D _boxCollider;
     public RectTransform RectTransform { get; private set; }
     public bool isPurchased;
+    public int width;
+    public int height;
     
     public List<Slot> slotList = new List<Slot>();
 
@@ -31,6 +33,9 @@ public class Food : MonoBehaviour, IPoolable
 
     public void SetUpFood(FoodDataSO foodDataSO)
     {
+        width = foodDataSO.width;
+        height = foodDataSO.height;
+        
         FoodDragHandler.startPosition = transform.position;
         FoodDragHandler.returnPosition = transform.position;
         this.foodDataSO = foodDataSO;
@@ -39,7 +44,7 @@ public class Food : MonoBehaviour, IPoolable
         _spriteRenderer.sprite = foodDataSO.sprite;
         _foodRenderer.AdjustFoodSize();
         
-        var colliderSize = new Vector2(foodDataSO.width * 0.5f, foodDataSO.height * 0.5f);
+        var colliderSize = new Vector2(width * 0.5f, height * 0.5f);
         _boxCollider.size = colliderSize;
     }
     
