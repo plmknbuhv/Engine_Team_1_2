@@ -1230,8 +1230,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Wave 1
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f72bfbb06e58e67498edf1b5d9d5d31b, type: 2}
+  m_sharedMaterial: {fileID: 3071326822893427610, guid: f72bfbb06e58e67498edf1b5d9d5d31b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2478,8 +2478,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f72bfbb06e58e67498edf1b5d9d5d31b, type: 2}
+  m_sharedMaterial: {fileID: 3071326822893427610, guid: f72bfbb06e58e67498edf1b5d9d5d31b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2956,9 +2956,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec990e82524f52644ae4cbf187feb21c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyList:
-  - {fileID: 11400000, guid: 247d1c7a1b13b8940acee336063fa29e, type: 2}
-  - {fileID: 11400000, guid: db4e958d0e9d98e4788f65cc38fcee56, type: 2}
+  enemyList:
+  - enemys:
+    - {fileID: 11400000, guid: bffe25ae6300a454ea1f2e0f60401722, type: 2}
+  - enemys:
+    - {fileID: 11400000, guid: bffe25ae6300a454ea1f2e0f60401722, type: 2}
+    - {fileID: 11400000, guid: db4e958d0e9d98e4788f65cc38fcee56, type: 2}
+  - enemys:
+    - {fileID: 11400000, guid: bffe25ae6300a454ea1f2e0f60401722, type: 2}
+    - {fileID: 11400000, guid: db4e958d0e9d98e4788f65cc38fcee56, type: 2}
+    - {fileID: 11400000, guid: 247d1c7a1b13b8940acee336063fa29e, type: 2}
   t: {fileID: 293242816}
   startBtn: {fileID: 1678431420}
   isWaveStart: 0
@@ -3905,7 +3912,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolManager: {fileID: 11400000, guid: 928c52471a99fba4a983ede3b8649ab4, type: 2}
-  enemyType: {fileID: 11400000, guid: 247d1c7a1b13b8940acee336063fa29e, type: 2}
+  enemyType: []
   spawnPoint: {fileID: 2137554569}
 --- !u!1001 &765782295
 PrefabInstance:

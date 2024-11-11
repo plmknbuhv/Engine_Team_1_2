@@ -3,12 +3,21 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
+
+[System.Serializable]
+public class Enemys
+{
+    public List<PoolTypeSO> enemys = new List<PoolTypeSO>();
+}
 
 public class WaveManager : MonoBehaviour
 {
     public Dictionary<int, int> Waves = new Dictionary<int, int>();
-    public List<PoolTypeSO> EnemyList = new List<PoolTypeSO>();
+    public List<Enemys> enemyList = new List<Enemys>();
+    
+    
     [SerializeField] private t t;
     [SerializeField] private Button startBtn;
     public bool isWaveStart = false;
@@ -23,6 +32,7 @@ public class WaveManager : MonoBehaviour
         {
             Waves.Add(i, i*2);
         }
+        
     }
 
     private void Start()
@@ -51,5 +61,5 @@ public class WaveManager : MonoBehaviour
         isWaveStart = false;
     }
 
-
+   
 }
