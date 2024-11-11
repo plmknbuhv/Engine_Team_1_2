@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bird : Enemy, IPoolable
+public class Child : Enemy, IPoolable
 {
     [field: SerializeField] public PoolTypeSO PoolType { get; set; }
 
@@ -20,27 +20,8 @@ public class Bird : Enemy, IPoolable
 
     }
 
-    protected override void UniqueSkill()
-    {
-        // 
-    }
-
     public override void GetDamage(int damage, float knockbackPower, Action action = null)
     {
         base.GetDamage(damage, knockbackPower, action);
     }
-
-    
-
-    private void Update()
-    {
-        //transform.LookAt(target.position);
-
-        if (Input.GetKeyDown(KeyCode.A)) // ÅÂ½ºÆ®
-        {
-            GetDamage(10, 3);
-        }
-
-    }
-
 }

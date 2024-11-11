@@ -1,10 +1,6 @@
-using JetBrains.Annotations;
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Xml;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public class Enemy : MonoBehaviour
 {
@@ -16,7 +12,7 @@ public class Enemy : MonoBehaviour
     protected Rigidbody2D rb;
     protected Animator animator;
     protected Transform target;
-    
+
 
 
     private void Awake()
@@ -31,9 +27,12 @@ public class Enemy : MonoBehaviour
     {
         if (isGetDamage)
         {
+            animator.speed = knockbackPower / 5;
+            animator.SetBool("isHit", false);
             rb.velocity = new Vector2(0, -Math.Clamp(knockbackPower -= Time.deltaTime, 0, 10));
-            if(knockbackPower <= 0)
+            if (knockbackPower <= 0)
             {
+                animator.speed = 1f;
                 isGetDamage = false;
             }
         }
@@ -45,9 +44,12 @@ public class Enemy : MonoBehaviour
         this.knockbackPower = knockbackPower;
         isGetDamage = true;
 
-        hp -= damage;
+        animator.SetBool("isHit", true);
+        
 
-        if(action != null)
+        hp -= damage;
+        
+        if (action != null)
         {
             action?.Invoke();
         }
@@ -55,7 +57,7 @@ public class Enemy : MonoBehaviour
 
     protected virtual void UniqueSkill()
     {
-        
+
     }
 
     private void FixedUpdate()
@@ -63,6 +65,13 @@ public class Enemy : MonoBehaviour
         Move();
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.A)) // ÅÂ½ºÆ®
+        {
+            GetDamage(10, 3);
+        }
+    }
 
-    
+
 }

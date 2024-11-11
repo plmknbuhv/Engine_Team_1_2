@@ -25,6 +25,10 @@ PrefabInstance:
       value: 0.867345
       objectReference: {fileID: 0}
     - target: {fileID: 3476976484587985565, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3476976484587985565, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.y
       value: -0.21052632
       objectReference: {fileID: 0}
@@ -141,7 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df9fad7612f1fcd42b1d6b7d3c171ab2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
-  maxHp: 100
-  hp: 100
+  speed: 2
+  maxHp: 20
+  hp: 20
   <PoolType>k__BackingField: {fileID: 11400000, guid: db4e958d0e9d98e4788f65cc38fcee56, type: 2}
