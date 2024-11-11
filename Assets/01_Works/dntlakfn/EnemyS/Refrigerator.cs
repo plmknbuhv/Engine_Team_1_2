@@ -28,7 +28,7 @@ public class Refrigerator : Enemy, IPoolable
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.A)) // �½�Ʈ
+        if(Input.GetKeyDown(KeyCode.A)) // �½�Ʈ
         {
             GetDamage(10, 3);
         }

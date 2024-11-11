@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6778171449065579567}
   - component: {fileID: 112084014390057734}
   - component: {fileID: 8534264448921737722}
-  - component: {fileID: 9125100989807485078}
+  - component: {fileID: 8475586614986570389}
   m_Layer: 0
   m_Name: Refrigerator
   m_TagString: Untagged
@@ -182,7 +182,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &9125100989807485078
+--- !u!114 &8475586614986570389
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -194,9 +194,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f89f8fc1ac604104e85c06fc4d413bf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
-  maxHp: 100
-  hp: 100
+  speed: 0
+  maxHp: 0
+  hp: 0
   <PoolType>k__BackingField: {fileID: 11400000, guid: 247d1c7a1b13b8940acee336063fa29e, type: 2}
 --- !u!1001 &7788588673688425265
 PrefabInstance:
