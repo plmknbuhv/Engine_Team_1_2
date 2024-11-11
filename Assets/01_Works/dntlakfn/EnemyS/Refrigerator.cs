@@ -20,18 +20,19 @@ public class Refrigerator : Enemy, IPoolable
         
     }
 
+    protected override void UniqueSkill()
+    {
+        // 영역전개해서 맵을 빙판으로 바꿈
+    }
     public override void GetDamage(int damage, float knockbackPower, Action action = null)
     {
-        base.GetDamage(damage, knockbackPower, action);
+        base.GetDamage(damage, 0, action);
     }
 
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.A)) // �½�Ʈ
-        {
-            GetDamage(10, 3);
-        }
+        
         
     }
 
