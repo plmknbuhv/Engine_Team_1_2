@@ -5,10 +5,21 @@ public class Bullet : MonoBehaviour, IPoolable
 {
      [field: SerializeField] public PoolTypeSO PoolType { get; private set; }
      public GameObject GameObject => gameObject;
+     private SpriteRenderer _spriteRenderer;
+
+     private void Awake()
+     {
+          _spriteRenderer = GetComponent<SpriteRenderer>();
+     }
 
      private void Update()
      {
-          transform.position += transform.right * Time.deltaTime;
+          transform.position += transform.right * (Time.deltaTime * 10);
+     }
+
+     public void SetUpSprite(Sprite sprite)
+     {
+          _spriteRenderer.sprite = sprite;
      }
      
      public void SetUpPool(Pool pool)

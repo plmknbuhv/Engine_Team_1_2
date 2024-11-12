@@ -1,15 +1,14 @@
-using System;
 using System.Collections;
 using DG.Tweening;
-using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class FoodDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    private FoodRenderer _foodRenderer;
     private InventoryChecker _inventoryChecker;
+    private FoodRenderer _foodRenderer;
+    private FoodAttack _foodAttack;
     private Food _food;
     
     public Vector3 startPosition;
@@ -27,6 +26,7 @@ public class FoodDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         _food = GetComponent<Food>();
         _foodRenderer = GetComponent<FoodRenderer>();
         _inventoryChecker = GetComponent<InventoryChecker>();
+        _foodAttack = GetComponent<FoodAttack>();
     }
 
     private void Start()
@@ -58,6 +58,7 @@ public class FoodDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         
         _food.RectTransform.position = GetMousePos();
         _inventoryChecker.CheckInventorySlot();
+        _foodAttack.StopAttack();
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -85,6 +86,7 @@ public class FoodDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         _inventoryChecker.ResetSlots();
         _foodRenderer.SpriteRenderer.sortingOrder = 10;
         _foodRenderer.AdjustFoodSize();
+        _foodAttack.StartAttack();
     }
 
     private void RotateFood()
