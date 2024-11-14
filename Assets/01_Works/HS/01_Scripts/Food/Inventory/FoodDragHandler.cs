@@ -50,6 +50,7 @@ public class FoodDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         _prevWidth = _food.width;
         foreach (var slot in _food.slotList)
             slot.isCanEquip = true;
+        _foodAttack.StopAttack();
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -58,7 +59,6 @@ public class FoodDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         
         _food.RectTransform.position = GetMousePos();
         _inventoryChecker.CheckInventorySlot();
-        _foodAttack.StopAttack();
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -78,15 +78,18 @@ public class FoodDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
             _food.RectTransform.eulerAngles = new Vector3(0,0,_prevRotation);
             (_food.width, _food.height) = (_prevWidth, _prevHeight);
         }
+        else
+        {
+            _foodAttack.StartAttack();
+        }
         
         foreach (var slot in _food.slotList)
         {
             slot.isCanEquip = false;
         }
-        _inventoryChecker.ResetSlots();
         _foodRenderer.SpriteRenderer.sortingOrder = 10;
         _foodRenderer.AdjustFoodSize();
-        _foodAttack.StartAttack();
+        _inventoryChecker.ResetSlots();
     }
 
     private void RotateFood()

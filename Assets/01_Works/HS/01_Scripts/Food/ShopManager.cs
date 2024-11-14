@@ -81,6 +81,7 @@ public class ShopManager : MonoSingleton<ShopManager>
 
         Gold -= food.foodDataSO.height * food.foodDataSO.width;
         shopFoodList.Remove(food);
+        food.isPurchased = true;
     }
 
     public bool CheckCanBuyFood(Food food)

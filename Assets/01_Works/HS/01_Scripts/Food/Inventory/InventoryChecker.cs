@@ -11,9 +11,11 @@ public class InventoryChecker : MonoBehaviour
     
     public bool CheckEquipInventory()
     {
-        bool isCanEquip = FoodManager.Instance.inventoryList[0].EquipItem(GetLocalMousePos(0), 
+        bool isCanEquip = InventoryManager.Instance.inventoryList[0].EquipItem(GetLocalMousePos(0), 
                              _food.width, _food.height, _food) ||
-                         FoodManager.Instance.inventoryList[1].EquipItem(GetLocalMousePos(1), 
+                         InventoryManager.Instance.inventoryList[1].EquipItem(GetLocalMousePos(1), 
+                             _food.width, _food.height, _food) ||
+                         InventoryManager.Instance.inventoryList[2].EquipItem(GetLocalMousePos(2), 
                              _food.width, _food.height, _food);
 
         return isCanEquip;
@@ -21,23 +23,24 @@ public class InventoryChecker : MonoBehaviour
     
     private Vector3 GetLocalMousePos(int inventoryNum)
     {
-        var targetTrm = FoodManager.Instance.inventoryList[inventoryNum].GetComponent<RectTransform>();
+        var targetTrm = InventoryManager.Instance.inventoryList[inventoryNum].GetComponent<RectTransform>();
         RectTransformUtility.ScreenPointToLocalPointInRectangle(targetTrm, Camera.main.WorldToScreenPoint(transform.position), Camera.main, out var localPoint);
         return localPoint / 67.5f;
     }
 
     public void CheckInventorySlot()
     {
-        for (int i = 0; i < 2; i++)
+        for (int i = 0; i < 3; i++)
         {
-            FoodManager.Instance.inventoryList[i].CheckSlot(GetLocalMousePos(i),
+            InventoryManager.Instance.inventoryList[i].CheckSlot(GetLocalMousePos(i),
                 _food.width, _food.height);
         }
     }
 
     public void ResetSlots()
     {
-        FoodManager.Instance.inventoryList[0].ResetSlots();
-        FoodManager.Instance.inventoryList[1].ResetSlots();
+        InventoryManager.Instance.inventoryList[0].ResetSlots();
+        InventoryManager.Instance.inventoryList[1].ResetSlots();
+        InventoryManager.Instance.inventoryList[2].ResetSlots();
     }
 }

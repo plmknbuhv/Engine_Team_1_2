@@ -13,7 +13,7 @@ public class FoodAttack : MonoBehaviour
     {
         _food = food;
         _foodData = food.foodDataSO;
-        _tower = FoodManager.Instance.tower;
+        _tower = InventoryManager.Instance.tower;
         _towerAttack = _tower.GetCompo<TowerAttack>();
     }
 
