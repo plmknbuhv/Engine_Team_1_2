@@ -8,6 +8,7 @@ public class InventorySystem : MonoBehaviour
     [SerializeField] private Slot slotPrefab;
     private Slot[,] _slotArray;
     private List<Slot> _preSlotList = new List<Slot>();
+    public bool isOpen = true;
 
     private void Awake()
     {
@@ -54,6 +55,8 @@ public class InventorySystem : MonoBehaviour
 
     public bool EquipItem(Vector3 worldPosition, int itemWidth, int itemHeight, Food food)
     {
+        if (!isOpen) return false;
+        
         GetXY(worldPosition, out var x, out var y, itemWidth, itemHeight);
         if (!(x >= 0 && y >= 0 && x < gridWidth && y < gridHeight)) return false;
         if (!ShopManager.Instance.CheckCanBuyFood(food)) return false;

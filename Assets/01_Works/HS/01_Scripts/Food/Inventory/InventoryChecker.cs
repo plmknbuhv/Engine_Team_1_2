@@ -24,6 +24,7 @@ public class InventoryChecker : MonoBehaviour
     private Vector3 GetLocalMousePos(int inventoryNum)
     {
         var targetTrm = InventoryManager.Instance.inventoryList[inventoryNum].GetComponent<RectTransform>();
+        if (targetTrm == null) return Vector3.zero;
         RectTransformUtility.ScreenPointToLocalPointInRectangle(targetTrm, Camera.main.WorldToScreenPoint(transform.position), Camera.main, out var localPoint);
         return localPoint / 67.5f;
     }
@@ -32,6 +33,7 @@ public class InventoryChecker : MonoBehaviour
     {
         for (int i = 0; i < 3; i++)
         {
+            if (GetLocalMousePos(i) == Vector3.zero) continue;
             InventoryManager.Instance.inventoryList[i].CheckSlot(GetLocalMousePos(i),
                 _food.width, _food.height);
         }
@@ -41,6 +43,6 @@ public class InventoryChecker : MonoBehaviour
     {
         InventoryManager.Instance.inventoryList[0].ResetSlots();
         InventoryManager.Instance.inventoryList[1].ResetSlots();
-        InventoryManager.Instance.inventoryList[2].ResetSlots();
+        InventoryManager.Instance.inventoryList[2]?.ResetSlots();
     }
 }

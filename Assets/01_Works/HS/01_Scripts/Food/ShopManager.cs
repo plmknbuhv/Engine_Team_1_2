@@ -17,6 +17,8 @@ public class ShopManager : MonoSingleton<ShopManager>
     [SerializeField] private PoolTypeSO bulletType;
     
     [SerializeField] private int gold;
+
+    [SerializeField] private RectTransform shopPointRect;
     
     public int Gold
     {
@@ -70,7 +72,7 @@ public class ShopManager : MonoSingleton<ShopManager>
         if (foodData.height == 2)
             ySpace = 26.9961f;
         
-        Vector3 foodPosition = new Vector3(-688.6971f- xSpace, 314.9529f + number * -213.5682f - ySpace);
+        Vector3 foodPosition = new Vector3(shopPointRect.anchoredPosition.x - xSpace, shopPointRect.anchoredPosition.y + number * -213.5682f - ySpace);
         food.RectTransform.anchoredPosition = foodPosition;
         food.SetUpFood(foodData);
     }

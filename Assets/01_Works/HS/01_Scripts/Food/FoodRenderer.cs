@@ -22,7 +22,7 @@ public class FoodRenderer : MonoBehaviour
     public void AdjustFoodSize()
     {
         var distance = Vector2.Distance(transform.position, _foodDragHandler.startPosition);
-        var t = distance / 10;
+        var t = distance / 7f;
         var scaleValue = Mathf.Lerp(1.6f, 1.97f, t);
         var canvasRectTransform = ShopManager.Instance.shopCanvas.transform as RectTransform;
         
