@@ -24,7 +24,7 @@ public class TowerAttack : MonoBehaviour , ITowerComponent
         var targetDir = _enemyChecker.FindNearEnemy().transform.position - transform.position;
         
         var angle = Mathf.Atan2(targetDir.y, targetDir.x) * Mathf.Rad2Deg;
-        var targetRotate = Quaternion.Euler(0, 0, angle);
+        var targetRotate = Quaternion.Euler(0, 0, angle - 90);
         
         bullet.transform.SetPositionAndRotation(transform.position, targetRotate);
         bullet.SetUpSprite(foodData.sprite);

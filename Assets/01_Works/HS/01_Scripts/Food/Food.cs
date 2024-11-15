@@ -15,7 +15,7 @@ public class Food : MonoBehaviour, IPoolable
     private FoodRenderer _foodRenderer;
     public FoodDragHandler FoodDragHandler {get; private set;}
     private BoxCollider2D _boxCollider;
-    private FoodAttack _foodAttack;
+    public FoodAttack FoodAttack { get; private set; }
     
     public RectTransform RectTransform { get; private set; }
     public bool isPurchased;
@@ -31,7 +31,7 @@ public class Food : MonoBehaviour, IPoolable
         _boxCollider = GetComponent<BoxCollider2D>();
         RectTransform = GetComponent<RectTransform>();
         _foodRenderer = GetComponent<FoodRenderer>();
-        _foodAttack = GetComponent<FoodAttack>();
+        FoodAttack = GetComponent<FoodAttack>();
     }
 
     public void SetUpFood(FoodDataSO foodDataSO)
@@ -45,7 +45,7 @@ public class Food : MonoBehaviour, IPoolable
         gameObject.name = _foodType.ToString();
         _spriteRenderer.sprite = foodDataSO.sprite;
         _foodRenderer.AdjustFoodSize();
-        _foodAttack.Initialize(this);
+        FoodAttack.Initialize(this);
         
         var colliderSize = new Vector2(width * 0.5f, height * 0.5f);
         _boxCollider.size = colliderSize;

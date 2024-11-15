@@ -14,7 +14,7 @@ public class Bullet : MonoBehaviour, IPoolable
 
      private void Update()
      {
-          transform.position += transform.right * (Time.deltaTime * 10);
+          transform.position += transform.up * (Time.deltaTime * 10);
      }
 
      public void SetUpSprite(Sprite sprite)

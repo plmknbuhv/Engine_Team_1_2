@@ -9,6 +9,7 @@ public class InventorySystem : MonoBehaviour
     private Slot[,] _slotArray;
     private List<Slot> _preSlotList = new List<Slot>();
     public bool isOpen = true;
+    public bool isKitchen;
 
     private void Awake()
     {
@@ -45,12 +46,8 @@ public class InventorySystem : MonoBehaviour
         food.FoodDragHandler.returnPosition = equipPos;
 
         for (int i = y; i < itemHeight + y; i++)
-        {
             for (int j = x; j < itemWidth + x; j++)
-            {
                 food.slotList.Add(_slotArray[i, j]);
-            }
-        }
     }
 
     public bool EquipItem(Vector3 worldPosition, int itemWidth, int itemHeight, Food food)
@@ -74,7 +71,21 @@ public class InventorySystem : MonoBehaviour
 
             if (!food.isPurchased)
                 ShopManager.Instance.BuyFood(food);
-            
+
+            if (isKitchen)
+            {
+                InventoryManager.Instance.kitchenFoods.Add(food);
+                food.FoodAttack.StopAttack();
+            }
+            else
+            {
+                if (InventoryManager.Instance.kitchenFoods.Contains(food))
+                {
+                    InventoryManager.Instance.kitchenFoods.Remove(food);
+                    print(1);
+                }
+                food.FoodAttack.StartAttack();
+            }     
             return true;
         }
         return false;

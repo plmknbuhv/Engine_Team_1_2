@@ -1164,6 +1164,8 @@ MonoBehaviour:
   gridWidth: 5
   gridHeight: 14
   slotPrefab: {fileID: -4053359256668095463, guid: 43a41d06c2d48fd4da3eecfc76c5a074, type: 3}
+  isOpen: 1
+  isKitchen: 0
 --- !u!114 &758272585
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1758,6 +1760,8 @@ MonoBehaviour:
   gridWidth: 7
   gridHeight: 8
   slotPrefab: {fileID: -4053359256668095463, guid: 075ae47d7675dfa4f8d846f8d5f9e1ea, type: 3}
+  isOpen: 1
+  isKitchen: 0
 --- !u!1 &1242134139
 GameObject:
   m_ObjectHideFlags: 0
@@ -2154,8 +2158,10 @@ MonoBehaviour:
   - {fileID: 2040478724}
   - {fileID: 1007025426}
   - {fileID: 758272584}
+  kitchenFoods: []
   kitchenPanel: {fileID: 1814924842}
   tower: {fileID: 1849150099}
+  isCanActiveKitchen: 1
 --- !u!1 &2040478721
 GameObject:
   m_ObjectHideFlags: 0
@@ -2232,6 +2238,8 @@ MonoBehaviour:
   gridWidth: 7
   gridHeight: 4
   slotPrefab: {fileID: -4053359256668095463, guid: 075ae47d7675dfa4f8d846f8d5f9e1ea, type: 3}
+  isOpen: 1
+  isKitchen: 0
 --- !u!1001 &7346927164735904875
 PrefabInstance:
   m_ObjectHideFlags: 0
