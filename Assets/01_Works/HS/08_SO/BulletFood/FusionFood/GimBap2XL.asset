@@ -19,5 +19,5 @@ MonoBehaviour:
   width: 2
   height: 2
   ingredients:
-  - {fileID: 11400000}
-  - {fileID: 11400000}
+  - {fileID: 11400000, guid: 2ff2116887328364daeb998e06898dbe, type: 2}
+  - {fileID: 11400000, guid: 2ff2116887328364daeb998e06898dbe, type: 2}

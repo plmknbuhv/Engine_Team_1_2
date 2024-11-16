@@ -14,7 +14,7 @@ public class ShopManager : MonoSingleton<ShopManager>
     [SerializeField] private TextMeshProUGUI goldValueText;
     
     [SerializeField] private PoolManagerSO poolManager;
-    [SerializeField] private PoolTypeSO bulletType;
+    [SerializeField] private PoolTypeSO poolType;
     
     [SerializeField] private int gold;
 
@@ -61,7 +61,7 @@ public class ShopManager : MonoSingleton<ShopManager>
 
     private void CreateFoodItem(FoodDataSO foodData, int number)
     {
-        var food = poolManager.Pop(bulletType) as Food;
+        var food = poolManager.Pop(poolType) as Food;
         food.RectTransform.SetParent(shopCanvas.transform);
         shopFoodList.Add(food);
 

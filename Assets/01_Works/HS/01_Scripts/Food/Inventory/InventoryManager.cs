@@ -1,10 +1,15 @@
-using System;
 using System.Collections.Generic;
+using System.Linq;
+using GGMPool;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class InventoryManager : MonoSingleton<InventoryManager>
 {
+    public PoolManagerSO poolManager;
+    public PoolTypeSO poolType;
+    
+    public FoodDataListSO foodDataList;
     private Dictionary<FoodType, int> _foods = new Dictionary<FoodType, int>();
     public List<InventorySystem> inventoryList = new List<InventorySystem>();
     public List<Food> kitchenFoods = new List<Food>();
@@ -13,6 +18,8 @@ public class InventoryManager : MonoSingleton<InventoryManager>
     public Tower tower;
 
     public bool isCanActiveKitchen = true;
+    
+    [SerializeField] private RectTransform cookPointRect;
 
     private void Awake()
     {
@@ -37,8 +44,64 @@ public class InventoryManager : MonoSingleton<InventoryManager>
         }
     }
 
-    public void CheckCanFoodChange()
+    public void CookFood()
     {
+        foreach (var fusionFood in foodDataList.fusionFoodDataList)
+        {
+            List<Food> ingredientsList = new List<Food>();
+            if (CheckCanFoodChange(fusionFood, ref ingredientsList))
+            {
+                ingredientsList.ForEach(food =>
+                {
+                    food.InventoryChecker.ResetSlots();
+                    kitchenFoods.Remove(food);
+                    poolManager.Push(food);
+                });
+                CreateFood(fusionFood);
+                break;
+            }
+            else
+            {
+                // 실패
+            }
+        }
+    }
+
+    private void CreateFood(FusionFoodDataSO fusionFood)
+    {
+        var food = poolManager.Pop(poolType) as Food;
+        food.RectTransform.SetParent(ShopManager.Instance.shopCanvas.transform);
         
+        float xSpace = 0;
+        float ySpace = 0;
+        if (fusionFood.width == 2)
+            xSpace = 26.9961f;
+        if (fusionFood.height == 2)
+            ySpace = 26.9961f;
+        
+        Vector3 foodPosition = new Vector3(
+            cookPointRect.anchoredPosition.x - xSpace,
+            cookPointRect.anchoredPosition.y - ySpace);
+        food.RectTransform.anchoredPosition = foodPosition;
+        food.SetUpFood(fusionFood);
+    }
+
+    private bool CheckCanFoodChange(FusionFoodDataSO fusionFoodData, ref List<Food> ingredientsList)
+    {
+        List<Food> kitchenFoodList = kitchenFoods.ToList();
+        
+        bool canFood = true;
+        foreach (var foodData in fusionFoodData.ingredients)
+        {
+            Food food = kitchenFoodList.Find(food => food.foodDataSO == foodData);
+            if (food != null)
+            {
+                kitchenFoodList.Remove(food);
+                ingredientsList.Add(food);
+            }
+            else
+                canFood = false;
+        }
+        return canFood;
     }
 }

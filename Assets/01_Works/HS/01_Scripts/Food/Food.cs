@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using GGMPool;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class Food : MonoBehaviour, IPoolable
 {
@@ -13,6 +12,7 @@ public class Food : MonoBehaviour, IPoolable
 
     public FoodRenderer FoodRenderer {get; private set;}
     public FoodDragHandler FoodDragHandler {get; private set;}
+    public InventoryChecker InventoryChecker { get; private set; }
     private BoxCollider2D _boxCollider;
     public FoodAttack FoodAttack { get; private set; }
     
@@ -25,6 +25,7 @@ public class Food : MonoBehaviour, IPoolable
 
     private void Awake()
     {
+        InventoryChecker = GetComponent<InventoryChecker>();
         FoodDragHandler = GetComponent<FoodDragHandler>();
         _boxCollider = GetComponent<BoxCollider2D>();
         RectTransform = GetComponent<RectTransform>();
@@ -42,7 +43,7 @@ public class Food : MonoBehaviour, IPoolable
         _foodType = foodDataSO.foodType;
         gameObject.name = _foodType.ToString();
         FoodRenderer.SpriteRenderer.sprite = foodDataSO.sprite;
-        FoodRenderer.AdjustFoodSize();
+        FoodDragHandler.SetUpFood();
         FoodAttack.Initialize(this);
         
         var colliderSize = new Vector2(width * 0.5f, height * 0.5f);
@@ -56,6 +57,10 @@ public class Food : MonoBehaviour, IPoolable
 
     public void ResetItem()
     {
-        
+        foreach (var slot in slotList)
+        {
+            slot.isCanEquip = true;
+        }
+        slotList.Clear();
     }
 }

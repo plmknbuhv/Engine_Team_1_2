@@ -34,6 +34,14 @@ public class FoodDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         _foodRenderer.AdjustFoodSize();
     }
 
+    public void SetUpFood()
+    {
+        _foodRenderer.ChangeFoodRotation(0);
+        IsDragging = false;
+        IsRotating = false;
+        _foodRenderer.AdjustFoodSize();
+    }
+
     private void Update()
     {
         RotateFood();
