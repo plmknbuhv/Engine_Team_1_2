@@ -74,16 +74,14 @@ public class InventorySystem : MonoBehaviour
 
             if (isKitchen)
             {
-                InventoryManager.Instance.kitchenFoods.Add(food);
+                if (!InventoryManager.Instance.kitchenFoods.Contains(food))
+                    InventoryManager.Instance.kitchenFoods.Add(food);
                 food.FoodAttack.StopAttack();
             }
             else
             {
                 if (InventoryManager.Instance.kitchenFoods.Contains(food))
-                {
                     InventoryManager.Instance.kitchenFoods.Remove(food);
-                    print(1);
-                }
                 food.FoodAttack.StartAttack();
             }     
             return true;

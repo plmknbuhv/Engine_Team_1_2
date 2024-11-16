@@ -11,8 +11,7 @@ public class Food : MonoBehaviour, IPoolable
     [field:SerializeField] public PoolTypeSO PoolType { get; private set; }
     public GameObject GameObject => gameObject;
 
-    private SpriteRenderer _spriteRenderer;
-    private FoodRenderer _foodRenderer;
+    public FoodRenderer FoodRenderer {get; private set;}
     public FoodDragHandler FoodDragHandler {get; private set;}
     private BoxCollider2D _boxCollider;
     public FoodAttack FoodAttack { get; private set; }
@@ -26,11 +25,10 @@ public class Food : MonoBehaviour, IPoolable
 
     private void Awake()
     {
-        _spriteRenderer = GetComponent<SpriteRenderer>();
         FoodDragHandler = GetComponent<FoodDragHandler>();
         _boxCollider = GetComponent<BoxCollider2D>();
         RectTransform = GetComponent<RectTransform>();
-        _foodRenderer = GetComponent<FoodRenderer>();
+        FoodRenderer = GetComponent<FoodRenderer>();
         FoodAttack = GetComponent<FoodAttack>();
     }
 
@@ -43,8 +41,8 @@ public class Food : MonoBehaviour, IPoolable
         this.foodDataSO = foodDataSO;
         _foodType = foodDataSO.foodType;
         gameObject.name = _foodType.ToString();
-        _spriteRenderer.sprite = foodDataSO.sprite;
-        _foodRenderer.AdjustFoodSize();
+        FoodRenderer.SpriteRenderer.sprite = foodDataSO.sprite;
+        FoodRenderer.AdjustFoodSize();
         FoodAttack.Initialize(this);
         
         var colliderSize = new Vector2(width * 0.5f, height * 0.5f);
