@@ -10,7 +10,6 @@ public class FoodRenderer : MonoBehaviour
     public SpriteRenderer SpriteRenderer { get; private set;}
     public Material material;
 
-
     private void Awake()
     {
         _foodDragHandler = GetComponent<FoodDragHandler>();
@@ -41,7 +40,7 @@ public class FoodRenderer : MonoBehaviour
         if (!_foodDragHandler.IsDragging) return;
         
         var distance = Vector2.Distance(transform.position, _foodDragHandler.startPosition);
-        var t = distance / 7f;
+        var t = distance / 10f;
         var scaleValue = Mathf.Lerp(1.6f, 1.97f, t);
         var canvasRectTransform = ShopManager.Instance.shopCanvas.transform as RectTransform;
         

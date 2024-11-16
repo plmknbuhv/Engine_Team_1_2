@@ -84,6 +84,8 @@ public class InventoryManager : MonoSingleton<InventoryManager>
             cookPointRect.anchoredPosition.y - ySpace);
         food.RectTransform.anchoredPosition = foodPosition;
         food.SetUpFood(fusionFood);
+        food.isPurchased = true;
+        kitchenFoods.Add(food);
     }
 
     private bool CheckCanFoodChange(FusionFoodDataSO fusionFoodData, ref List<Food> ingredientsList)

@@ -37,7 +37,7 @@ public class Food : MonoBehaviour, IPoolable
     {
         width = foodDataSO.width;
         height = foodDataSO.height;
-        FoodDragHandler.startPosition = transform.position;
+        FoodDragHandler.startPosition = ShopManager.Instance.foodStartPoint.position;
         FoodDragHandler.returnPosition = transform.position;
         this.foodDataSO = foodDataSO;
         _foodType = foodDataSO.foodType;
@@ -57,10 +57,12 @@ public class Food : MonoBehaviour, IPoolable
 
     public void ResetItem()
     {
+        isPurchased = false;
         foreach (var slot in slotList)
-        {
             slot.isCanEquip = true;
-        }
         slotList.Clear();
+        FoodRenderer.AdjustFoodSize();
+        FoodRenderer.AdjustFoodGauge(1, 1);
+        FoodRenderer.ChangeFoodRotation(0);
     }
 }

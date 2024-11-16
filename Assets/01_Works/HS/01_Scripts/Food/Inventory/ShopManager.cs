@@ -19,6 +19,7 @@ public class ShopManager : MonoSingleton<ShopManager>
     [SerializeField] private int gold;
 
     [SerializeField] private RectTransform shopPointRect;
+    public Transform foodStartPoint;
     
     public int Gold
     {
