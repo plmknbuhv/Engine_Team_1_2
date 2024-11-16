@@ -3,17 +3,19 @@ using UnityEngine;
 public class FoodRenderer : MonoBehaviour
 {
     private readonly int _gaugeValue = Shader.PropertyToID("_GaugeValue");
-    private readonly int _rotateValue = Shader.PropertyToID("_RotateValue");
+    private readonly int _isFoodVer = Shader.PropertyToID("_IsFoodVer");
+    
     private Food _food;
     private FoodDragHandler _foodDragHandler;
     public SpriteRenderer SpriteRenderer { get; private set;}
-    private Material _material;
+    public Material material;
+
 
     private void Awake()
     {
         _foodDragHandler = GetComponent<FoodDragHandler>();
         SpriteRenderer = GetComponent<SpriteRenderer>();
-        _material = SpriteRenderer.material;
+        material = SpriteRenderer.material;
         _food = GetComponent<Food>();
     }
 
@@ -21,12 +23,17 @@ public class FoodRenderer : MonoBehaviour
     {
         AdjustFoodSize();
     }
+
+    public void ChangeFoodRotation(float isRotate)
+    {
+        material.SetFloat(_isFoodVer, isRotate);
+    }
     
     public void AdjustFoodGauge(float attackTimer, float foodDataAttackCooldown)
     {
         var t = attackTimer / foodDataAttackCooldown;
         var gaugeValue = Mathf.Lerp(0, 1, t);
-        _material.SetFloat(_gaugeValue, gaugeValue);
+        material.SetFloat(_gaugeValue, gaugeValue);
     }
 
     public void AdjustFoodSize()

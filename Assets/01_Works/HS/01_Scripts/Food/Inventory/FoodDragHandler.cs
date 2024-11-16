@@ -102,9 +102,13 @@ public class FoodDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     private IEnumerator FoodRotateCoroutine()
     {
         (_food.width, _food.height) = (_food.height, _food.width);
-        _targetRotation += 90;
+        
+        _targetRotation = _targetRotation >= 90 ? 0 : 90;
+        _foodRenderer.ChangeFoodRotation(_targetRotation);
         Tween foodRotateTween = _food.RectTransform.DORotate(new Vector3(0,0,_targetRotation), 0.7f).SetEase(Ease.OutCubic);
+        
         _inventoryChecker.ResetSlots();
+        
         yield return foodRotateTween.WaitForCompletion();
         
         _foodRenderer.AdjustFoodSize();
