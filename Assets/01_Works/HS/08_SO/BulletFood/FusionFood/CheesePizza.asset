@@ -9,12 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f84b2b87726812a499221051a9f6e6f8, type: 3}
+  m_Script: {fileID: 11500000, guid: f9a5dc6e2d744c14a8d226d841e5517d, type: 3}
   m_Name: CheesePizza
   m_EditorClassIdentifier: 
-  foodType: 10
+  foodType: 11
   sprite: {fileID: 21300000, guid: b3ece88e8a0c32f4f86d9c8fa93a866d, type: 3}
   attackCooldown: 4
   damage: 120
   width: 2
   height: 2
+  ingredients:
+  - {fileID: 11400000, guid: 5153d4ac5ff9cc04eb35d588b3d57ead, type: 2}
+  - {fileID: 11400000, guid: 3642015792e12d64fb1545b59a9edc10, type: 2}

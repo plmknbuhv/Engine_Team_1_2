@@ -36,4 +36,9 @@ public class InventoryManager : MonoSingleton<InventoryManager>
             }
         }
     }
+
+    public void CheckCanFoodChange()
+    {
+        
+    }
 }

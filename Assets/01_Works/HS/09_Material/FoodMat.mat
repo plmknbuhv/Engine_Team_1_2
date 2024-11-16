@@ -47,7 +47,10 @@ Material:
     m_Floats:
     - _GagueValue: 1
     - _GaugeValue: 1
-    - _RotateValue: 1
+    - _IsFoodHor: 1
+    - _IsFoodVer: 0
+    - _IsHor: 0
+    - _RotateValue: 0
     m_Colors: []
   m_BuildTextureStacks: []
 --- !u!114 &7878280633171139664
