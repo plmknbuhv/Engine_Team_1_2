@@ -53,6 +53,7 @@ public class InventoryManager : MonoSingleton<InventoryManager>
             {
                 ingredientsList.ForEach(food =>
                 {
+                    food.slotList.ForEach(slot => slot.isCanEquip = true);
                     food.InventoryChecker.ResetSlots();
                     kitchenFoods.Remove(food);
                     poolManager.Push(food);
@@ -85,6 +86,7 @@ public class InventoryManager : MonoSingleton<InventoryManager>
         food.RectTransform.anchoredPosition = foodPosition;
         food.SetUpFood(fusionFood);
         food.isPurchased = true;
+        food.FoodDragHandler.startPosition = ShopManager.Instance.foodStartPointTrm.position;
         kitchenFoods.Add(food);
     }
 

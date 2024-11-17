@@ -37,12 +37,12 @@ public class Food : MonoBehaviour, IPoolable
     {
         width = foodDataSO.width;
         height = foodDataSO.height;
-        FoodDragHandler.startPosition = ShopManager.Instance.foodStartPoint.position;
         FoodDragHandler.returnPosition = transform.position;
         this.foodDataSO = foodDataSO;
         _foodType = foodDataSO.foodType;
         gameObject.name = _foodType.ToString();
         FoodRenderer.SpriteRenderer.sprite = foodDataSO.sprite;
+        FoodRenderer.AdjustFoodSize();
         FoodDragHandler.SetUpFood();
         FoodAttack.Initialize(this);
         

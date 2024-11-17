@@ -20,6 +20,7 @@ public class FoodRenderer : MonoBehaviour
 
     private void Update()
     {
+        if (!_foodDragHandler.IsDragging) return;
         AdjustFoodSize();
     }
 
@@ -37,8 +38,6 @@ public class FoodRenderer : MonoBehaviour
 
     public void AdjustFoodSize()
     {
-        if (!_foodDragHandler.IsDragging) return;
-        
         var distance = Vector2.Distance(transform.position, _foodDragHandler.startPosition);
         var t = distance / 10f;
         var scaleValue = Mathf.Lerp(1.6f, 1.97f, t);

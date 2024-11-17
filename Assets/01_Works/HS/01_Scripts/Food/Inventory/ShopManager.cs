@@ -19,7 +19,7 @@ public class ShopManager : MonoSingleton<ShopManager>
     [SerializeField] private int gold;
 
     [SerializeField] private RectTransform shopPointRect;
-    public Transform foodStartPoint;
+    public Transform foodStartPointTrm;
     
     public int Gold
     {
@@ -75,6 +75,7 @@ public class ShopManager : MonoSingleton<ShopManager>
         
         Vector3 foodPosition = new Vector3(shopPointRect.anchoredPosition.x - xSpace, shopPointRect.anchoredPosition.y + number * -213.5682f - ySpace);
         food.RectTransform.anchoredPosition = foodPosition;
+        food.FoodDragHandler.startPosition = food.transform.position;
         food.SetUpFood(foodData);
     }
 
