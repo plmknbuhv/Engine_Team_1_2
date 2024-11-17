@@ -15,15 +15,18 @@ public class TowerAttack : MonoBehaviour , ITowerComponent
         _enemyChecker = _tower.GetCompo<EnemyChecker>();
     }
 
-    public void Attack(FoodType foodType)
+    public void Attack(FoodDataSO foodData)
     {
+        if (_enemyChecker.Targets.Count < 1) return;
+        
         var bullet = poolManager.Pop(bulletType) as Bullet;
         
         var targetDir = _enemyChecker.FindNearEnemy().transform.position - transform.position;
         
         var angle = Mathf.Atan2(targetDir.y, targetDir.x) * Mathf.Rad2Deg;
-        var targetRotate = Quaternion.Euler(0, 0, angle);
+        var targetRotate = Quaternion.Euler(0, 0, angle - 90);
         
         bullet.transform.SetPositionAndRotation(transform.position, targetRotate);
+        bullet.SetUpSprite(foodData.sprite);
     }
 }

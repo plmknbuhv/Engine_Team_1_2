@@ -1,15 +1,14 @@
-using System;
 using System.Collections;
 using DG.Tweening;
-using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class FoodDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    private FoodRenderer _foodRenderer;
     private InventoryChecker _inventoryChecker;
+    private FoodRenderer _foodRenderer;
+    private FoodAttack _foodAttack;
     private Food _food;
     
     public Vector3 startPosition;
@@ -27,10 +26,19 @@ public class FoodDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         _food = GetComponent<Food>();
         _foodRenderer = GetComponent<FoodRenderer>();
         _inventoryChecker = GetComponent<InventoryChecker>();
+        _foodAttack = GetComponent<FoodAttack>();
     }
 
     private void Start()
     {
+        _foodRenderer.AdjustFoodSize();
+    }
+
+    public void SetUpFood()
+    {
+        _foodRenderer.ChangeFoodRotation(0);
+        IsDragging = false;
+        IsRotating = false;
         _foodRenderer.AdjustFoodSize();
     }
 
@@ -50,6 +58,7 @@ public class FoodDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         _prevWidth = _food.width;
         foreach (var slot in _food.slotList)
             slot.isCanEquip = true;
+        _foodAttack.StopAttack();
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -63,7 +72,14 @@ public class FoodDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     public void OnEndDrag(PointerEventData eventData)
     {
         if (eventData.button != PointerEventData.InputButton.Left) return;
+        IsDragging = false;
+        if (IsRotating) return;
 
+        DropItem();
+    }
+
+    private void DropItem()
+    {
         if (!_inventoryChecker.CheckEquipInventory())
         {
             transform.position = returnPosition;
@@ -72,13 +88,10 @@ public class FoodDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         }
         
         foreach (var slot in _food.slotList)
-        {
             slot.isCanEquip = false;
-        }
-        _inventoryChecker.ResetSlots();
         _foodRenderer.SpriteRenderer.sortingOrder = 10;
         _foodRenderer.AdjustFoodSize();
-        IsDragging = false;
+        _inventoryChecker.ResetSlots();
     }
 
     private void RotateFood()
@@ -88,20 +101,31 @@ public class FoodDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         
         if (Mouse.current.rightButton.wasPressedThisFrame)
         {
+            IsRotating = true;
+            InventoryManager.Instance.isCanActiveKitchen = false;
             StartCoroutine(FoodRotateCoroutine());
         }
     }
 
     private IEnumerator FoodRotateCoroutine()
     {
-        IsRotating = true;
         (_food.width, _food.height) = (_food.height, _food.width);
-        _targetRotation += 90;
+        
+        _targetRotation = _targetRotation >= 90 ? 0 : 90;
+        _foodRenderer.ChangeFoodRotation(_targetRotation);
         Tween foodRotateTween = _food.RectTransform.DORotate(new Vector3(0,0,_targetRotation), 0.7f).SetEase(Ease.OutCubic);
+        
         _inventoryChecker.ResetSlots();
+        
         yield return foodRotateTween.WaitForCompletion();
+        
         _foodRenderer.AdjustFoodSize();
+        _inventoryChecker.CheckInventorySlot();
+        if (!IsDragging)
+            DropItem();
+        
         IsRotating = false;
+        InventoryManager.Instance.isCanActiveKitchen = true;
     }
 
     private Vector3 GetMousePos()

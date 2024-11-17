@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SlotMat
-  m_Shader: {fileID: -6465566751694194690, guid: 6dfda197ccc674647b9985f51c7fcd39, type: 3}
+  m_Name: FoodMat
+  m_Shader: {fileID: -6465566751694194690, guid: 73b0dfbf6a358e74884c40ddc4513958, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -23,6 +23,14 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_1f9e6784a9c54933b4709ebf7d8d93ff_Out_0_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 729e103d33706ac468a5766a6942549d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -36,10 +44,16 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
-    m_Floats: []
+    m_Floats:
+    - _GagueValue: 1
+    - _GaugeValue: 1
+    - _IsFoodHor: 1
+    - _IsFoodVer: 0
+    - _IsHor: 0
+    - _RotateValue: 0
     m_Colors: []
   m_BuildTextureStacks: []
---- !u!114 &4612115984979274853
+--- !u!114 &7878280633171139664
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

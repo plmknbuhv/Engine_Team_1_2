@@ -25,9 +25,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5153d4ac5ff9cc04eb35d588b3d57ead, type: 2}
   - {fileID: 11400000, guid: e8620e4a2e1a7fe499aeb9eb189b347a, type: 2}
   fusionFoodDataList:
-  - {fileID: 11400000, guid: 9385ff26b00ead54d8a46dfea6b9b8a9, type: 2}
-  - {fileID: 11400000, guid: 551173c0682244e489915ffb5cb42f69, type: 2}
-  - {fileID: 11400000, guid: cc7522a7f6b58554e9694071044e6cf3, type: 2}
-  - {fileID: 11400000, guid: 354bb3d9aa82b9b42954d0f2c0db38cc, type: 2}
-  - {fileID: 11400000, guid: e4d6aeb3bf80f564888be3e4692d806a, type: 2}
-  - {fileID: 11400000, guid: 8b4bf3b74ffcb1d4a8bc20784808fce2, type: 2}
+  - {fileID: 11400000, guid: f066b6541173cf94a8f231c8b8cccc55, type: 2}
+  - {fileID: 11400000, guid: 7ac2dd9fdd8a54c468c288c3c7f26286, type: 2}
+  - {fileID: 11400000, guid: a46e110ea7682ff4b9256b8b3e98cc28, type: 2}
+  - {fileID: 11400000, guid: 211d16dfb44ca05499fc04362c9254dd, type: 2}
+  - {fileID: 11400000, guid: 8662cfe87e7746a4d974949955b2cd9c, type: 2}
+  - {fileID: 11400000, guid: 45022640e0e7a1347a664b9b1700ed3a, type: 2}

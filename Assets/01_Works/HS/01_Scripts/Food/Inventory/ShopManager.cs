@@ -14,9 +14,12 @@ public class ShopManager : MonoSingleton<ShopManager>
     [SerializeField] private TextMeshProUGUI goldValueText;
     
     [SerializeField] private PoolManagerSO poolManager;
-    [SerializeField] private PoolTypeSO bulletType;
+    [SerializeField] private PoolTypeSO poolType;
     
     [SerializeField] private int gold;
+
+    [SerializeField] private RectTransform shopPointRect;
+    public Transform foodStartPointTrm;
     
     public int Gold
     {
@@ -59,7 +62,7 @@ public class ShopManager : MonoSingleton<ShopManager>
 
     private void CreateFoodItem(FoodDataSO foodData, int number)
     {
-        var food = poolManager.Pop(bulletType) as Food;
+        var food = poolManager.Pop(poolType) as Food;
         food.RectTransform.SetParent(shopCanvas.transform);
         shopFoodList.Add(food);
 
@@ -70,8 +73,9 @@ public class ShopManager : MonoSingleton<ShopManager>
         if (foodData.height == 2)
             ySpace = 26.9961f;
         
-        Vector3 foodPosition = new Vector3(-688.6971f- xSpace, 314.9529f + number * -213.5682f - ySpace);
+        Vector3 foodPosition = new Vector3(shopPointRect.anchoredPosition.x - xSpace, shopPointRect.anchoredPosition.y + number * -213.5682f - ySpace);
         food.RectTransform.anchoredPosition = foodPosition;
+        food.FoodDragHandler.startPosition = food.transform.position;
         food.SetUpFood(foodData);
     }
 
@@ -81,6 +85,7 @@ public class ShopManager : MonoSingleton<ShopManager>
 
         Gold -= food.foodDataSO.height * food.foodDataSO.width;
         shopFoodList.Remove(food);
+        food.isPurchased = true;
     }
 
     public bool CheckCanBuyFood(Food food)

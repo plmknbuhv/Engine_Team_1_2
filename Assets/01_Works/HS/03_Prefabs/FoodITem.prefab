@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -3706783692142616613}
   - component: {fileID: 7906808977646245406}
   m_Layer: 8
-  m_Name: FoodItem
+  m_Name: FoodITem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -107,7 +107,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 7938e55214c9d6d48a402cf7f3d5d4da, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -153,6 +153,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   foodDataSO: {fileID: 0}
   <PoolType>k__BackingField: {fileID: 11400000, guid: 13b61eab7a932874a9ea858af921911c, type: 2}
+  isPurchased: 0
+  width: 0
+  height: 0
+  slotList: []
 --- !u!114 &6475962313056809240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,6 +170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startPosition: {x: 0, y: 0, z: 0}
+  returnPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &-5547303311443904865
 MonoBehaviour:
   m_ObjectHideFlags: 0
