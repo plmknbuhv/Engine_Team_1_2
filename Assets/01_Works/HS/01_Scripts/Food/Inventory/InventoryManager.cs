@@ -101,6 +101,7 @@ public class InventoryManager : MonoSingleton<InventoryManager>
             if (food != null)
             {
                 kitchenFoodList.Remove(food);
+                food.myPool.Push(food);
                 ingredientsList.Add(food);
             }
             else

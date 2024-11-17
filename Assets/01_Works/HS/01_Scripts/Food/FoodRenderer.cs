@@ -20,7 +20,7 @@ public class FoodRenderer : MonoBehaviour
 
     private void Update()
     {
-        if (!_foodDragHandler.IsDragging) return;
+        if (!_foodDragHandler.isDragging) return;
         AdjustFoodSize();
     }
 

@@ -6,6 +6,8 @@ public class Bullet : MonoBehaviour, IPoolable
      [field: SerializeField] public PoolTypeSO PoolType { get; private set; }
      public GameObject GameObject => gameObject;
      private SpriteRenderer _spriteRenderer;
+     private float _lifeTimer;
+     private Pool _myPool;
 
      private void Awake()
      {
@@ -14,7 +16,11 @@ public class Bullet : MonoBehaviour, IPoolable
 
      private void Update()
      {
-          transform.position += transform.up * (Time.deltaTime * 10);
+          _lifeTimer += Time.deltaTime;
+          transform.position += transform.up * (Time.deltaTime * 13.5f);
+
+          if (_lifeTimer >= 5.5f)
+               _myPool.Push(this);
      }
 
      public void SetUpSprite(Sprite sprite)
@@ -23,12 +29,12 @@ public class Bullet : MonoBehaviour, IPoolable
      }
      
      public void SetUpPool(Pool pool)
-     {
-          
+     { 
+          _myPool = pool;
      }
 
      public void ResetItem()
      {
-          
+          _lifeTimer = 0;
      }
 }

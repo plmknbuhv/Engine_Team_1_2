@@ -300,9 +300,9 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1242134141}
   - {fileID: 702321685}
   - {fileID: 1465138483}
-  - {fileID: 1242134141}
   - {fileID: 1814924843}
   - {fileID: 1581992491}
   - {fileID: 478801962}
@@ -2450,7 +2450,7 @@ MonoBehaviour:
   poolType: {fileID: 11400000, guid: 13b61eab7a932874a9ea858af921911c, type: 2}
   gold: 1234
   shopPointRect: {fileID: 1581992491}
-  foodStartPoint: {fileID: 1153806589}
+  foodStartPointTrm: {fileID: 1153806589}
 --- !u!1 &1959414347
 GameObject:
   m_ObjectHideFlags: 0
