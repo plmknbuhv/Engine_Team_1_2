@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Mass
       value: 100000
       objectReference: {fileID: 0}
+    - target: {fileID: 974588486696886724, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3476976484587985565, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_Size.x
       value: 29.774515
@@ -153,10 +157,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e66bfaac4959fb4580fd2d8885698de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 0.7
   maxHp: 100
   hp: 0
   explosion: {fileID: 1898137211088249128, guid: d10899cf2c359c44b91f7f4be3721387, type: 3}
   isStun: 0
+  isSlow: 0
   <PoolType>k__BackingField: {fileID: 11400000, guid: 66bf660397ca8784fa9061e62ce2c964, type: 2}
   poolManager: {fileID: 11400000, guid: 928c52471a99fba4a983ede3b8649ab4, type: 2}

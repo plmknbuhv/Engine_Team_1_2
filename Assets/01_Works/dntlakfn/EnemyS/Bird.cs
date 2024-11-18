@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Bird : Enemy
 {
-    
+    // 다른 적들 다 통과함
 
     protected override void UniqueSkill()
     {

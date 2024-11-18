@@ -30,7 +30,8 @@ public class WaveManager : MonoBehaviour
         
         for(int i = 1; i <= 21; i++)
         {
-            Waves.Add(i, i*2);
+            if(i % 7 == 0) Waves.Add(i, 1);
+            else Waves.Add(i, i*2);
         }
         
     }
