@@ -42,7 +42,7 @@ public class Enemy : MonoBehaviour, IPoolable
         Debug.Log("체력 리셋");
     }
 
-    private void Move()
+    protected virtual void Move()
     {
         if (isStun)
         {
@@ -110,7 +110,9 @@ public class Enemy : MonoBehaviour, IPoolable
         if(isSlow) return;
         float currentSpeed = speed;
         speed = currentSpeed * (percent / 100);
-        
+        animator.speed = (percent / 100);
+
+
         StartCoroutine(GetSlowCoroutine(time, currentSpeed));
     }
 
@@ -119,6 +121,7 @@ public class Enemy : MonoBehaviour, IPoolable
         isSlow = true;
         yield return new WaitForSeconds(time);
         speed = currentSpeed;
+        animator.speed = 1;
         isSlow = false;
     }
 
@@ -137,11 +140,15 @@ public class Enemy : MonoBehaviour, IPoolable
         
         if (Input.GetKeyDown(KeyCode.A)) // 태스트
         {
-            GetDamage(10, 30);
+            GetDamage(10,10);
         }
         if (Input.GetKeyDown(KeyCode.S)) // 태스트
         {
-            GetStun(3);
+            GetStun(2);
+        }
+        if (Input.GetKeyDown(KeyCode.D)) // 태스트
+        {
+            GetSlow(20, 3);
         }
         if (isDead)
         {
