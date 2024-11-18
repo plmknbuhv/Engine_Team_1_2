@@ -10,15 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f9a5dc6e2d744c14a8d226d841e5517d, type: 3}
-  m_Name: New Fusion Food Data SO
+  m_Name: HotDog2
   m_EditorClassIdentifier: 
-  foodType: 19
-  sprite: {fileID: 21300000, guid: ac209ed21c354a2448f30104763658be, type: 3}
-  attackCooldown: 3
-  damage: 5
+  foodType: 21
+  sprite: {fileID: 21300000, guid: daac56cc97d8e9740abcb07d5021d668, type: 3}
+  attackCooldown: 4
+  damage: 70
   width: 3
   height: 1
   ingredients:
-  - {fileID: 11400000, guid: cc6e5192611ec5a449f41c065d54fd67, type: 2}
-  - {fileID: 11400000, guid: cc6e5192611ec5a449f41c065d54fd67, type: 2}
-  - {fileID: 11400000, guid: cc6e5192611ec5a449f41c065d54fd67, type: 2}
+  - {fileID: 11400000, guid: 54e9f673f8e58d9479e352eb8afec53c, type: 2}
+  - {fileID: 11400000, guid: e42b7975b2c99ae4e901c646ea669a70, type: 2}

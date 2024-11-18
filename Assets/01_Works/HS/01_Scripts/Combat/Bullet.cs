@@ -1,5 +1,7 @@
+using System;
 using GGMPool;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Bullet : MonoBehaviour, IPoolable
 {
@@ -27,6 +29,11 @@ public class Bullet : MonoBehaviour, IPoolable
 
           if (_lifeTimer >= 5f)
                _myPool.Push(this);
+     }
+
+     private void OnTriggerEnter2D(Collider2D other)
+     {
+          if ()
      }
 
      public void SetUpBullet(FoodDataSO foodData)

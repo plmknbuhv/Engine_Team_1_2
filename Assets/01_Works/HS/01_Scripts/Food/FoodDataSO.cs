@@ -22,6 +22,8 @@ public enum  FoodType
     PizzaPan,
     RamenMandu,
     Yoe,
+    Ketchup,
+    HotDog2,
 }
 
 [CreateAssetMenu(menuName = "SO/FoodDataSO")]
