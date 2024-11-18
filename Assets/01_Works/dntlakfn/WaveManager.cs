@@ -51,7 +51,7 @@ public class WaveManager : MonoBehaviour
 
             t.GetComponent<TextMeshProUGUI>().text = "Wave " + wave++;
 
-            StartCoroutine(t.Show());
+            
         }
     }
 

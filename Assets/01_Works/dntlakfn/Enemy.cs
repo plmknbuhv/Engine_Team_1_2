@@ -161,6 +161,8 @@ public class Enemy : MonoBehaviour, IPoolable
             isGetDamage = false;
             isSlow = false;
 
+            EnemySpawner.enemyCount++;
+
             poolManager.Push(this);
         }
         
