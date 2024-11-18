@@ -28,6 +28,6 @@ public class TowerAttack : MonoBehaviour , ITowerComponent
         var targetRotate = Quaternion.Euler(0, 0, angle - 90 + rand);
         
         bullet.transform.SetPositionAndRotation(transform.position, targetRotate);
-        bullet.SetUpSprite(foodData.sprite);
+        bullet.SetUpBullet(foodData);
     }
 }
