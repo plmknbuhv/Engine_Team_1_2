@@ -33,7 +33,7 @@ public class FoodAttack : MonoBehaviour
 
     private IEnumerator AttackCoroutine()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.1f);
         _attackTimer = 0;
         while (_isCanAttack)
         {

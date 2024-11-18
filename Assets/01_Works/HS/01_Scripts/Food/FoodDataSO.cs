@@ -24,6 +24,7 @@ public enum  FoodType
     Yoe,
     Ketchup,
     HotDog2,
+    BulletYogurt,
 }
 
 [CreateAssetMenu(menuName = "SO/FoodDataSO")]

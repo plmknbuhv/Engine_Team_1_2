@@ -23,6 +23,8 @@ public class InventoryManager : MonoSingleton<InventoryManager>
     [SerializeField] private RectTransform cookPointRect;
     [SerializeField] private CookingButton cookingButton;
 
+    public FoodDataSO yogurtData;
+
     private void Awake()
     {
         kitchenPanel.SetActive(true);

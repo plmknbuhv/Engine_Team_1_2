@@ -10,6 +10,7 @@ public class Bullet : MonoBehaviour, IPoolable
      private SpriteRenderer _spriteRenderer;
      private GameObject _visualObj;
      private Pool _myPool;
+     private FoodDataSO _foodData;
 
      private float _lifeTimer;
      private float _rotateValue;
@@ -36,12 +37,37 @@ public class Bullet : MonoBehaviour, IPoolable
           if (other.CompareTag("Enemy"))
           {
                var enemy = other.GetComponent<Enemy>();
-               enemy
+               AttackEnemy(enemy);
+          }
+     }
+
+     private void AttackEnemy(Enemy enemy)
+     {
+          switch (_foodData.foodType)
+          {
+               case FoodType.CheesePizza:
+                    enemy.GetSlow(30f, 2);
+                    enemy.GetDamage(_foodData.damage, 10);
+                    break;
+               case FoodType.GimBap2XL:
+                    enemy.GetDamage(_foodData.damage, 20);
+                    break;
+               case FoodType.TwoEgg:
+                    enemy.GetDamage(_foodData.damage, 20);
+                    break;
+               case FoodType.RamenMandu:
+                    enemy.GetStun(2);
+                    enemy.GetDamage(_foodData.damage, 10);
+                    break;
+               default:
+                    enemy.GetDamage(_foodData.damage, 10);
+                    break;
           }
      }
 
      public void SetUpBullet(FoodDataSO foodData)
      {
+          _foodData = foodData;
           _spriteRenderer.sprite = foodData.sprite;
           
           var rand = Random.Range(-20, 20);
