@@ -17,10 +17,11 @@ public class InventoryManager : MonoSingleton<InventoryManager>
     private InventorySystem _kitchen;
     public Tower tower;
 
-    public bool isCanCook;
+    public bool isCanCook = true;
     public bool isCanActiveKitchen = true;
     
     [SerializeField] private RectTransform cookPointRect;
+    [SerializeField] private CookingButton cookingButton;
 
     private void Awake()
     {
@@ -45,10 +46,10 @@ public class InventoryManager : MonoSingleton<InventoryManager>
 
     public void CookFood()
     {
-        if (CheckCanCookFood())
-        {
-            isCanCook = true;
-        }
+        var successCook = CheckCanCookFood();
+        
+        isCanCook = !successCook; 
+        cookingButton.OnClick(successCook);
     }
 
     public bool CheckCanCookFood()
@@ -57,7 +58,7 @@ public class InventoryManager : MonoSingleton<InventoryManager>
         foreach (var fusionFood in foodDataList.fusionFoodDataList)
         {
             List<Food> ingredientsList = new List<Food>();
-            if (CheckCanFoodChange(fusionFood, ref ingredientsList) && !isCanCook)
+            if (CheckCanFoodChange(fusionFood, ref ingredientsList) && isCanCook)
             {
                 ingredientsList.ForEach(food =>
                 {

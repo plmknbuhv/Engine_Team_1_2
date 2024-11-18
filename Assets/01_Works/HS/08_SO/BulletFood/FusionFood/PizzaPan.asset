@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9a5dc6e2d744c14a8d226d841e5517d, type: 3}
   m_Name: PizzaPan
   m_EditorClassIdentifier: 
-  foodType: 15
+  foodType: 17
   sprite: {fileID: 21300000, guid: 83b7cb09bc0fabb4e899844cb6fe0659, type: 3}
   attackCooldown: 6
   damage: 250

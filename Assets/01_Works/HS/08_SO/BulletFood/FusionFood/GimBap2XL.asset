@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9a5dc6e2d744c14a8d226d841e5517d, type: 3}
   m_Name: GimBap2XL
   m_EditorClassIdentifier: 
-  foodType: 12
+  foodType: 14
   sprite: {fileID: 21300000, guid: 780119d075a16834da5d8d6113a1191d, type: 3}
   attackCooldown: 3.5
   damage: 60

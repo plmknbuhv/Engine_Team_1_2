@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f84b2b87726812a499221051a9f6e6f8, type: 3}
   m_Name: Ramen
   m_EditorClassIdentifier: 
-  foodType: 10
+  foodType: 12
   sprite: {fileID: 21300000, guid: d0b7276dda75f3b4bb2ec8bec8e24a05, type: 3}
   attackCooldown: 4
   damage: 60

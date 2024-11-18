@@ -39,6 +39,8 @@ public class FoodDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         RotateFood();
     }
 
+    #region Drag And Drop
+
     public void OnBeginDrag(PointerEventData eventData)
     {
         if (eventData.button != PointerEventData.InputButton.Left) return;
@@ -79,8 +81,14 @@ public class FoodDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
             transform.position = returnPosition;
             _food.RectTransform.eulerAngles = new Vector3(0,0,_prevRotation);
             (_food.width, _food.height) = (_prevWidth, _prevHeight);
+        }
+        else
+        {
             if (_food.isCooked)
+            {
                 InventoryManager.Instance.isCanCook = true;
+                _food.isCooked = false;
+            }
         }
         
         foreach (var slot in _food.slotList)
@@ -89,6 +97,8 @@ public class FoodDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         _foodRenderer.AdjustFoodSize();
         _inventoryChecker.ResetSlots();
     }
+
+    #endregion
 
     #region Rotate
     private void RotateFood()

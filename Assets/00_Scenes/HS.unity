@@ -816,6 +816,7 @@ GameObject:
   - component: {fileID: 596433341}
   - component: {fileID: 596433340}
   - component: {fileID: 596433339}
+  - component: {fileID: 596433342}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -937,6 +938,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 596433337}
   m_CullTransparentMesh: 1
+--- !u!114 &596433342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 596433337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d29e2f6d6949e14b896a4104a4497a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToShow: 1.2
 --- !u!1 &616088702
 GameObject:
   m_ObjectHideFlags: 0
@@ -2505,8 +2519,10 @@ MonoBehaviour:
   kitchenFoods: []
   kitchenPanel: {fileID: 1814924842}
   tower: {fileID: 1849150099}
+  isCanCook: 1
   isCanActiveKitchen: 1
   cookPointRect: {fileID: 478801962}
+  cookingButton: {fileID: 596433342}
 --- !u!1 &2040478721
 GameObject:
   m_ObjectHideFlags: 0

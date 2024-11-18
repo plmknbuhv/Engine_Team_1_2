@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f84b2b87726812a499221051a9f6e6f8, type: 3}
   m_Name: Cider
   m_EditorClassIdentifier: 
-  foodType: 6
+  foodType: 8
   sprite: {fileID: 21300000, guid: 60a8618383769c3428661896fed6703c, type: 3}
   attackCooldown: 3
   damage: 25
