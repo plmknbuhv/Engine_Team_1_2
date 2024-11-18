@@ -27,10 +27,11 @@ public class WaveManager : MonoBehaviour
 
     private void Awake()
     {
-        startBtn.gameObject.SetActive(false);
+        
         for(int i = 1; i <= 21; i++)
         {
-            Waves.Add(i, i*2);
+            if(i % 7 == 0) Waves.Add(i, 1);
+            else Waves.Add(i, i*2);
         }
         
     }

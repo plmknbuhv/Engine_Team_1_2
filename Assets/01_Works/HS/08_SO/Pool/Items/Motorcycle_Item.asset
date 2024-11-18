@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1486e263e7016b643b78c6fb1c6caafd, type: 3}
+  m_Name: Motorcycle_Item
+  m_EditorClassIdentifier: 
+  poolType: {fileID: 11400000, guid: 82c72eabd43b21e42826fc84c774a939, type: 2}
+  prefab: {fileID: 5021022339300805037, guid: a5f3729e0b83d9d418f57cbdc4d2894b, type: 3}
+  initCount: 10

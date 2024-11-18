@@ -4,36 +4,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Refrigerator : Enemy, IPoolable
+public class Refrigerator : Enemy
 {
-    [field: SerializeField] public PoolTypeSO PoolType { get; set; }
-    
-    public GameObject GameObject => gameObject;
+    // º¸½º, Å­, ³Ë¹é, ½ºÅÏ ¾È¹ÞÀ½, ´À¸²
 
-    public void ResetItem()
+    protected override void UniqueSkill()
     {
         
     }
-
-    public void SetUpPool(Pool pool)
-    {
-        
-    }
-
     public override void GetDamage(int damage, float knockbackPower, Action action = null)
     {
-        base.GetDamage(damage, knockbackPower, action);
+        base.GetDamage(damage, 0, action);
     }
 
-
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.A)) // ï¿½Â½ï¿½Æ®
-        {
-            GetDamage(10, 3);
-        }
-        
-    }
 
 
     

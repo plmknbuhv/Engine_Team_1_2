@@ -9,6 +9,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3476976484587985565, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
+      propertyPath: m_Size.y
+      value: 2.5867858
+      objectReference: {fileID: 0}
+    - target: {fileID: 3476976484587985565, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
+      propertyPath: m_Offset.y
+      value: 1.5352342
+      objectReference: {fileID: 0}
+    - target: {fileID: 3476976484587985565, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.x
       value: 0.5217391
       objectReference: {fileID: 0}
@@ -34,7 +42,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4170357669452165658, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.02
+      value: -0.02
       objectReference: {fileID: 0}
     - target: {fileID: 4170357669452165658, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_LocalPosition.y
@@ -59,7 +67,7 @@ PrefabInstance:
     - target: {fileID: 5161490404499085409, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 6085617378806067433, guid: 82985c6ec761b53409cad1b55c9fb1eb, type: 3}
+      objectReference: {fileID: 9100000, guid: e58e55419b24156428e27fcc88fd9e27, type: 2}
     - target: {fileID: 5571254855948430785, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -132,4 +140,6 @@ MonoBehaviour:
   speed: 1
   maxHp: 100
   hp: 100
+  explosion: {fileID: 1898137211088249128, guid: d10899cf2c359c44b91f7f4be3721387, type: 3}
   <PoolType>k__BackingField: {fileID: 11400000, guid: bffe25ae6300a454ea1f2e0f60401722, type: 2}
+  poolManager: {fileID: 11400000, guid: 928c52471a99fba4a983ede3b8649ab4, type: 2}

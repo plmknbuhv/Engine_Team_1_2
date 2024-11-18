@@ -4,20 +4,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bird : Enemy, IPoolable
+public class Bird : Enemy
 {
-    [field: SerializeField] public PoolTypeSO PoolType { get; set; }
+    // 다른 적들 다 통과함
 
-    public GameObject GameObject => gameObject;
-
-    public void ResetItem()
+    protected override void UniqueSkill()
     {
-
-    }
-
-    public void SetUpPool(Pool pool)
-    {
-
+        
     }
 
     public override void GetDamage(int damage, float knockbackPower, Action action = null)
@@ -25,17 +18,6 @@ public class Bird : Enemy, IPoolable
         base.GetDamage(damage, knockbackPower, action);
     }
 
-    
-
-    private void Update()
-    {
-        //transform.LookAt(target.position);
-
-        if (Input.GetKeyDown(KeyCode.A)) // 태스트
-        {
-            GetDamage(10, 3);
-        }
-
-    }
+   
 
 }

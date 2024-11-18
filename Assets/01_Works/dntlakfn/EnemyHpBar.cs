@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyHpBar : MonoBehaviour
 {
     [SerializeField] private Enemy owner;
-
+    [SerializeField] private Transform hpbar;
     private void Awake()
     {
         owner = GetComponentInParent<Enemy>();
@@ -13,7 +13,8 @@ public class EnemyHpBar : MonoBehaviour
 
     private void Update()
     {
-        transform.localScale = new Vector3(0.8f * (owner.hp / owner.maxHp), transform.localScale.y);
+        
+        hpbar.localScale = new Vector3(Mathf.Clamp(0.115f * ((float)owner.hp / (float)owner.maxHp), 0, 0.115f), hpbar.localScale.y);
     }
 
 }
