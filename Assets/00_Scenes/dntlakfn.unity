@@ -3931,6 +3931,7 @@ MonoBehaviour:
   poolManager: {fileID: 11400000, guid: 928c52471a99fba4a983ede3b8649ab4, type: 2}
   enemyType: []
   spawnPoint: {fileID: 2137554569}
+  enemySpawnCount: 0
 --- !u!1001 &765782295
 PrefabInstance:
   m_ObjectHideFlags: 0

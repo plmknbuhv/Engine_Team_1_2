@@ -14,6 +14,7 @@ public class EnemySpawner : MonoBehaviour
     public Transform spawnPoint;
     private float timer;
     public static int enemyCount;
+    public int enemySpawnCount;
     private int wave = 1;
 
 
@@ -29,7 +30,7 @@ public class EnemySpawner : MonoBehaviour
     private void Update()
     {
         timer += Time.deltaTime;
-        if (timer > 3 && waveManager.isWaveStart && enemyCount <= waveManager.Waves[wave])
+        if (timer > 3 && waveManager.isWaveStart && enemySpawnCount <= waveManager.Waves[wave])
         {
             timer = 0;
             Spawn();
@@ -39,6 +40,8 @@ public class EnemySpawner : MonoBehaviour
         {
             wave++;
             enemyCount = 0;
+            enemySpawnCount = 0;
+            timer = 0;
             try
             {
                 enemyType = waveManager.enemyList[wave - 1].enemys.ToArray();
@@ -59,7 +62,7 @@ public class EnemySpawner : MonoBehaviour
         enemy.transform.position = spawnPoint.position + new Vector3(UnityEngine.Random.Range(-6, 6), 0);
         enemy.transform.localRotation = Quaternion.identity;
 
-        enemyCount++;
+        enemySpawnCount++;
     }
 
 
