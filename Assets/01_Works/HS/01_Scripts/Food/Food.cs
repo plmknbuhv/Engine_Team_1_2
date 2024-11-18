@@ -21,6 +21,7 @@ public class Food : MonoBehaviour, IPoolable
     public int width;
     public int height;
     public Pool myPool;
+    public bool isCooked;
     
     public List<Slot> slotList = new List<Slot>();
 
@@ -38,13 +39,14 @@ public class Food : MonoBehaviour, IPoolable
     {
         width = foodDataSO.width;
         height = foodDataSO.height;
-        FoodDragHandler.returnPosition = transform.position;
-        this.foodDataSO = foodDataSO;
         _foodType = foodDataSO.foodType;
+        this.foodDataSO = foodDataSO;
         gameObject.name = _foodType.ToString();
         FoodRenderer.SpriteRenderer.sprite = foodDataSO.sprite;
         FoodRenderer.AdjustFoodSize();
         FoodAttack.Initialize(this);
+        FoodDragHandler.returnPosition = transform.position;
+        FoodDragHandler.targetRotation = 0;
         
         var colliderSize = new Vector2(width * 0.5f, height * 0.5f);
         _boxCollider.size = colliderSize;

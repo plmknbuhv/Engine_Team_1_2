@@ -24,6 +24,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 762f8e8c5eac8874cb09698f96db04bc, type: 2}
   - {fileID: 11400000, guid: 5153d4ac5ff9cc04eb35d588b3d57ead, type: 2}
   - {fileID: 11400000, guid: e8620e4a2e1a7fe499aeb9eb189b347a, type: 2}
+  - {fileID: 11400000, guid: cc6e5192611ec5a449f41c065d54fd67, type: 2}
   fusionFoodDataList:
   - {fileID: 11400000, guid: 211d16dfb44ca05499fc04362c9254dd, type: 2}
   - {fileID: 11400000, guid: f066b6541173cf94a8f231c8b8cccc55, type: 2}

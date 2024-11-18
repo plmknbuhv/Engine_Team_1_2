@@ -7,11 +7,12 @@ public class EnemyChecker : MonoBehaviour, ITowerComponent
     
     [SerializeField] private ContactFilter2D contactFilter;
     
-    public List<Collider2D> Targets { get; private set; } = new List<Collider2D>();
+    [field:SerializeField] public List<Collider2D> Targets { get; private set; }
     private Collider2D _nearEnemy;
     
     public void Initialize(Tower tower)
     {
+        Targets = new List<Collider2D>();
         _tower = tower;
     }
 
@@ -24,9 +25,7 @@ public class EnemyChecker : MonoBehaviour, ITowerComponent
             var nearEnemyDistance = Vector3.Distance(_nearEnemy.transform.position, _tower.transform.position);
             
             if (enemyDistance < nearEnemyDistance)
-            {
                 _nearEnemy = enemy;
-            }
         }
 
         return _nearEnemy;
@@ -37,17 +36,13 @@ public class EnemyChecker : MonoBehaviour, ITowerComponent
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
-        {
             Targets.Add(other);
-        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
-        {
-            Targets.Add(other);
-        }
+            Targets.Remove(other);
     }
 
     #endregion

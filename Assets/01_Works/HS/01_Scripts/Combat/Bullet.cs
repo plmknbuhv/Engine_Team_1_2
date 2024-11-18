@@ -17,7 +17,7 @@ public class Bullet : MonoBehaviour, IPoolable
      private void Update()
      {
           _lifeTimer += Time.deltaTime;
-          transform.position += transform.up * (Time.deltaTime * 13.5f);
+          transform.position += transform.up * (Time.deltaTime * 13.7f);
 
           if (_lifeTimer >= 5.5f)
                _myPool.Push(this);

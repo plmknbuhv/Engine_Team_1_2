@@ -16,7 +16,7 @@ public class FoodDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     public bool isDragging;
     public bool isRotating;
-    private float _targetRotation;
+    public float targetRotation;
     private float _prevRotation;
     private int _prevHeight;
     private int _prevWidth;
@@ -79,6 +79,8 @@ public class FoodDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
             transform.position = returnPosition;
             _food.RectTransform.eulerAngles = new Vector3(0,0,_prevRotation);
             (_food.width, _food.height) = (_prevWidth, _prevHeight);
+            if (_food.isCooked)
+                InventoryManager.Instance.isCanCook = true;
         }
         
         foreach (var slot in _food.slotList)
@@ -88,6 +90,7 @@ public class FoodDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         _inventoryChecker.ResetSlots();
     }
 
+    #region Rotate
     private void RotateFood()
     {
         if(!isDragging) return;
@@ -104,10 +107,11 @@ public class FoodDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     {
         (_food.width, _food.height) = (_food.height, _food.width);
         
-        _targetRotation = _targetRotation >= 90 ? 0 : 90;
-        _foodRenderer.ChangeFoodRotation(_targetRotation);
-        print(_targetRotation);
-        Tween foodRotateTween = _food.RectTransform.DORotate(new Vector3(0,0,_targetRotation), 0.7f).SetEase(Ease.OutCubic);
+        print(targetRotation);
+        targetRotation = targetRotation >= 90 ? 0 : 90;
+        print(targetRotation);
+        Tween foodRotateTween = _food.RectTransform.DORotate(new Vector3(0,0,targetRotation), 0.7f).SetEase(Ease.OutCubic);
+        _foodRenderer.ChangeFoodRotation(targetRotation);
         
         _inventoryChecker.ResetSlots();
         
@@ -121,6 +125,7 @@ public class FoodDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         isRotating = false;
         InventoryManager.Instance.isCanActiveKitchen = true;
     }
+    #endregion
 
     private Vector3 GetMousePos()
     {

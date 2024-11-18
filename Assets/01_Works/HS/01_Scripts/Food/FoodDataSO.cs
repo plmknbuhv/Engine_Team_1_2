@@ -6,6 +6,8 @@ public enum  FoodType
     BoxLunch,
     GimBap,
     HotDog,
+    HotDogBread,
+    Mustard,
     Pizza,
     Yogurt,
     Cider,
