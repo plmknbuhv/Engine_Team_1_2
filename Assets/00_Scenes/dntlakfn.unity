@@ -2981,6 +2981,8 @@ MonoBehaviour:
     - {fileID: 11400000, guid: ae01ad5460b30bc4384d8509acd37caa, type: 2}
     - {fileID: 11400000, guid: bffe25ae6300a454ea1f2e0f60401722, type: 2}
     - {fileID: 11400000, guid: bb3fe2e85058210459814021b15fdef6, type: 2}
+  - enemys:
+    - {fileID: 11400000, guid: 247d1c7a1b13b8940acee336063fa29e, type: 2}
   t: {fileID: 293242816}
   startBtn: {fileID: 1678431420}
   isWaveStart: 0

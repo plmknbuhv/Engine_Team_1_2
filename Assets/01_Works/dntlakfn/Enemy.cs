@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour, IPoolable
     private float knockbackPower;
     private bool isGetDamage = false;
     public bool isStun = false;
+    public bool isSlow = false;
     private bool isDead = false;
     protected Rigidbody2D rb;
     protected Animator animator;
@@ -38,6 +39,7 @@ public class Enemy : MonoBehaviour, IPoolable
     private void OnEnable()
     {
         hp = maxHp;
+        Debug.Log("체력 리셋");
     }
 
     private void Move()
@@ -103,6 +105,23 @@ public class Enemy : MonoBehaviour, IPoolable
         isStun = false;
     }
 
+    public void GetSlow(float percent, float time)
+    {
+        if(isSlow) return;
+        float currentSpeed = speed;
+        speed = currentSpeed * (percent / 100);
+        
+        StartCoroutine(GetSlowCoroutine(time, currentSpeed));
+    }
+
+    IEnumerator GetSlowCoroutine(float time, float currentSpeed)
+    {
+        isSlow = true;
+        yield return new WaitForSeconds(time);
+        speed = currentSpeed;
+        isSlow = false;
+    }
+
     protected virtual void UniqueSkill()
     {
 
@@ -115,6 +134,7 @@ public class Enemy : MonoBehaviour, IPoolable
 
     private void Update()
     {
+        
         if (Input.GetKeyDown(KeyCode.A)) // 태스트
         {
             GetDamage(10, 30);
@@ -127,10 +147,14 @@ public class Enemy : MonoBehaviour, IPoolable
         {
             var boom = poolManager.Pop(explosion.PoolType);
             boom.GameObject.transform.position = transform.position;
+
             //ShopManager.Instance.Gold += dropGold;
+
+            isDead = false;
+            isGetDamage = false;
+            isSlow = false;
+
             poolManager.Push(this);
-            
-            
         }
         
     }
