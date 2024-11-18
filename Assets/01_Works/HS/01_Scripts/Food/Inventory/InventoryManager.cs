@@ -17,9 +17,13 @@ public class InventoryManager : MonoSingleton<InventoryManager>
     private InventorySystem _kitchen;
     public Tower tower;
 
+    public bool isCanCook = true;
     public bool isCanActiveKitchen = true;
     
     [SerializeField] private RectTransform cookPointRect;
+    [SerializeField] private CookingButton cookingButton;
+
+    public FoodDataSO yogurtData;
 
     private void Awake()
     {
@@ -38,34 +42,39 @@ public class InventoryManager : MonoSingleton<InventoryManager>
             kitchenPanel.SetActive(!kitchenPanel.activeSelf);
             _kitchen.isOpen = !_kitchen.isOpen;
             foreach (var food in kitchenFoods)
-            {
                 food.gameObject.SetActive(!food.gameObject.activeSelf);
-            }
         }
     }
 
     public void CookFood()
     {
+        var successCook = CheckCanCookFood();
+        
+        isCanCook = !successCook; 
+        cookingButton.OnClick(successCook);
+    }
+
+    public bool CheckCanCookFood()
+    {
+        bool isCooked = false;
         foreach (var fusionFood in foodDataList.fusionFoodDataList)
         {
             List<Food> ingredientsList = new List<Food>();
-            if (CheckCanFoodChange(fusionFood, ref ingredientsList))
+            if (CheckCanFoodChange(fusionFood, ref ingredientsList) && isCanCook)
             {
                 ingredientsList.ForEach(food =>
                 {
                     food.slotList.ForEach(slot => slot.isCanEquip = true);
                     food.InventoryChecker.ResetSlots();
                     kitchenFoods.Remove(food);
-                    poolManager.Push(food);
+                    food.myPool.Push(food);
                 });
+                isCooked = true;
                 CreateFood(fusionFood);
                 break;
             }
-            else
-            {
-                // 실패
-            }
         }
+        return isCooked;
     }
 
     private void CreateFood(FusionFoodDataSO fusionFood)
@@ -87,6 +96,7 @@ public class InventoryManager : MonoSingleton<InventoryManager>
         food.SetUpFood(fusionFood);
         food.isPurchased = true;
         food.FoodDragHandler.startPosition = ShopManager.Instance.foodStartPointTrm.position;
+        food.isCooked = true;
         kitchenFoods.Add(food);
     }
 

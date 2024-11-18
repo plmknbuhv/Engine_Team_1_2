@@ -20,6 +20,8 @@ public class ShopManager : MonoSingleton<ShopManager>
 
     [SerializeField] private RectTransform shopPointRect;
     public Transform foodStartPointTrm;
+
+    private List<FoodDataSO> _prevShopDataList = new List<FoodDataSO>();
     
     public int Gold
     {
@@ -41,14 +43,19 @@ public class ShopManager : MonoSingleton<ShopManager>
         
         List<FoodDataSO> foodDataList = foodDataListSO.normalFoodDataList; 
 
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 4;)
         {
             var ranIndex = Random.Range(0, foodDataList.Count);
+            if (_prevShopDataList.Contains(foodDataList[ranIndex]))
+                continue;
             CreateFoodItem(foodDataList[ranIndex], i);
+            _prevShopDataList.Add(foodDataList[ranIndex]);
             
             var foodPrice = foodDataList[ranIndex].height * foodDataList[ranIndex].width;
             foodPriceTextList[i].text = foodPrice.ToString();
+            i++;
         }
+        _prevShopDataList.Clear();
     }
 
     private void ClearShop()

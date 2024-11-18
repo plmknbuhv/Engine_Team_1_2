@@ -6,6 +6,8 @@ public enum  FoodType
     BoxLunch,
     GimBap,
     HotDog,
+    HotDogBread,
+    Mustard,
     Pizza,
     Yogurt,
     Cider,
@@ -18,7 +20,11 @@ public enum  FoodType
     TwoEgg,
     BacchusCider,
     PizzaPan,
-    RamenMandu
+    RamenMandu,
+    Yoe,
+    Ketchup,
+    HotDog2,
+    BulletYogurt,
 }
 
 [CreateAssetMenu(menuName = "SO/FoodDataSO")]

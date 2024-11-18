@@ -20,6 +20,8 @@ public class Food : MonoBehaviour, IPoolable
     public bool isPurchased;
     public int width;
     public int height;
+    public Pool myPool;
+    public bool isCooked;
     
     public List<Slot> slotList = new List<Slot>();
 
@@ -37,14 +39,14 @@ public class Food : MonoBehaviour, IPoolable
     {
         width = foodDataSO.width;
         height = foodDataSO.height;
-        FoodDragHandler.returnPosition = transform.position;
-        this.foodDataSO = foodDataSO;
         _foodType = foodDataSO.foodType;
+        this.foodDataSO = foodDataSO;
         gameObject.name = _foodType.ToString();
         FoodRenderer.SpriteRenderer.sprite = foodDataSO.sprite;
         FoodRenderer.AdjustFoodSize();
-        FoodDragHandler.SetUpFood();
         FoodAttack.Initialize(this);
+        FoodDragHandler.returnPosition = transform.position;
+        FoodDragHandler.targetRotation = 0;
         
         var colliderSize = new Vector2(width * 0.5f, height * 0.5f);
         _boxCollider.size = colliderSize;
@@ -52,7 +54,7 @@ public class Food : MonoBehaviour, IPoolable
     
     public void SetUpPool(Pool pool)
     {
-        
+        myPool = pool;
     }
 
     public void ResetItem()
@@ -64,5 +66,8 @@ public class Food : MonoBehaviour, IPoolable
         FoodRenderer.AdjustFoodSize();
         FoodRenderer.AdjustFoodGauge(1, 1);
         FoodRenderer.ChangeFoodRotation(0);
+        transform.rotation = Quaternion.identity;
+        FoodDragHandler.isDragging = false;
+        FoodDragHandler.isRotating = false;
     }
 }

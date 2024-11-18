@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f9a5dc6e2d744c14a8d226d841e5517d, type: 3}
-  m_Name: RamenMandu
+  m_Name: HotDog
   m_EditorClassIdentifier: 
-  foodType: 18
-  sprite: {fileID: 21300000, guid: 3cdd11f742086ba46940ead9e48850ec, type: 3}
-  attackCooldown: 5.5
-  damage: 150
+  foodType: 3
+  sprite: {fileID: 21300000, guid: fdd7710b1e9c67344b427e9c509702d2, type: 3}
+  attackCooldown: 3.3
+  damage: 55
   width: 3
-  height: 2
+  height: 1
   ingredients:
-  - {fileID: 11400000, guid: a922f597808863d4a8145c8958acdc59, type: 2}
-  - {fileID: 11400000, guid: 772af8959904a2e43b6a242ed9349026, type: 2}
+  - {fileID: 11400000, guid: 54e9f673f8e58d9479e352eb8afec53c, type: 2}
+  - {fileID: 11400000, guid: e2723f4e48ba3ed49b44d0b5aa603667, type: 2}

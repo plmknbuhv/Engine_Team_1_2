@@ -10,14 +10,14 @@ GameObject:
   m_Component:
   - component: {fileID: 3182464479195327857}
   - component: {fileID: 165834928487026646}
-  - component: {fileID: 611546608791186706}
+  - component: {fileID: 3608476959151431503}
   - component: {fileID: 5778602298436416659}
   - component: {fileID: 6475962313056809240}
-  - component: {fileID: -5547303311443904865}
   - component: {fileID: -3706783692142616613}
   - component: {fileID: 7906808977646245406}
+  - component: {fileID: 4469154459970552905}
   m_Layer: 8
-  m_Name: FoodITem
+  m_Name: FoodItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -87,7 +87,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!212 &611546608791186706
+--- !u!212 &3608476959151431503
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -107,7 +107,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7938e55214c9d6d48a402cf7f3d5d4da, type: 2}
+  - {fileID: -876546973899608171, guid: 73b0dfbf6a358e74884c40ddc4513958, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -128,7 +128,7 @@ SpriteRenderer:
   m_SortingLayerID: -2132010357
   m_SortingLayer: 2
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: 729e103d33706ac468a5766a6942549d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b3ece88e8a0c32f4f86d9c8fa93a866d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -156,6 +156,7 @@ MonoBehaviour:
   isPurchased: 0
   width: 0
   height: 0
+  isCooked: 0
   slotList: []
 --- !u!114 &6475962313056809240
 MonoBehaviour:
@@ -171,18 +172,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startPosition: {x: 0, y: 0, z: 0}
   returnPosition: {x: 0, y: 0, z: 0}
---- !u!114 &-5547303311443904865
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3644635408488318414}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5908d50919e36834fad8fce06680dc59, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  isDragging: 0
+  isRotating: 0
+  targetRotation: 0
 --- !u!114 &-3706783692142616613
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,3 +199,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67cb90b1a44cdfb4d9410228e19ccc1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4469154459970552905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3644635408488318414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5908d50919e36834fad8fce06680dc59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 0}
