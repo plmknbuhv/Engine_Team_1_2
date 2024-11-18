@@ -33,7 +33,11 @@ public class Bullet : MonoBehaviour, IPoolable
 
      private void OnTriggerEnter2D(Collider2D other)
      {
-          if ()
+          if (other.CompareTag("Enemy"))
+          {
+               var enemy = other.GetComponent<Enemy>();
+               enemy
+          }
      }
 
      public void SetUpBullet(FoodDataSO foodData)
