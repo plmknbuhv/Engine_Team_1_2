@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &5558201951180792685
+--- !u!1001 &3901740165221788144
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -9,57 +9,61 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3476976484587985565, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
+      propertyPath: m_Size.x
+      value: 1.0728421
+      objectReference: {fileID: 0}
+    - target: {fileID: 3476976484587985565, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_Size.y
-      value: 2.5867858
+      value: 2.1463568
+      objectReference: {fileID: 0}
+    - target: {fileID: 3476976484587985565, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.01253438
       objectReference: {fileID: 0}
     - target: {fileID: 3476976484587985565, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_Offset.y
-      value: 1.5352342
-      objectReference: {fileID: 0}
-    - target: {fileID: 3476976484587985565, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
-      propertyPath: m_SpriteTilingProperty.pivot.x
-      value: 0.5217391
+      value: 1.1419729
       objectReference: {fileID: 0}
     - target: {fileID: 3476976484587985565, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.y
-      value: -0.07272728
+      value: -0.0625
       objectReference: {fileID: 0}
     - target: {fileID: 3476976484587985565, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.x
-      value: 0.23
+      value: 0.16
       objectReference: {fileID: 0}
     - target: {fileID: 3476976484587985565, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.y
-      value: 0.55
+      value: 0.32
       objectReference: {fileID: 0}
     - target: {fileID: 3476976484587985565, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 1.4375
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3476976484587985565, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 3.4375
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4170357669452165658, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.02
+      value: -0.01
       objectReference: {fileID: 0}
     - target: {fileID: 4170357669452165658, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4
+      value: 2.55
       objectReference: {fileID: 0}
     - target: {fileID: 4409928031154806367, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_Size.x
-      value: 0.23
+      value: 0.16
       objectReference: {fileID: 0}
     - target: {fileID: 4409928031154806367, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_Size.y
-      value: 0.55
+      value: 0.32
       objectReference: {fileID: 0}
     - target: {fileID: 4409928031154806367, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 7858901374777093912, guid: 82985c6ec761b53409cad1b55c9fb1eb, type: 3}
+      objectReference: {fileID: -4713048645547775126, guid: 1ab97aff8a8d9c64dba1a846431d90bb, type: 3}
     - target: {fileID: 4409928031154806367, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
@@ -67,7 +71,7 @@ PrefabInstance:
     - target: {fileID: 5161490404499085409, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: e58e55419b24156428e27fcc88fd9e27, type: 2}
+      objectReference: {fileID: 9100000, guid: 3e7f6884b32581146956c85ce7787a04, type: 2}
     - target: {fileID: 5571254855948430785, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -110,7 +114,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8325894798917001309, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_Name
-      value: Adult
+      value: Motorcycle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -118,28 +122,29 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8325894798917001309, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8152500153237591275}
+      addedObject: {fileID: -3940999985434740430}
   m_SourcePrefab: {fileID: 100100000, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
---- !u!1 &4515199530286433072 stripped
+--- !u!1 &5021022339300805037 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8325894798917001309, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
-  m_PrefabInstance: {fileID: 5558201951180792685}
+  m_PrefabInstance: {fileID: 3901740165221788144}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8152500153237591275
+--- !u!114 &-3940999985434740430
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4515199530286433072}
+  m_GameObject: {fileID: 5021022339300805037}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca68dfa17ef6259499fee54d0d1f29eb, type: 3}
+  m_Script: {fileID: 11500000, guid: 34d3c5aadbc88cf4d9131f85b360f162, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
-  maxHp: 100
-  hp: 100
+  speed: 5
+  maxHp: 20
+  hp: 0
   explosion: {fileID: 1898137211088249128, guid: d10899cf2c359c44b91f7f4be3721387, type: 3}
-  <PoolType>k__BackingField: {fileID: 11400000, guid: bffe25ae6300a454ea1f2e0f60401722, type: 2}
+  isStun: 0
+  <PoolType>k__BackingField: {fileID: 11400000, guid: 82c72eabd43b21e42826fc84c774a939, type: 2}
   poolManager: {fileID: 11400000, guid: 928c52471a99fba4a983ede3b8649ab4, type: 2}

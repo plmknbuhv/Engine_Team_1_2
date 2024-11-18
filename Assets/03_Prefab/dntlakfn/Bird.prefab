@@ -50,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4170357669452165658, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.03
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 4170357669452165658, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_LocalPosition.y
@@ -148,4 +148,6 @@ MonoBehaviour:
   speed: 2
   maxHp: 20
   hp: 20
+  explosion: {fileID: 1898137211088249128, guid: d10899cf2c359c44b91f7f4be3721387, type: 3}
   <PoolType>k__BackingField: {fileID: 11400000, guid: db4e958d0e9d98e4788f65cc38fcee56, type: 2}
+  poolManager: {fileID: 11400000, guid: 928c52471a99fba4a983ede3b8649ab4, type: 2}

@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1486e263e7016b643b78c6fb1c6caafd, type: 3}
-  m_Name: Refrigerator_Item
+  m_Name: Deer_Item
   m_EditorClassIdentifier: 
-  poolType: {fileID: 11400000, guid: 247d1c7a1b13b8940acee336063fa29e, type: 2}
-  prefab: {fileID: 4775228841725567430, guid: a5962a4315fa16a4bb5bddda1ef33835, type: 3}
-  initCount: 1
+  poolType: {fileID: 11400000, guid: 66bf660397ca8784fa9061e62ce2c964, type: 2}
+  prefab: {fileID: 3156266947477024603, guid: af77b6fc6410a1d40a356bf805cc7d79, type: 3}
+  initCount: 10
