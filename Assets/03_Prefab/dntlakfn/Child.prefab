@@ -8,6 +8,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 531907529942610609, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.115
+      objectReference: {fileID: 0}
+    - target: {fileID: 531907529942610609, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.01202996
+      objectReference: {fileID: 0}
+    - target: {fileID: 531907529942610609, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.0014
+      objectReference: {fileID: 0}
+    - target: {fileID: 3476976484587985565, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
+      propertyPath: m_Size.x
+      value: 1.2028356
+      objectReference: {fileID: 0}
+    - target: {fileID: 3476976484587985565, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
+      propertyPath: m_Size.y
+      value: 1.6822284
+      objectReference: {fileID: 0}
+    - target: {fileID: 3476976484587985565, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.013665438
+      objectReference: {fileID: 0}
+    - target: {fileID: 3476976484587985565, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
+      propertyPath: m_Offset.y
+      value: 1.0405471
+      objectReference: {fileID: 0}
     - target: {fileID: 3476976484587985565, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.y
       value: -0.09756098
@@ -29,8 +57,12 @@ PrefabInstance:
       value: 2.5625
       objectReference: {fileID: 0}
     - target: {fileID: 4170357669452165658, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4170357669452165658, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.05
+      value: 3.19
       objectReference: {fileID: 0}
     - target: {fileID: 4409928031154806367, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_Size.x
@@ -124,4 +156,6 @@ MonoBehaviour:
   speed: 1.5
   maxHp: 50
   hp: 50
+  explosion: {fileID: 1898137211088249128, guid: d10899cf2c359c44b91f7f4be3721387, type: 3}
   <PoolType>k__BackingField: {fileID: 11400000, guid: bb3fe2e85058210459814021b15fdef6, type: 2}
+  poolManager: {fileID: 11400000, guid: 928c52471a99fba4a983ede3b8649ab4, type: 2}

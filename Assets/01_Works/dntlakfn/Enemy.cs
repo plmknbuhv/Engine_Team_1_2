@@ -1,42 +1,71 @@
+using GGMPool;
 using System;
+using System.Collections;
+using System.Globalization;
 using UnityEngine;
 using UnityEngine.Animations;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IPoolable
 {
     public float speed;
     public int maxHp;
     public int hp;
+    public Explosion explosion;
     private float knockbackPower;
     private bool isGetDamage = false;
+    public bool isStun = false;
+    private bool isDead = false;
     protected Rigidbody2D rb;
     protected Animator animator;
     protected Transform target;
+    protected int dropGold;
+    
 
+    [field: SerializeField] public PoolTypeSO PoolType { get; set; }
 
+    public GameObject GameObject => gameObject;
+
+    [SerializeField] private PoolManagerSO poolManager;
 
     private void Awake()
     {
+        
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         target = FindAnyObjectByType<Tower>().transform;
+        
+    }
+    private void OnEnable()
+    {
         hp = maxHp;
     }
 
     private void Move()
     {
+        if (isStun)
+        {
+            GetStun(5);
+            return;
+        }
         if (isGetDamage)
         {
-            animator.speed = knockbackPower / 5;
+            
             animator.SetBool("isHit", false);
-            rb.velocity = new Vector2(0, -Math.Clamp(knockbackPower -= Time.deltaTime, 0, 10));
+            animator.speed = 1.7f;
+            rb.velocity = new Vector2(0, -Math.Clamp(knockbackPower -= 1.5f, 0, 10));
             if (knockbackPower <= 0)
             {
                 animator.speed = 1f;
+
                 isGetDamage = false;
             }
         }
-        transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+        else
+        {
+            transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+        }
+        
+        
     }
 
     public virtual void GetDamage(int damage, float knockbackPower, Action action = null)
@@ -48,11 +77,30 @@ public class Enemy : MonoBehaviour
         
 
         hp -= damage;
+        if(hp <= 0)
+        {
+            isDead = true;
+        }
         
         if (action != null)
         {
             action?.Invoke();
         }
+    }
+
+    public void GetStun(int time)
+    {
+        if (isStun) return;
+        StartCoroutine(GetStunCoroutine(time));
+    }
+
+    IEnumerator GetStunCoroutine(int time)
+    {
+        isStun = true;
+        animator.speed = 0;
+        yield return  new WaitForSeconds(time);
+        animator.speed = 1;
+        isStun = false;
     }
 
     protected virtual void UniqueSkill()
@@ -69,9 +117,33 @@ public class Enemy : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.A)) // 태스트
         {
-            GetDamage(10, 3);
+            GetDamage(10, 30);
         }
+        if (Input.GetKeyDown(KeyCode.S)) // 태스트
+        {
+            GetStun(3);
+        }
+        if (isDead)
+        {
+            var boom = poolManager.Pop(explosion.PoolType);
+            boom.GameObject.transform.position = transform.position;
+            //ShopManager.Instance.Gold += dropGold;
+            poolManager.Push(this);
+            
+            
+        }
+        
     }
 
+    
 
+    public void SetUpPool(Pool pool)
+    {
+        
+    }
+
+    public void ResetItem()
+    {
+        
+    }
 }
