@@ -2344,6 +2344,7 @@ MonoBehaviour:
   poolManager: {fileID: 11400000, guid: 928c52471a99fba4a983ede3b8649ab4, type: 2}
   enemyType: []
   spawnPoint: {fileID: 1573202508}
+  enemySpawnCount: 0
 --- !u!4 &1321212711
 Transform:
   m_ObjectHideFlags: 0

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
-public class FoodDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class FoodDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler
 {
     private InventoryChecker _inventoryChecker;
     private FoodRenderer _foodRenderer;
@@ -137,6 +137,13 @@ public class FoodDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         isRotating = false;
     }
     #endregion
+    
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (isDragging) return;
+        
+        
+    }
 
     private Vector3 GetMousePos()
     {

@@ -25,6 +25,10 @@ public class Explosion : MonoBehaviour, IPoolable
     {
         Invoke("DisibleExplosion", 0.5f);
     }
+    private void OnDisable()
+    {
+        transform.localScale = Vector3.one;
+    }
 
     public void DisibleExplosion()
     {

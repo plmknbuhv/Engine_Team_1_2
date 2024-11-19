@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 112084014390057734}
   - component: {fileID: 8534264448921737722}
   - component: {fileID: 8475586614986570389}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Refrigerator
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
