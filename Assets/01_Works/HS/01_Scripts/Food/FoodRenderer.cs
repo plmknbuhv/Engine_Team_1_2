@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class FoodRenderer : MonoBehaviour
@@ -45,5 +46,18 @@ public class FoodRenderer : MonoBehaviour
         
         _food.transform.localScale = new Vector3(scaleValue * (1f / canvasRectTransform.lossyScale.x),
             scaleValue * (1f / canvasRectTransform.lossyScale.y));
+    }
+
+    public void OnMouseEnter()
+    {
+        StartCoroutine(OnMouseEnterCoroutine());
+    }
+
+    private IEnumerator OnMouseEnterCoroutine()
+    {
+        while (true)
+        {
+            
+        }
     }
 }

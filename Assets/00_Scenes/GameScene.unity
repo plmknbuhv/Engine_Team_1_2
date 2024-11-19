@@ -2269,6 +2269,7 @@ MonoBehaviour:
   poolManager: {fileID: 11400000, guid: 928c52471a99fba4a983ede3b8649ab4, type: 2}
   enemyType: []
   spawnPoint: {fileID: 1573202508}
+  enemySpawnCount: 0
 --- !u!4 &1321212711
 Transform:
   m_ObjectHideFlags: 0
@@ -2697,7 +2698,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: dbf91a414cec3044c92771d0c47ec517, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 47a156cdc7a31c447ba18b53a006fec2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
