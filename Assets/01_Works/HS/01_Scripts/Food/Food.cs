@@ -50,6 +50,7 @@ public class Food : MonoBehaviour, IPoolable
         
         var colliderSize = new Vector2(width * 0.5f, height * 0.5f);
         _boxCollider.size = colliderSize;
+        //transform.SetSiblingIndex(6);
     }
     
     public void SetUpPool(Pool pool)

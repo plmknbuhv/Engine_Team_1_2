@@ -47,7 +47,7 @@ public class Bullet : MonoBehaviour, IPoolable
           {
                case FoodType.CheesePizza:
                     enemy.GetSlow(30f, 2);
-                    enemy.GetDamage(_foodData.damage, 10);
+                    enemy.GetDamage(_foodData.damage, 8);
                     break;
                case FoodType.GimBap2XL:
                     enemy.GetDamage(_foodData.damage, 20);
@@ -57,12 +57,13 @@ public class Bullet : MonoBehaviour, IPoolable
                     break;
                case FoodType.RamenMandu:
                     enemy.GetStun(2);
-                    enemy.GetDamage(_foodData.damage, 10);
+                    enemy.GetDamage(_foodData.damage, 8);
                     break;
                default:
-                    enemy.GetDamage(_foodData.damage, 10);
+                    enemy.GetDamage(_foodData.damage, 8);
                     break;
           }
+          _myPool.Push(this);
      }
 
      public void SetUpBullet(FoodDataSO foodData)
@@ -76,7 +77,7 @@ public class Bullet : MonoBehaviour, IPoolable
      }
      
      public void SetUpPool(Pool pool)
-     { 
+     {
           _myPool = pool;
      }
 

@@ -13,12 +13,14 @@ public class InventoryManager : MonoSingleton<InventoryManager>
     private Dictionary<FoodType, int> _foods = new Dictionary<FoodType, int>();
     public List<InventorySystem> inventoryList = new List<InventorySystem>();
     public List<Food> kitchenFoods = new List<Food>();
-    public GameObject kitchenPanel;
     private InventorySystem _kitchen;
     public Tower tower;
+    public GameObject kitchenPanel;
+    public GameObject settingPanel;
 
     public bool isCanCook = true;
     public bool isCanActiveKitchen = true;
+    public bool isCanActiveSetting = true;
     
     [SerializeField] private RectTransform cookPointRect;
     [SerializeField] private CookingButton cookingButton;
@@ -35,6 +37,22 @@ public class InventoryManager : MonoSingleton<InventoryManager>
     }
 
     private void Update()
+    {
+        OpenKitchen();
+        OpenSetting();
+    }
+
+    private void OpenSetting()
+    {
+        if (!isCanActiveSetting) return;
+        if (Keyboard.current.escapeKey.wasPressedThisFrame)
+        {
+            settingPanel.SetActive(!settingPanel.activeSelf);
+            Time.timeScale = settingPanel.activeSelf ? 0 : 1;
+        }
+    }
+
+    private void OpenKitchen()
     {
         if (!isCanActiveKitchen) return;
         if (Keyboard.current.fKey.wasPressedThisFrame)

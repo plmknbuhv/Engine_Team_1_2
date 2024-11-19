@@ -15,6 +15,11 @@ public class TowerAttack : MonoBehaviour , ITowerComponent
         _enemyChecker = _tower.GetCompo<EnemyChecker>();
     }
 
+    public bool CheckCanAttack()
+    {
+        return _enemyChecker.Targets.Count > 0;
+    }
+
     public void Attack(FoodDataSO foodData)
     {
         if (_enemyChecker.Targets.Count < 1) return;

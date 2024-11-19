@@ -46,7 +46,7 @@ public class FoodDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         if (eventData.button != PointerEventData.InputButton.Left) return;
         
         isDragging = true;
-        _foodRenderer.SpriteRenderer.sortingOrder = 20;
+        _foodRenderer.SpriteRenderer.sortingOrder = 2600;
         _prevRotation = _food.RectTransform.rotation.eulerAngles.z;
         _prevHeight = _food.height;
         _prevWidth = _food.width;
@@ -54,6 +54,7 @@ public class FoodDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
             slot.isCanEquip = true;
         _foodAttack.StopAttack();
         InventoryManager.Instance.isCanActiveKitchen = false;
+        InventoryManager.Instance.isCanActiveSetting = false;
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -69,13 +70,14 @@ public class FoodDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         if (eventData.button != PointerEventData.InputButton.Left) return;
         isDragging = false;
         if (isRotating) return;
-
-        InventoryManager.Instance.isCanActiveKitchen = true;
+        
         DropItem();
     }
 
     private void DropItem()
     {
+        InventoryManager.Instance.isCanActiveKitchen = true;
+        InventoryManager.Instance.isCanActiveSetting = true;
         if (!_inventoryChecker.CheckEquipInventory())
         {
             transform.position = returnPosition;
@@ -93,7 +95,7 @@ public class FoodDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         
         foreach (var slot in _food.slotList)
             slot.isCanEquip = false;
-        _foodRenderer.SpriteRenderer.sortingOrder = 10;
+        _foodRenderer.SpriteRenderer.sortingOrder = 2500;
         _foodRenderer.AdjustFoodSize();
         _inventoryChecker.ResetSlots();
     }
@@ -133,7 +135,6 @@ public class FoodDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
             DropItem();
         
         isRotating = false;
-        InventoryManager.Instance.isCanActiveKitchen = true;
     }
     #endregion
 
