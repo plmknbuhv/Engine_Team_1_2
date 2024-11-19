@@ -2,6 +2,7 @@ using GGMPool;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 
@@ -14,6 +15,9 @@ public class EnemySpawner : MonoBehaviour
     public Transform spawnPoint;
     private float timer;
     public static int enemyCount;
+    public static bool isHouseLive = false;
+    public static bool isKoreaLive = false;
+    public static bool isBossLive = false;
     public int enemySpawnCount;
     private int wave = 1;
 
@@ -58,7 +62,22 @@ public class EnemySpawner : MonoBehaviour
     public void Spawn()
     {
         var enemy = poolManager.Pop(enemyType[UnityEngine.Random.Range(0, enemyType.Length)]) as Enemy;
+        for(int i = 0; i < enemyType.Length; i++)
+        {
+            enemy = poolManager.Pop(enemyType[i]) as Enemy;
+            if (enemy.CompareTag("OnlyOne") || enemy.CompareTag("Boss"))
+            {
+                break;
+            }
+            else
+            {
+                continue;
+            }
+        }
+        
 
+        
+        
         enemy.transform.position = spawnPoint.position + new Vector3(UnityEngine.Random.Range(-6, 6), 0);
         enemy.transform.localRotation = Quaternion.identity;
 
