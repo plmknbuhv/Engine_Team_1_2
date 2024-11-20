@@ -46,21 +46,26 @@ public class FoodRenderer : MonoBehaviour
         var t = distance / 10f;
         var scaleValue = Mathf.Lerp(1.6f, 1.97f, t);
         
+        SetSize(scaleValue);
+    }
+
+    public void SetSize(float scaleValue)
+    {
         _food.transform.localScale = new Vector3(scaleValue * (1f / _canvasRectTransform.lossyScale.x),
             scaleValue * (1f / _canvasRectTransform.lossyScale.y));
     }
-
+    
     public void OnMouseEnter()
     {
+        if (!_food.isPurchased) return;
+        
         material.SetFloat(_isEnterMouse, 1f);
+        print("그로우");
     }
     
     public void OnMouseExit()
     {
         material.SetFloat(_isEnterMouse, 0f);
+        print("나감");
     }
-    //
-    // private IEnumerator OnMouseEnterCoroutine()
-    // {
-    // }
 }

@@ -21,6 +21,10 @@ public class FoodDragHandler : MonoBehaviour,
     private float _prevRotation;
     private int _prevHeight;
     private int _prevWidth;
+    private bool _isCanGrowing = true;
+    private bool _isMouseOver;
+    
+    private Coroutine _coroutine;
 
     private void Awake()
     {
@@ -38,6 +42,15 @@ public class FoodDragHandler : MonoBehaviour,
     private void Update()
     {
         RotateFood();
+        CheckMouseOver();
+    }
+
+    private void CheckMouseOver()
+    {
+        if (!_isMouseOver)
+        {
+            
+        }
     }
 
     #region Drag And Drop
@@ -72,7 +85,7 @@ public class FoodDragHandler : MonoBehaviour,
         if (eventData.button != PointerEventData.InputButton.Left) return;
         isDragging = false;
         if (isRotating) return;
-        _foodRenderer.OnMouseEnter();
+        
         DropItem();
     }
 
@@ -100,6 +113,12 @@ public class FoodDragHandler : MonoBehaviour,
         _foodRenderer.SpriteRenderer.sortingOrder = 2500;
         _foodRenderer.AdjustFoodSize();
         _inventoryChecker.ResetSlots();
+
+        if (_food.isPurchased && _isMouseOver)
+        {
+            _foodRenderer.OnMouseEnter();
+            _coroutine = StartCoroutine(WavingFoodSizeCoroutine());
+        }
     }
 
     #endregion
@@ -142,14 +161,46 @@ public class FoodDragHandler : MonoBehaviour,
     
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (isDragging) return;
+        _isMouseOver = true;
+        if (!_food.isPurchased) return;
+
         _foodRenderer.OnMouseEnter();
+        _coroutine = StartCoroutine(WavingFoodSizeCoroutine());
     }
-    
+
+    private IEnumerator WavingFoodSizeCoroutine()
+    {
+        float glowTimer = 0;
+        while (_isMouseOver)
+        {
+            yield return null;
+            
+            if (_isCanGrowing)
+                glowTimer += Time.deltaTime;
+            else
+                glowTimer -= Time.deltaTime;
+            
+            var t = glowTimer / 3.75f;
+            var scaleValue = Mathf.Lerp(1.97f, 2.1f, t);
+        
+            _foodRenderer.SetSize(scaleValue);
+
+            if (glowTimer >= 3.75f)
+                _isCanGrowing = false;
+            else if (glowTimer <= 0)
+                _isCanGrowing = true;
+        }
+    }
+
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (isDragging) return;
+        _isMouseOver = false;
+        if (!_food.isPurchased) return;
+        
         _foodRenderer.OnMouseExit();
+        if (_coroutine != null)
+            StopCoroutine(_coroutine);
+        _foodRenderer.SetSize(1.97f);
     }
 
     private Vector3 GetMousePos()
