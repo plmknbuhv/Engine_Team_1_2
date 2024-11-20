@@ -27,6 +27,7 @@ public class Enemy : MonoBehaviour, IPoolable
     public GameObject GameObject => gameObject;
 
     [SerializeField] private PoolManagerSO poolManager;
+    public static Action OnknockbackStop;
 
     private void Awake()
     {
@@ -34,6 +35,7 @@ public class Enemy : MonoBehaviour, IPoolable
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         target = FindAnyObjectByType<Tower>().transform;
+        OnknockbackStop += KnockBackStop;
         
     }
     private void OnEnable()
@@ -58,7 +60,7 @@ public class Enemy : MonoBehaviour, IPoolable
             if (knockbackPower <= 0)
             {
                 animator.speed = 1f;
-
+                OnknockbackStop?.Invoke();
                 isGetDamage = false;
             }
         }
@@ -88,6 +90,11 @@ public class Enemy : MonoBehaviour, IPoolable
         {
             action?.Invoke();
         }
+    }
+
+    public void KnockBackStop()
+    {
+        rb.velocity = Vector2.zero;
     }
 
     public void GetStun(int time)
