@@ -9,7 +9,7 @@ public class Deer : Enemy
     protected override void UniqueSkill()
     {
         animator.speed = 2;
-        speed = 1.5f;
+        speed *= 1.5f;
 
     }
 
@@ -21,6 +21,10 @@ public class Deer : Enemy
     public override void GetDamage(int damage, float knockbackPower, Action action = null)
     {
         base.GetDamage(damage, knockbackPower, action);
-        speed = 0.5f;
+        speed *= 0.5f;
+    }
+    private void Update()
+    {
+        
     }
 }
