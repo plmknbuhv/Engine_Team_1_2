@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
-public class FoodDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler
+public class FoodDragHandler : MonoBehaviour,
+    IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
     private InventoryChecker _inventoryChecker;
     private FoodRenderer _foodRenderer;
@@ -47,6 +48,7 @@ public class FoodDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         
         isDragging = true;
         _foodRenderer.SpriteRenderer.sortingOrder = 2600;
+        _foodRenderer.OnMouseExit();
         _prevRotation = _food.RectTransform.rotation.eulerAngles.z;
         _prevHeight = _food.height;
         _prevWidth = _food.width;
@@ -70,7 +72,7 @@ public class FoodDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         if (eventData.button != PointerEventData.InputButton.Left) return;
         isDragging = false;
         if (isRotating) return;
-        
+        _foodRenderer.OnMouseEnter();
         DropItem();
     }
 
@@ -141,8 +143,13 @@ public class FoodDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (isDragging) return;
-        
-        
+        _foodRenderer.OnMouseEnter();
+    }
+    
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        if (isDragging) return;
+        _foodRenderer.OnMouseExit();
     }
 
     private Vector3 GetMousePos()
