@@ -88,15 +88,15 @@ public class ShopManager : MonoSingleton<ShopManager>
 
     public void BuyFood(Food food)
     {
-        if (Gold < food.foodDataSO.height * food.foodDataSO.width) return;
+        if (Gold < food.foodDataSO.height * food.foodDataSO.width * 2) return;
 
-        Gold -= food.foodDataSO.height * food.foodDataSO.width;
+        Gold -= food.foodDataSO.height * food.foodDataSO.width * 2;
         shopFoodList.Remove(food);
         food.isPurchased = true;
     }
 
     public bool CheckCanBuyFood(Food food)
     {
-        return Gold >= food.foodDataSO.height * food.foodDataSO.width;
+        return Gold >= food.foodDataSO.height * food.foodDataSO.width * 2;
     }
 }

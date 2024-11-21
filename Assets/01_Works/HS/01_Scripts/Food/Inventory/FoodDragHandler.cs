@@ -94,6 +94,7 @@ public class FoodDragHandler : MonoBehaviour,
             transform.position = returnPosition;
             _food.RectTransform.eulerAngles = new Vector3(0,0,_prevRotation);
             (_food.width, _food.height) = (_prevWidth, _prevHeight);
+            targetRotation = _prevRotation;
         }
         else
         {
@@ -139,7 +140,7 @@ public class FoodDragHandler : MonoBehaviour,
         (_food.width, _food.height) = (_food.height, _food.width);
         
         print(targetRotation);
-        targetRotation = targetRotation >= 90 ? 0 : 90;
+        targetRotation = Mathf.Approximately(targetRotation, 90) ? 0 : 90;
         print(targetRotation);
         Tween foodRotateTween = _food.RectTransform.DORotate(new Vector3(0,0,targetRotation), 0.7f).SetEase(Ease.OutCubic);
         _foodRenderer.ChangeFoodRotation(targetRotation);

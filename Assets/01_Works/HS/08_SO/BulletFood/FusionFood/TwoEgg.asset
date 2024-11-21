@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   foodType: 15
   sprite: {fileID: 21300000, guid: 9f57c14d67f83224ca1c9ea9733bc6e5, type: 3}
-  attackCooldown: 3
+  attackCooldown: 3.5
   damage: 40
   width: 2
   height: 1
