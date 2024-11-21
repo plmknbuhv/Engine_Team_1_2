@@ -20,14 +20,13 @@ public class EnemySpawner : MonoBehaviour
     public static bool isKoreaLive = false;
     public static bool isBossLive = false;
     public int enemySpawnCount;
-    private int wave = 1;
+    
 
 
     private void Awake()
     {
         waveManager = FindAnyObjectByType<WaveManager>();
         enemyType = waveManager.enemyList[0].enemys;
-        wave = 1;
         timer = 0;
 
     }
@@ -35,21 +34,21 @@ public class EnemySpawner : MonoBehaviour
     private void Update()
     {
         timer += Time.deltaTime;
-        if (timer > 3 && waveManager.isWaveStart && enemySpawnCount <= waveManager.Waves[wave])
+        if (timer > 3 && waveManager.isWaveStart && enemySpawnCount <= waveManager.Waves[WaveManager.wave])
         {
             timer = 0;
             Spawn();
             return;
         }
-        if (enemyCount >= waveManager.Waves[wave])
+        if (enemyCount >= waveManager.Waves[WaveManager.wave])
         {
-            wave++;
+            
             enemyCount = 0;
-            enemySpawnCount = 0;
+            enemySpawnCount = 1;
             timer = 0;
             try
             {
-                enemyType = waveManager.enemyList[wave - 1].enemys;
+                enemyType = waveManager.enemyList[WaveManager.wave - 1].enemys;
             }
             catch
             {

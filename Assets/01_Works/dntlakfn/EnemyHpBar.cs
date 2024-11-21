@@ -14,7 +14,7 @@ public class EnemyHpBar : MonoBehaviour
     private void Update()
     {
         
-        hpbar.localScale = new Vector3(Mathf.Clamp(0.115f * ((float)owner.hp / (float)owner.maxHp), 0, 0.115f), hpbar.localScale.y);
+        hpbar.localScale = new Vector3(Mathf.Clamp(0.35f * ((float)owner.hp / (float)owner.maxHp), 0, 0.35f), hpbar.localScale.y);
     }
 
 }

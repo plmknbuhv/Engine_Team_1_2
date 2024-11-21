@@ -21,17 +21,18 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private t t;
     [SerializeField] private Button startBtn;
     public bool isWaveStart = false;
-    int wave = 1;
+    public static int wave = 1;
 
 
 
     private void Awake()
     {
         
-        for(int i = 1; i <= 21; i++)
+        for(int i = 1; i <= 8; i++)
         {
-            if(i % 7 == 0) Waves.Add(i, 1);
-            else Waves.Add(i, i*2);
+            if(i == 8) Waves.Add(i, 1);
+            else if(i % 2 == 0) Waves.Add(i, i*5);
+            else Waves.Add(i, i * 3);
         }
         
     }
@@ -49,7 +50,10 @@ public class WaveManager : MonoBehaviour
             isWaveStart = true;
             startBtn.gameObject.SetActive(false);
 
-            t.GetComponent<TextMeshProUGUI>().text = "Wave " + wave++;
+            t.GetComponent<TextMeshProUGUI>().text = "Wave " + wave;
+
+            StartCoroutine(t.FadeInOut(0, 0f, 3));
+            
 
             
         }
@@ -58,7 +62,7 @@ public class WaveManager : MonoBehaviour
     public void WaveEnd()
     {
         startBtn.gameObject.SetActive(true);
-
+        wave++;
         isWaveStart = false;
     }
 
