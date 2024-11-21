@@ -180,7 +180,7 @@ MonoBehaviour:
   speed: 0.5
   maxHp: 100
   hp: 0
-  explosion: {fileID: 3605114599674254736, guid: d10899cf2c359c44b91f7f4be3721387, type: 3}
+  explosion: {fileID: 6136224044231406328, guid: d10899cf2c359c44b91f7f4be3721387, type: 3}
   boost: {fileID: 7728459349070127891}
   isStun: 0
   isSlow: 0
