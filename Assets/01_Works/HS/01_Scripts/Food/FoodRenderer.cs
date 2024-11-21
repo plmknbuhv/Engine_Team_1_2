@@ -62,6 +62,7 @@ public class FoodRenderer : MonoBehaviour
     public void OnMouseEnter()
     {
         if (!_food.isPurchased) return;
+        if (_foodDragHandler.isDragging) return;
         
         material.SetFloat(_isEnterMouse, 1f);
     }

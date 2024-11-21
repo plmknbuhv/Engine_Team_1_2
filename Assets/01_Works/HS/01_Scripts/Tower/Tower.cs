@@ -12,9 +12,13 @@ public class Tower : MonoBehaviour
     private List<Enemy> _attackingEnemy = new List<Enemy>();
     
     private float _damageTimer;
-    private int _health = 5;
+    [SerializeField] private int maxHealth = 5;
+    private int _health;
     
     private Coroutine _coroutine;
+    
+    public UnityEvent OnDeathEvent;
+    public UnityEvent<float, float> OnDamageEvent;
 
     private int Health
     {
@@ -24,15 +28,15 @@ public class Tower : MonoBehaviour
             _health = value;
             if (value <= 0)
             {
+                _health = 0;
                 OnDeathEvent?.Invoke();
                 if (_coroutine != null)
                     StopCoroutine(_coroutine);
             }
+            OnDamageEvent?.Invoke(_health, maxHealth);
         } 
         
     }
-    
-    public UnityEvent OnDeathEvent;
 
     private void Awake()
     {
@@ -47,6 +51,7 @@ public class Tower : MonoBehaviour
     private void Start()
     {
         StartCoroutine(TakeDamageCoroutine());
+        _health = maxHealth;
     }
 
     private void OnDisable()
@@ -79,6 +84,7 @@ public class Tower : MonoBehaviour
                 {
                     _damageTimer = 0;
                     Health--;
+                    _attackingEnemy[0].GetDamage(999999, 0);
                 }
                 else
                     continue;

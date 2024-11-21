@@ -162,6 +162,7 @@ public class FoodDragHandler : MonoBehaviour,
     {
         _isMouseOver = true;
         if (!_food.isPurchased) return;
+        if (isDragging) return;
 
         _foodRenderer.OnMouseEnter();
         _coroutine = StartCoroutine(WavingFoodSizeCoroutine());
@@ -196,6 +197,7 @@ public class FoodDragHandler : MonoBehaviour,
 
     public void OnPointerExit(PointerEventData eventData)
     {
+        if(isDragging) return;
         _isMouseOver = false;
         if (!_food.isPurchased) return;
         

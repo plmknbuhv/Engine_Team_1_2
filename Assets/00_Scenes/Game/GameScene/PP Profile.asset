@@ -9,9 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1486e263e7016b643b78c6fb1c6caafd, type: 3}
-  m_Name: Explosion_Item
+  m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
+  m_Name: PP Profile
   m_EditorClassIdentifier: 
-  poolType: {fileID: 11400000, guid: 5a09f0dea1eefab479c653b70bfe4497, type: 2}
-  prefab: {fileID: 5981180650091937136, guid: d10899cf2c359c44b91f7f4be3721387, type: 3}
-  initCount: 10
+  components: []
