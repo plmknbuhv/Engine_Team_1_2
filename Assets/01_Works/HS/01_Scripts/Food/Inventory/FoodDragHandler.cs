@@ -1,5 +1,6 @@
 using System.Collections;
 using DG.Tweening;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -42,15 +43,6 @@ public class FoodDragHandler : MonoBehaviour,
     private void Update()
     {
         RotateFood();
-        CheckMouseOver();
-    }
-
-    private void CheckMouseOver()
-    {
-        if (!_isMouseOver)
-        {
-            
-        }
     }
 
     #region Drag And Drop
@@ -68,8 +60,12 @@ public class FoodDragHandler : MonoBehaviour,
         foreach (var slot in _food.slotList)
             slot.isCanEquip = true;
         _foodAttack.StopAttack();
+
+        if (_coroutine != null)
+            StopCoroutine(_coroutine);
+        
         InventoryManager.Instance.isCanActiveKitchen = false;
-        InventoryManager.Instance.isCanActiveSetting = false;
+        MenuManager.Instance.isCanActiveSetting = false;
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -92,7 +88,7 @@ public class FoodDragHandler : MonoBehaviour,
     private void DropItem()
     {
         InventoryManager.Instance.isCanActiveKitchen = true;
-        InventoryManager.Instance.isCanActiveSetting = true;
+        MenuManager.Instance.isCanActiveSetting = true;
         if (!_inventoryChecker.CheckEquipInventory())
         {
             transform.position = returnPosition;
@@ -106,6 +102,8 @@ public class FoodDragHandler : MonoBehaviour,
                 InventoryManager.Instance.isCanCook = true;
                 _food.isCooked = false;
             }
+
+            _foodRenderer.DropAnimation();
         }
         
         foreach (var slot in _food.slotList)
@@ -116,7 +114,7 @@ public class FoodDragHandler : MonoBehaviour,
 
         if (_food.isPurchased && _isMouseOver)
         {
-            _foodRenderer.OnMouseEnter();
+            _foodRenderer.OnMouseEnter(); 
             _coroutine = StartCoroutine(WavingFoodSizeCoroutine());
         }
     }
@@ -175,13 +173,16 @@ public class FoodDragHandler : MonoBehaviour,
         {
             yield return null;
             
+            if (_foodRenderer.isAnimating)
+                continue;
+            
             if (_isCanGrowing)
                 glowTimer += Time.deltaTime;
             else
                 glowTimer -= Time.deltaTime;
             
-            var t = glowTimer / 3.75f;
-            var scaleValue = Mathf.Lerp(1.97f, 2.1f, t);
+            var t = glowTimer / 3f;
+            var scaleValue = Mathf.Lerp(1.96f, 2.25f, t);
         
             _foodRenderer.SetSize(scaleValue);
 

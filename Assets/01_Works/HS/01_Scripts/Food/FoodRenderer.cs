@@ -1,3 +1,5 @@
+using System.Collections;
+using DG.Tweening;
 using UnityEngine;
 
 public class FoodRenderer : MonoBehaviour
@@ -11,6 +13,8 @@ public class FoodRenderer : MonoBehaviour
     public SpriteRenderer SpriteRenderer { get; private set;}
     public Material material;
 
+    public bool isAnimating;
+    
     private RectTransform _canvasRectTransform;
 
     private void Awake()
@@ -60,12 +64,23 @@ public class FoodRenderer : MonoBehaviour
         if (!_food.isPurchased) return;
         
         material.SetFloat(_isEnterMouse, 1f);
-        print("그로우");
     }
     
     public void OnMouseExit()
     {
         material.SetFloat(_isEnterMouse, 0f);
-        print("나감");
+    }
+
+    public void DropAnimation()
+    {
+        StartCoroutine(DropAnimationCoroutine());
+    }
+
+    private IEnumerator DropAnimationCoroutine()
+    {
+        isAnimating = true;
+        Tween animCoroutine = transform.DOPunchScale(Vector3.one * 13.5f, 0.35f, 3);
+        yield return animCoroutine.WaitForCompletion();
+        isAnimating = false;
     }
 }
