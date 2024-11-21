@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour, IPoolable
     public int maxHp;
     public int hp;
     public Explosion explosion;
+    public GameObject boost;
     private float knockbackPower;
     private bool isGetDamage = false;
     public bool isStun = false;
@@ -20,6 +21,7 @@ public class Enemy : MonoBehaviour, IPoolable
     protected Animator animator;
     protected Transform target;
     protected int dropGold;
+    
     
 
     [field: SerializeField] public PoolTypeSO PoolType { get; set; }

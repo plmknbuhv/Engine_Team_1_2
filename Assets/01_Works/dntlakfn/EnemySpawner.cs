@@ -11,7 +11,8 @@ public class EnemySpawner : MonoBehaviour
 
     private WaveManager waveManager;
     [SerializeField] private PoolManagerSO poolManager;
-    [SerializeField] private PoolTypeSO[] enemyType;
+    [SerializeField] private List<PoolTypeSO> enemyType;
+    public static Action OnSpawned;
     public Transform spawnPoint;
     private float timer;
     public static int enemyCount;
@@ -25,7 +26,7 @@ public class EnemySpawner : MonoBehaviour
     private void Awake()
     {
         waveManager = FindAnyObjectByType<WaveManager>();
-        enemyType = waveManager.enemyList[0].enemys.ToArray();
+        enemyType = waveManager.enemyList[0].enemys;
         wave = 1;
         timer = 0;
 
@@ -48,7 +49,7 @@ public class EnemySpawner : MonoBehaviour
             timer = 0;
             try
             {
-                enemyType = waveManager.enemyList[wave - 1].enemys.ToArray();
+                enemyType = waveManager.enemyList[wave - 1].enemys;
             }
             catch
             {
@@ -61,26 +62,58 @@ public class EnemySpawner : MonoBehaviour
 
     public void Spawn()
     {
-        var enemy = poolManager.Pop(enemyType[UnityEngine.Random.Range(0, enemyType.Length)]) as Enemy;
-        for(int i = 0; i < enemyType.Length; i++)
+        Enemy enemy = null;
+        int rand = 0;
+
+
+        rand = UnityEngine.Random.Range(0, enemyType.Count);
+        while (enemyType[rand].typeName == "House")
         {
-            enemy = poolManager.Pop(enemyType[i]) as Enemy;
-            if (enemy.CompareTag("OnlyOne") || enemy.CompareTag("Boss"))
-            {
-                break;
-            }
+            if (isHouseLive) rand = UnityEngine.Random.Range(0, enemyType.Count);
             else
             {
-                continue;
+                enemy = poolManager.Pop(enemyType[rand]) as Enemy;
+                enemy.transform.position = spawnPoint.position + new Vector3(UnityEngine.Random.Range(-6, 6), 0);
+                enemy.transform.localRotation = Quaternion.identity;
+                enemyType.Remove(enemyType[rand]);
+                return;
             }
         }
-        
+        while (enemyType[rand].typeName == "Korea")
+        {
+            if (isKoreaLive) rand = UnityEngine.Random.Range(0, enemyType.Count);
+            else
+            {
+                enemy = poolManager.Pop(enemyType[rand]) as Enemy;
+                enemy.transform.position = spawnPoint.position + new Vector3(UnityEngine.Random.Range(-6, 6), 6);
+                enemy.transform.localRotation = Quaternion.identity;
+                enemyType.Remove(enemyType[rand]);
 
-        
-        
+                return;
+            }
+        }
+        while (enemyType[rand].typeName == "Refrigerator")
+        {
+            if (isBossLive) rand = UnityEngine.Random.Range(0, enemyType.Count);
+            else
+            {
+                enemy = poolManager.Pop(enemyType[rand]) as Enemy;
+                enemy.transform.position = spawnPoint.position + new Vector3(UnityEngine.Random.Range(-6, 6), 0);
+                enemy.transform.localRotation = Quaternion.identity;
+                enemyType.Remove(enemyType[rand]);
+
+                return;
+            }
+        }
+
+
+        enemy = poolManager.Pop(enemyType[rand]) as Enemy;
+
+
         enemy.transform.position = spawnPoint.position + new Vector3(UnityEngine.Random.Range(-6, 6), 0);
         enemy.transform.localRotation = Quaternion.identity;
 
+        OnSpawned?.Invoke();
         enemySpawnCount++;
     }
 
