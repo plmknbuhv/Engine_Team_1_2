@@ -22,7 +22,17 @@ public class Refrigerator : Enemy
         base.GetDamage(damage, 0, action);
     }
 
+    private void OnEnable()
+    {
+        EnemySpawner.isBossLive = true;
+
+    }
+
+    private void OnDisable()
+    {
+        EnemySpawner.isBossLive = false;
+    }
 
 
-    
+
 }

@@ -10,19 +10,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3476976484587985565, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_Size.x
-      value: 1.0728421
+      value: 0.8160063
       objectReference: {fileID: 0}
     - target: {fileID: 3476976484587985565, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_Size.y
-      value: 2.1463568
+      value: 1.247431
       objectReference: {fileID: 0}
     - target: {fileID: 3476976484587985565, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_Offset.x
-      value: 0.01253438
+      value: -0.025991008
       objectReference: {fileID: 0}
     - target: {fileID: 3476976484587985565, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_Offset.y
-      value: 1.1419729
+      value: 0.69251
       objectReference: {fileID: 0}
     - target: {fileID: 3476976484587985565, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.y
@@ -38,11 +38,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3476976484587985565, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 1
+      value: 0.6666667
       objectReference: {fileID: 0}
     - target: {fileID: 3476976484587985565, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 2
+      value: 1.3333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4170357669452165658, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3.163713
+      objectReference: {fileID: 0}
+    - target: {fileID: 4170357669452165658, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.9768355
       objectReference: {fileID: 0}
     - target: {fileID: 4170357669452165658, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_LocalPosition.x
@@ -50,7 +58,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4170357669452165658, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.55
+      value: 1.66
       objectReference: {fileID: 0}
     - target: {fileID: 4409928031154806367, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_Size.x
@@ -124,6 +132,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: -3940999985434740430}
   m_SourcePrefab: {fileID: 100100000, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
+--- !u!1 &369877856142018021 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3677142853316504597, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
+  m_PrefabInstance: {fileID: 3901740165221788144}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5021022339300805037 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8325894798917001309, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
@@ -141,10 +154,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34d3c5aadbc88cf4d9131f85b360f162, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 5
   maxHp: 1
   hp: 0
-  explosion: {fileID: 1898137211088249128, guid: d10899cf2c359c44b91f7f4be3721387, type: 3}
+  explosion: {fileID: 3605114599674254736, guid: d10899cf2c359c44b91f7f4be3721387, type: 3}
+  boost: {fileID: 369877856142018021}
   isStun: 0
   isSlow: 0
   <PoolType>k__BackingField: {fileID: 11400000, guid: 82c72eabd43b21e42826fc84c774a939, type: 2}

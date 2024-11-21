@@ -18,19 +18,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3476976484587985565, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_Size.x
-      value: 29.774515
+      value: 1.5250156
       objectReference: {fileID: 0}
     - target: {fileID: 3476976484587985565, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_Size.y
-      value: 2.8341897
+      value: 2.1204195
       objectReference: {fileID: 0}
     - target: {fileID: 3476976484587985565, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_Offset.x
-      value: -0.06543636
+      value: -0.007636398
       objectReference: {fileID: 0}
     - target: {fileID: 3476976484587985565, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_Offset.y
-      value: 1.648342
+      value: 1.1508214
       objectReference: {fileID: 0}
     - target: {fileID: 3476976484587985565, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.x
@@ -50,15 +50,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3476976484587985565, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 2.875
+      value: 1.9166666
       objectReference: {fileID: 0}
     - target: {fileID: 3476976484587985565, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 3.9375
+      value: 2.625
       objectReference: {fileID: 0}
     - target: {fileID: 4170357669452165658, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_LocalScale.x
-      value: 8.9287
+      value: 5.3572206
+      objectReference: {fileID: 0}
+    - target: {fileID: 4170357669452165658, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3.3270514
       objectReference: {fileID: 0}
     - target: {fileID: 4170357669452165658, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_LocalPosition.x
@@ -66,7 +70,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4170357669452165658, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.53
+      value: 3.1
       objectReference: {fileID: 0}
     - target: {fileID: 4409928031154806367, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_Size.x
@@ -128,6 +132,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5786308149951789995, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5907
+      objectReference: {fileID: 0}
+    - target: {fileID: 5786308149951789995, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.6407
+      objectReference: {fileID: 0}
+    - target: {fileID: 5786308149951789995, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 5786308149951789995, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.1201
+      objectReference: {fileID: 0}
     - target: {fileID: 8325894798917001309, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_Name
       value: Deer
@@ -160,8 +180,14 @@ MonoBehaviour:
   speed: 0.5
   maxHp: 100
   hp: 0
-  explosion: {fileID: 1898137211088249128, guid: d10899cf2c359c44b91f7f4be3721387, type: 3}
+  explosion: {fileID: 3605114599674254736, guid: d10899cf2c359c44b91f7f4be3721387, type: 3}
+  boost: {fileID: 7728459349070127891}
   isStun: 0
   isSlow: 0
   <PoolType>k__BackingField: {fileID: 11400000, guid: 66bf660397ca8784fa9061e62ce2c964, type: 2}
   poolManager: {fileID: 11400000, guid: 928c52471a99fba4a983ede3b8649ab4, type: 2}
+--- !u!1 &7728459349070127891 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3677142853316504597, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
+  m_PrefabInstance: {fileID: 6361005882525142790}
+  m_PrefabAsset: {fileID: 0}
