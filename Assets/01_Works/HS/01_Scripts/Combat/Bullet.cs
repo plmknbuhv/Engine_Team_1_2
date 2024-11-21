@@ -15,6 +15,8 @@ public class Bullet : MonoBehaviour, IPoolable
      private float _lifeTimer;
      private float _rotateValue;
      private float _rotateConstant;
+
+     private bool _isDead;
      
      private void Awake()
      {
@@ -29,11 +31,16 @@ public class Bullet : MonoBehaviour, IPoolable
           _visualObj.transform.Rotate(Vector3.forward, Time.deltaTime * (_rotateValue / _rotateConstant));
 
           if (_lifeTimer >= 5f)
+          {
                _myPool.Push(this);
+               _isDead = true;
+          }
      }
 
      private void OnTriggerEnter2D(Collider2D other)
      {
+          if (_isDead) return;
+          
           if (other.CompareTag("Enemy"))
           {
                var enemy = other.GetComponent<Enemy>();
@@ -64,6 +71,7 @@ public class Bullet : MonoBehaviour, IPoolable
                     break;
           }
           _myPool.Push(this);
+          _isDead = true;
      }
 
      public void SetUpBullet(FoodDataSO foodData)
@@ -84,5 +92,6 @@ public class Bullet : MonoBehaviour, IPoolable
      public void ResetItem()
      {
           _lifeTimer = 0;
+          _isDead = false;
      }
 }
