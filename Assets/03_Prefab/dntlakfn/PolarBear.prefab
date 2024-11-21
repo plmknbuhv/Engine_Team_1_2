@@ -30,19 +30,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3476976484587985565, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 1.75
+      value: 1.1666666
       objectReference: {fileID: 0}
     - target: {fileID: 3476976484587985565, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 2.75
+      value: 1.8333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4170357669452165658, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 4.409513
+      objectReference: {fileID: 0}
+    - target: {fileID: 4170357669452165658, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.3639576
       objectReference: {fileID: 0}
     - target: {fileID: 4170357669452165658, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.02
+      value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: 4170357669452165658, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.46
+      value: 2.26
       objectReference: {fileID: 0}
     - target: {fileID: 4409928031154806367, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_Size.x
@@ -100,6 +108,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5786308149951789995, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.3546
+      objectReference: {fileID: 0}
+    - target: {fileID: 5786308149951789995, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.3053
+      objectReference: {fileID: 0}
+    - target: {fileID: 5786308149951789995, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 5786308149951789995, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.0573
+      objectReference: {fileID: 0}
     - target: {fileID: 8325894798917001309, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_Name
       value: PolarBear
@@ -112,6 +136,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: -2635300922390200833}
   m_SourcePrefab: {fileID: 100100000, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
+--- !u!1 &389209982837358403 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3677142853316504597, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
+  m_PrefabInstance: {fileID: 3918436908572971862}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5037998212531483403 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8325894798917001309, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
@@ -132,7 +161,9 @@ MonoBehaviour:
   speed: 0.5
   maxHp: 100
   hp: 0
-  explosion: {fileID: 1898137211088249128, guid: d10899cf2c359c44b91f7f4be3721387, type: 3}
+  explosion: {fileID: 3605114599674254736, guid: d10899cf2c359c44b91f7f4be3721387, type: 3}
+  boost: {fileID: 389209982837358403}
   isStun: 0
+  isSlow: 0
   <PoolType>k__BackingField: {fileID: 11400000, guid: ae01ad5460b30bc4384d8509acd37caa, type: 2}
   poolManager: {fileID: 11400000, guid: 928c52471a99fba4a983ede3b8649ab4, type: 2}

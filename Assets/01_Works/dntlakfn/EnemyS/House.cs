@@ -9,8 +9,16 @@ public class House : Enemy
 
     private void OnEnable()
     {
+        
         EnemySpawner.isHouseLive = true;
+        Debug.Log(EnemySpawner.isHouseLive);
         UniqueSkill();
+    }
+
+    private void OnDisable()
+    {
+        EnemySpawner.isHouseLive = false;
+
     }
     public override void GetDamage(int damage, float knockbackPower, Action action = null)
     {
