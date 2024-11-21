@@ -11,6 +11,7 @@ public class Refrigerator : Enemy
     private void Start()
     {
         UniqueSkill();
+        EnemySpawner.isBossLive = true;
     }
 
     protected override void UniqueSkill()
@@ -22,11 +23,6 @@ public class Refrigerator : Enemy
         base.GetDamage(damage, 0, action);
     }
 
-    private void OnEnable()
-    {
-        EnemySpawner.isBossLive = true;
-
-    }
 
     private void OnDisable()
     {

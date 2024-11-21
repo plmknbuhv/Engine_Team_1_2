@@ -7,7 +7,7 @@ public class House : Enemy
 {
     // 넉백, 슬로우 안받음, 직접 못 움직임, 다른 적들이 밀어줘야 움직임
 
-    private void OnEnable()
+    public override void OnEnable()
     {
         
         EnemySpawner.isHouseLive = true;
