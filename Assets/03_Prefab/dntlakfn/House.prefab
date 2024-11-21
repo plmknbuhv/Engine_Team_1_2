@@ -12,6 +12,22 @@ PrefabInstance:
       propertyPath: m_Mass
       value: 500
       objectReference: {fileID: 0}
+    - target: {fileID: 2409298366163833812, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
+      propertyPath: m_Size.x
+      value: 2.1674085
+      objectReference: {fileID: 0}
+    - target: {fileID: 2409298366163833812, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
+      propertyPath: m_Size.y
+      value: 3.446478
+      objectReference: {fileID: 0}
+    - target: {fileID: 2409298366163833812, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.0065648556
+      objectReference: {fileID: 0}
+    - target: {fileID: 2409298366163833812, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
+      propertyPath: m_Offset.y
+      value: 2.8118725
+      objectReference: {fileID: 0}
     - target: {fileID: 3440276572167425141, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_SortingOrder
       value: 4
@@ -160,7 +176,8 @@ PrefabInstance:
       propertyPath: m_TagString
       value: OnlyOne
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2409298366163833812, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
     m_RemovedGameObjects:
     - {fileID: 3677142853316504597, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
     m_AddedGameObjects: []
@@ -168,6 +185,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8325894798917001309, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       insertIndex: -1
       addedObject: {fileID: -8109820950011504232}
+    - targetCorrespondingSourceObject: {fileID: 8325894798917001309, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 870612915593372014}
   m_SourcePrefab: {fileID: 100100000, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
 --- !u!1 &7682975568235234173 stripped
 GameObject:
@@ -195,3 +215,48 @@ MonoBehaviour:
   isSlow: 0
   <PoolType>k__BackingField: {fileID: 11400000, guid: dba2e09537a47394b9a80ab2fd425c77, type: 2}
   poolManager: {fileID: 11400000, guid: 928c52471a99fba4a983ede3b8649ab4, type: 2}
+--- !u!61 &870612915593372014
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7682975568235234173}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 2.38694}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: -0.3292683}
+    oldSize: {x: 2.25, y: 3.4166667}
+    newSize: {x: 3.375, y: 5.125}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.25, y: 2.5238814}
+  m_EdgeRadius: 0

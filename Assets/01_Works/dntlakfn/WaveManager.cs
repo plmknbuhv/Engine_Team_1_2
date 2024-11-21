@@ -1,6 +1,7 @@
 using GGMPool;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -27,20 +28,15 @@ public class WaveManager : MonoBehaviour
 
     private void Awake()
     {
-        
         for(int i = 1; i <= 8; i++)
         {
-            if(i == 8) Waves.Add(i, 1);
-            else if(i % 2 == 0) Waves.Add(i, i*5);
-            else Waves.Add(i, i * 3);
+            Waves[i] = i % 2 == 0 ? 20 : 14;
         }
+        Waves[8] = 1;
+        
         
     }
 
-    private void Start()
-    {
-        WaveStart();
-    }
 
     public void WaveStart()
     {

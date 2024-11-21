@@ -18,9 +18,10 @@ public class Enemy : MonoBehaviour, IPoolable
     public bool isSlow = false;
     private bool isDead = false;
     protected Rigidbody2D rb;
-    protected Animator animator;
+    public Animator animator;
     protected Transform target;
     protected int dropGold;
+    protected Vector3 targetVec;
     
     
 
@@ -31,7 +32,7 @@ public class Enemy : MonoBehaviour, IPoolable
     [SerializeField] private PoolManagerSO poolManager;
     public static Action OnknockbackStop;
 
-    private void Awake()
+    public virtual void Awake()
     {
         
         rb = GetComponent<Rigidbody2D>();
@@ -40,11 +41,18 @@ public class Enemy : MonoBehaviour, IPoolable
         OnknockbackStop += KnockBackStop;
         
     }
-    private void OnEnable()
+    public virtual void OnEnable()
     {
         dropGold = Mathf.Clamp(WaveManager.wave/2, 1, 4);
         hp = maxHp;
         Debug.Log("체력 리셋");
+        targetVec = target.position + new Vector3(UnityEngine.Random.Range(-1.5f, 1.5f), 0, 0);
+        if(EnemySpawner.isKoreaLive)
+        {
+            boost.SetActive(true);
+            speed *= 1.3f;
+            animator.speed = 1.3f;
+        }
     }
 
     protected virtual void Move()
@@ -69,8 +77,9 @@ public class Enemy : MonoBehaviour, IPoolable
         }
         else
         {
-            transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, targetVec, speed * Time.deltaTime);
         }
+        transform.position  = new Vector3(transform.position.x, transform.position.y, transform.position.y/10);
         
         
     }
@@ -167,9 +176,23 @@ public class Enemy : MonoBehaviour, IPoolable
 
             //ShopManager.Instance.Gold += dropGold;
 
+            if(EnemySpawner.isKoreaLive)
+            {
+                if(boost != null)
+                {
+                    boost.SetActive(false);
+                    speed /= 1.3f;
+                    animator.speed = 1;
+                }
+            }
+
+
+
             isDead = false;
             isGetDamage = false;
             isSlow = false;
+
+            
 
             EnemySpawner.enemyCount++;
 

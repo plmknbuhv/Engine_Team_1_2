@@ -33,22 +33,20 @@ public class EnemySpawner : MonoBehaviour
 
     private void Update()
     {
-        timer += Time.deltaTime;
-        if (timer > 3 && waveManager.isWaveStart && enemySpawnCount <= waveManager.Waves[WaveManager.wave])
+        if(isBossLive)
         {
-            timer = 0;
-            Spawn();
             return;
         }
+        timer += Time.deltaTime;
         if (enemyCount >= waveManager.Waves[WaveManager.wave])
         {
-            
+
             enemyCount = 0;
-            enemySpawnCount = 1;
+            enemySpawnCount = 0;
             timer = 0;
             try
             {
-                enemyType = waveManager.enemyList[WaveManager.wave - 1].enemys;
+                enemyType = waveManager.enemyList[WaveManager.wave].enemys;
             }
             catch
             {
@@ -57,6 +55,13 @@ public class EnemySpawner : MonoBehaviour
 
             waveManager.WaveEnd();
         }
+        if (timer > 0 && waveManager.isWaveStart && enemySpawnCount < waveManager.Waves[WaveManager.wave])
+        {
+            timer = 0;
+            Spawn();
+            return;
+        }
+        
     }
 
     public void Spawn()
@@ -72,7 +77,7 @@ public class EnemySpawner : MonoBehaviour
             else
             {
                 enemy = poolManager.Pop(enemyType[rand]) as Enemy;
-                enemy.transform.position = spawnPoint.position + new Vector3(UnityEngine.Random.Range(-6, 6), 0);
+                enemy.transform.position = spawnPoint.position + new Vector3(UnityEngine.Random.Range(-7f, 7f), 0);
                 enemy.transform.localRotation = Quaternion.identity;
                 enemyType.Remove(enemyType[rand]);
                 return;
@@ -84,7 +89,7 @@ public class EnemySpawner : MonoBehaviour
             else
             {
                 enemy = poolManager.Pop(enemyType[rand]) as Enemy;
-                enemy.transform.position = spawnPoint.position + new Vector3(UnityEngine.Random.Range(-6, 6), 6);
+                enemy.transform.position = spawnPoint.position + new Vector3(UnityEngine.Random.Range(-7f, 7f), 6);
                 enemy.transform.localRotation = Quaternion.identity;
                 enemyType.Remove(enemyType[rand]);
 
@@ -97,7 +102,7 @@ public class EnemySpawner : MonoBehaviour
             else
             {
                 enemy = poolManager.Pop(enemyType[rand]) as Enemy;
-                enemy.transform.position = spawnPoint.position + new Vector3(UnityEngine.Random.Range(-6, 6), 0);
+                enemy.transform.position = spawnPoint.position + new Vector3(UnityEngine.Random.Range(-7f, 7f), 0);
                 enemy.transform.localRotation = Quaternion.identity;
                 enemyType.Remove(enemyType[rand]);
 
@@ -109,7 +114,7 @@ public class EnemySpawner : MonoBehaviour
         enemy = poolManager.Pop(enemyType[rand]) as Enemy;
 
 
-        enemy.transform.position = spawnPoint.position + new Vector3(UnityEngine.Random.Range(-6, 6), 0);
+        enemy.transform.position = spawnPoint.position + new Vector3(UnityEngine.Random.Range(-6f, 6f) + 1, 0);
         enemy.transform.localRotation = Quaternion.identity;
 
         OnSpawned?.Invoke();
