@@ -42,6 +42,7 @@ public class Enemy : MonoBehaviour, IPoolable
     }
     private void OnEnable()
     {
+        dropGold = Mathf.Clamp(WaveManager.wave/2, 1, 4);
         hp = maxHp;
         Debug.Log("체력 리셋");
     }

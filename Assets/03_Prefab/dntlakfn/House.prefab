@@ -12,21 +12,25 @@ PrefabInstance:
       propertyPath: m_Mass
       value: 500
       objectReference: {fileID: 0}
+    - target: {fileID: 3440276572167425141, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3476976484587985565, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_Size.x
-      value: 3.3565161
+      value: 2.4011807
       objectReference: {fileID: 0}
     - target: {fileID: 3476976484587985565, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_Size.y
-      value: 4.6503434
+      value: 3.4902925
       objectReference: {fileID: 0}
     - target: {fileID: 3476976484587985565, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_Offset.x
-      value: 0.023206115
+      value: 0.0061463714
       objectReference: {fileID: 0}
     - target: {fileID: 3476976484587985565, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_Offset.y
-      value: 3.9760778
+      value: 2.8160272
       objectReference: {fileID: 0}
     - target: {fileID: 3476976484587985565, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.y
@@ -50,11 +54,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4170357669452165658, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_LocalScale.x
-      value: 9.751322
+      value: 2.73
       objectReference: {fileID: 0}
     - target: {fileID: 4170357669452165658, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_LocalScale.y
-      value: 4.264199
+      value: 1.48
       objectReference: {fileID: 0}
     - target: {fileID: 4170357669452165658, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_LocalPosition.x
@@ -88,6 +92,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 5fbfb66ec62ba3244ac9ba8a69652935, type: 2}
+    - target: {fileID: 5564189219784600549, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5571254855948430785, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
