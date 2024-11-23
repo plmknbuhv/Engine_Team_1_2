@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
@@ -13,14 +14,23 @@ public class TitleUI : MonoBehaviour
 
     private bool _isButtonMove;
     
+    private Coroutine _coroutine;
+    private Sequence _sequence;
+    
+    
     private void Start()
     {
         MoveTitle();
     }
 
+    public void GameOver()
+    {
+        Application.Quit();
+    }
+
     private void MoveTitle()
     {
-        StartCoroutine(TitleCoroutine());
+        _coroutine = StartCoroutine(TitleCoroutine());
     }
 
     private IEnumerator TitleCoroutine()
@@ -32,13 +42,13 @@ public class TitleUI : MonoBehaviour
         
         Sequence sequence = DOTween.Sequence();
         sequence.
-            Append(titleUI.transform.DOMove(new Vector3(-2.4f, 2), 0.85f).SetEase(Ease.InOutSine))
+            Append(titleUI.transform.DOMove(new Vector3(-4.5f, 3.6f), 0.85f).SetEase(Ease.InOutSine))
             .Join(titleUI.transform.DOScale(Vector3.one / 1.6f, 0.85f).SetEase(Ease.InOutSine));
         
         yield return sequence.WaitForCompletion();
 
-        sequence = DOTween.Sequence();
-        sequence.Append(titleUI.transform.DORotate(new Vector3(0, 0, -5), 1).SetEase(Ease.Linear))
+        _sequence = DOTween.Sequence();
+        _sequence.Append(titleUI.transform.DORotate(new Vector3(0, 0, -5), 1).SetEase(Ease.Linear))
             .AppendCallback(() =>
                 titleUI.transform.DORotate(new Vector3(0, 0, 5), 2).SetEase(Ease.Linear).SetLoops(-1, LoopType.Yoyo));
 
@@ -46,7 +56,7 @@ public class TitleUI : MonoBehaviour
 
         foreach (var button in buttons)
         {
-            button.transform.DOMoveX(7.8f, 1).SetEase(Ease.OutBack);
+            button.transform.DOMoveX(13.85f, 1).SetEase(Ease.OutBack);
             yield return new WaitForSeconds(0.2f);
         }
     }
@@ -54,12 +64,12 @@ public class TitleUI : MonoBehaviour
     public void OnEnterButton(int num)
     {
         if (_isButtonMove) return;
-        buttons[num].transform.DORotate(new Vector3(0,0,-15), 0.65f).SetEase(Ease.InOutSine);
+        buttons[num].transform.DORotate(new Vector3(0,0,-11.2f), 0.475f).SetEase(Ease.InOutSine);
     }
     
     public void OnExitButton(int num)
     {
-        buttons[num].transform.DORotate(new Vector3(0,0,0), 0.65f).SetEase(Ease.InOutSine);
+        buttons[num].transform.DORotate(new Vector3(0,0,0), 0.475f).SetEase(Ease.InOutSine);
     }
 
     public void OnStartButtonClicked()
@@ -75,7 +85,7 @@ public class TitleUI : MonoBehaviour
             button.transform.DORotate(new Vector3(0,0,0), 0.65f).SetEase(Ease.InOutSine);
         foreach (var button in buttons)
         {
-            button.transform.DOMoveX(14f, 1).SetEase(Ease.InBack);
+            button.transform.DOMoveX(24.5f, 1).SetEase(Ease.InBack);
             yield return new WaitForSeconds(0.2f);
         }
         
@@ -90,7 +100,11 @@ public class TitleUI : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
         }
 
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1f);
+        
+        if (_coroutine != null)
+            StopCoroutine(_coroutine);
+        DOTween.KillAll();
         
         SceneManager.LoadScene("GameScene");
     }

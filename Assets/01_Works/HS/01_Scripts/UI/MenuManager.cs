@@ -12,6 +12,7 @@ public class MenuManager : MonoSingleton<MenuManager>
     public RectTransform menuRectTrm;
     public Image recipeImage;
     public Transform recipeParent;
+    public List<Image> pizzaImages;
     
     public bool isCanActiveSetting = true;
     public bool isMenuActivating;
@@ -19,17 +20,39 @@ public class MenuManager : MonoSingleton<MenuManager>
     
     private bool _isMenuOpen;
     private bool _isRecipeOpen;
+    private bool _isStart;
 
     [SerializeField] private Vector3 defaultRotation = new Vector3(-1, 90, 17.5f);
 
     private void Awake()
     {
         recipeImage.gameObject.SetActive(true);
+        foreach (var pizza in pizzaImages)
+            pizza.gameObject.SetActive(true);
         recipeImage.transform.rotation = Quaternion.Euler(defaultRotation);
         SetupRecipe();
+        StartGame();
     }
 
-    public void SetupRecipe()
+    public void StartGame()
+    {
+        StartCoroutine(StartGameCoroutine());
+    }
+
+    private IEnumerator StartGameCoroutine()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            pizzaImages[i].transform.DOLocalMoveX(-3450 + (i * 610), 1.2f).SetEase(Ease.InBack);
+            pizzaImages[i].transform.DORotate(new Vector3(0, 0, 360), 1.2f, RotateMode.FastBeyond360).SetEase(Ease.InBack);
+
+            yield return new WaitForSeconds(0.2f);
+        }
+
+        _isStart = true;
+    }
+
+    private void SetupRecipe()
     {
         List<FoodDataSO> foodDataList = new List<FoodDataSO>();
         List<TextMeshProUGUI> textList = new List<TextMeshProUGUI>();
@@ -58,16 +81,27 @@ public class MenuManager : MonoSingleton<MenuManager>
 
     public void OpenSetting()
     {
+        if (!_isStart) return;
         if (!isCanActiveSetting) return;
         if (isMenuActivating) return;
         if (isRecipeActivating) return;
         
         StartCoroutine(OpenMenuCoroutine());
+        if(_isRecipeOpen)
+            StartCoroutine(OpenRecipeCoroutine());
+    }
+
+    public void GameOver()
+    {
+        Application.Quit();
     }
 
     private IEnumerator OpenMenuCoroutine()
     {
         isMenuActivating = true;
+
+        if (_isRecipeOpen)
+            yield return new WaitForSeconds(0.1f);
         
         Tween moveTween = menuRectTrm.transform.DOMoveY(
             _isMenuOpen ? 16f : 0, 0.9f).SetEase(Ease.OutBack);
@@ -91,7 +125,7 @@ public class MenuManager : MonoSingleton<MenuManager>
         if (!_isRecipeOpen)
             tween = recipeImage.transform.DORotate(new Vector3(0, 0, 0), 1);
         else
-            tween = recipeImage.transform.DORotate(defaultRotation, 1);
+            tween = recipeImage.transform.DORotate(defaultRotation, 0.9f);
         
         _isRecipeOpen = !_isRecipeOpen;
         
