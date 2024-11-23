@@ -18,6 +18,7 @@ MonoBehaviour:
   damage: 60
   width: 2
   height: 2
+  foodInstruction: "\uAE40\uBC25\uC740 \uD06C\uAE30\uB85C \uBA39\uB294\uAC70\uC8E0."
   ingredients:
   - {fileID: 11400000, guid: 2ff2116887328364daeb998e06898dbe, type: 2}
   - {fileID: 11400000, guid: 2ff2116887328364daeb998e06898dbe, type: 2}

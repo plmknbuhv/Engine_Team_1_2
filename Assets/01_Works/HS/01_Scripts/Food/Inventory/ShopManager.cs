@@ -58,7 +58,7 @@ public class ShopManager : MonoSingleton<ShopManager>
             CreateFoodItem(foodDataList[ranIndex], i);
             _prevShopDataList[i] = foodDataList[ranIndex];
             
-            var foodPrice = foodDataList[ranIndex].height * foodDataList[ranIndex].width * 2;
+            var foodPrice = Mathf.FloorToInt(foodDataList[ranIndex].height * foodDataList[ranIndex].width * 1.5f);
             foodPriceTextList[i].text = foodPrice.ToString();
             i++;
         }
@@ -68,7 +68,7 @@ public class ShopManager : MonoSingleton<ShopManager>
     private void ShowText()
     {
         foreach (var text in foodPriceTextList)
-            text.DOFade(1, 0.2f);
+            text.DOFade(1, 0.22f);
     }
 
     private void ClearShop()
@@ -102,18 +102,18 @@ public class ShopManager : MonoSingleton<ShopManager>
 
     public void BuyFood(Food food)
     {
-        if (Gold < food.foodDataSO.height * food.foodDataSO.width * 2) return;
+        if (Gold < food.foodDataSO.height * food.foodDataSO.width * 1.5f) return;
 
         var foodIndex = shopFoodList.IndexOf(food);
 
         foodPriceTextList[foodIndex].DOFade(0, 0.22f);
-        Gold -= food.foodDataSO.height * food.foodDataSO.width * 2;
+        Gold -= Mathf.FloorToInt(food.foodDataSO.height * food.foodDataSO.width * 1.5f);
         shopFoodList[foodIndex] = null;
         food.isPurchased = true;
     }
 
     public bool CheckCanBuyFood(Food food)
     {
-        return Gold >= food.foodDataSO.height * food.foodDataSO.width * 2;
+        return Gold >= Mathf.FloorToInt(food.foodDataSO.height * food.foodDataSO.width * 1.5f);
     }
 }

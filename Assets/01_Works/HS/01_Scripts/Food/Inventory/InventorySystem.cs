@@ -56,7 +56,7 @@ public class InventorySystem : MonoBehaviour
         
         GetXY(worldPosition, out var x, out var y, itemWidth, itemHeight);
         if (!(x >= 0 && y >= 0 && x < gridWidth && y < gridHeight)) return false;
-        if (!ShopManager.Instance.CheckCanBuyFood(food)) return false;
+        if (!food.isPurchased && !ShopManager.Instance.CheckCanBuyFood(food)) return false;
         
         if (CheckCanEquipItem(itemWidth, itemHeight))
         {

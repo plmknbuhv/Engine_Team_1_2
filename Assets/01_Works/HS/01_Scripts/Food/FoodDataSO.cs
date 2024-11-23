@@ -36,4 +36,5 @@ public class FoodDataSO : ScriptableObject
     public int damage;
     public int width;
     public int height;
+    public string foodInstruction;
 }

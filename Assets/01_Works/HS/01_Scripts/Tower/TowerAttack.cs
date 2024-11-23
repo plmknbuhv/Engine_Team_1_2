@@ -54,7 +54,7 @@ public class TowerAttack : MonoBehaviour , ITowerComponent
         var targetDir = _enemyChecker.FindNearEnemy().transform.position - transform.position;
         
         var angle = Mathf.Atan2(targetDir.y, targetDir.x) * Mathf.Rad2Deg;
-        rand = Random.Range(-0.92f, 0.92f);
+        rand = Random.Range(-0.5f, 0.5f) * 2;
         return angle;
     }
 }
