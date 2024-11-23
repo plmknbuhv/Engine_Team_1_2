@@ -22,6 +22,6 @@ public class TowerRenderer : MonoBehaviour, ITowerComponent
 
     public void ShakeSprite(float currentHp, float maxHp)
     {
-        transform.DOShakePosition(1f, 0.3f, 8);
+        transform.DOShakePosition(1f, 0.25f, 7);
     }
 }

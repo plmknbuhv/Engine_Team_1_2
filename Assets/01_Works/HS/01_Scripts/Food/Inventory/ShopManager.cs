@@ -1,7 +1,11 @@
+using System;
 using System.Collections.Generic;
+using DG.Tweening;
 using GGMPool;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class ShopManager : MonoSingleton<ShopManager>
 {
@@ -11,7 +15,7 @@ public class ShopManager : MonoSingleton<ShopManager>
     [SerializeField] private List<Food> shopFoodList = new List<Food>();
     
     [SerializeField] private List<TextMeshProUGUI> foodPriceTextList = new List<TextMeshProUGUI>();
-    [SerializeField] private TextMeshProUGUI goldValueText;
+    [SerializeField] private TMP_Text goldValueText;
     
     [SerializeField] private PoolManagerSO poolManager;
     [SerializeField] private PoolTypeSO poolType;
@@ -21,7 +25,7 @@ public class ShopManager : MonoSingleton<ShopManager>
     [SerializeField] private RectTransform shopPointRect;
     public Transform foodStartPointTrm;
 
-    private List<FoodDataSO> _prevShopDataList = new List<FoodDataSO>();
+    private FoodDataSO[] _prevShopDataList = new FoodDataSO[4];
     
     public int Gold
     {
@@ -29,8 +33,10 @@ public class ShopManager : MonoSingleton<ShopManager>
         set
         {
             gold = value > 0 ? value : 0;
-            
-            goldValueText.text = gold.ToString();
+            var currentGold = Int32.Parse(goldValueText.text);
+
+            DOTween.To(() => currentGold, goldValue => goldValueText.text = goldValue.ToString(), gold, (currentGold - gold ) / 8f)
+                .SetEase(Ease.OutSine);
         }
     }
 
@@ -40,29 +46,37 @@ public class ShopManager : MonoSingleton<ShopManager>
         Gold--;
         
         ClearShop();
+        ShowText();
         
         List<FoodDataSO> foodDataList = foodDataListSO.normalFoodDataList; 
 
         for (int i = 0; i < 4;)
         {
             var ranIndex = Random.Range(0, foodDataList.Count);
-            if (_prevShopDataList.Contains(foodDataList[ranIndex]))
+            if (Array.IndexOf(_prevShopDataList, foodDataList[ranIndex]) != -1)
                 continue;
             CreateFoodItem(foodDataList[ranIndex], i);
-            _prevShopDataList.Add(foodDataList[ranIndex]);
+            _prevShopDataList[i] = foodDataList[ranIndex];
             
-            var foodPrice = foodDataList[ranIndex].height * foodDataList[ranIndex].width;
+            var foodPrice = foodDataList[ranIndex].height * foodDataList[ranIndex].width * 2;
             foodPriceTextList[i].text = foodPrice.ToString();
             i++;
         }
-        _prevShopDataList.Clear();
+        Array.Clear(_prevShopDataList, 0, _prevShopDataList.Length);
+    }
+
+    private void ShowText()
+    {
+        foreach (var text in foodPriceTextList)
+            text.DOFade(1, 0.2f);
     }
 
     private void ClearShop()
     {
         foreach (var food in shopFoodList)
         {
-            poolManager.Push(food);
+            if (food != null)
+                poolManager.Push(food);
         }
         shopFoodList.Clear();
     }
@@ -90,8 +104,11 @@ public class ShopManager : MonoSingleton<ShopManager>
     {
         if (Gold < food.foodDataSO.height * food.foodDataSO.width * 2) return;
 
+        var foodIndex = shopFoodList.IndexOf(food);
+
+        foodPriceTextList[foodIndex].DOFade(0, 0.22f);
         Gold -= food.foodDataSO.height * food.foodDataSO.width * 2;
-        shopFoodList.Remove(food);
+        shopFoodList[foodIndex] = null;
         food.isPurchased = true;
     }
 
