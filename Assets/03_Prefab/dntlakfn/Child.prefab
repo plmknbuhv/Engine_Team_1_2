@@ -20,6 +20,18 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.0014
       objectReference: {fileID: 0}
+    - target: {fileID: 1532527491407238590, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
+      propertyPath: m_Color.b
+      value: 0.6226415
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532527491407238590, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
+      propertyPath: m_Color.g
+      value: 0.6226415
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532527491407238590, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
+      propertyPath: m_Color.r
+      value: 0.6226415
+      objectReference: {fileID: 0}
     - target: {fileID: 2409298366163833812, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_Size.x
       value: 0.8
@@ -38,11 +50,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4170357669452165658, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.32
+      value: 1.7688001
       objectReference: {fileID: 0}
     - target: {fileID: 4170357669452165658, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 1.42
       objectReference: {fileID: 0}
     - target: {fileID: 4170357669452165658, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_LocalPosition.x
@@ -139,12 +151,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437d61b495c9d274985e284758417aee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnDamaged:
+    m_PersistentCalls:
+      m_Calls: []
   speed: 1.5
   maxHp: 50
   hp: 50
   explosion: {fileID: 6136224044231406328, guid: d10899cf2c359c44b91f7f4be3721387, type: 3}
+  hpBar: {fileID: 0}
   boost: {fileID: 1451088196645016278}
   isStun: 0
   isSlow: 0
+  animator: {fileID: 0}
   <PoolType>k__BackingField: {fileID: 11400000, guid: bb3fe2e85058210459814021b15fdef6, type: 2}
   poolManager: {fileID: 11400000, guid: 928c52471a99fba4a983ede3b8649ab4, type: 2}
