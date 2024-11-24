@@ -3085,7 +3085,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: bffe25ae6300a454ea1f2e0f60401722, type: 2}
     - {fileID: 11400000, guid: bb3fe2e85058210459814021b15fdef6, type: 2}
   t: {fileID: 293242816}
-  startBtn: {fileID: 1678431420}
+  startBtn: {fileID: 1678431423}
   isWaveStart: 0
 --- !u!4 &608447234
 Transform:
