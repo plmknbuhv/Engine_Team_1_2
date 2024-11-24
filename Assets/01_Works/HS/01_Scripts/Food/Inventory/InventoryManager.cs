@@ -1,5 +1,7 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using GGMPool;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -13,12 +15,13 @@ public class InventoryManager : MonoSingleton<InventoryManager>
     private Dictionary<FoodType, int> _foods = new Dictionary<FoodType, int>();
     public List<InventorySystem> inventoryList = new List<InventorySystem>();
     public List<Food> kitchenFoods = new List<Food>();
-    private InventorySystem _kitchen;
+    public InventorySystem kitchen;
     public Tower tower;
     public GameObject kitchenPanel;
 
     public bool isCanCook = true;
     public bool isCanActiveKitchen = true;
+    private bool isKitchenActivating;
     
     [SerializeField] private RectTransform cookPointRect;
     [SerializeField] private CookingButton cookingButton;
@@ -27,11 +30,9 @@ public class InventoryManager : MonoSingleton<InventoryManager>
 
     private void Awake()
     {
-        kitchenPanel.SetActive(true);
-        _kitchen = kitchenPanel.GetComponentInChildren<InventorySystem>();
-        _kitchen.isOpen = false;
-        _kitchen.isKitchen = true;
-        kitchenPanel.SetActive(false);
+        kitchen = kitchenPanel.GetComponentInChildren<InventorySystem>();
+        kitchen.isOpen = false;
+        kitchen.isKitchen = true;
     }
 
     private void Update()
@@ -43,13 +44,26 @@ public class InventoryManager : MonoSingleton<InventoryManager>
     private void OpenKitchen()
     {
         if (!isCanActiveKitchen) return;
+        if (MenuManager.Instance.isMenuOpen) return;
+        if (isKitchenActivating) return;
+        
         if (Keyboard.current.fKey.wasPressedThisFrame)
         {
-            kitchenPanel.SetActive(!kitchenPanel.activeSelf);
-            _kitchen.isOpen = !_kitchen.isOpen;
-            foreach (var food in kitchenFoods)
-                food.gameObject.SetActive(!food.gameObject.activeSelf);
+            StartCoroutine(OpenKitchenCoroutine());
         }
+    }
+
+    private IEnumerator OpenKitchenCoroutine()
+    {
+        isKitchenActivating = true;
+        
+        Tween moveTween = kitchenPanel.transform.parent.DOMoveY(
+            kitchen.isOpen ? -17.5f : 0, 0.9f).SetEase(Ease.OutBack);
+        kitchen.isOpen = !kitchen.isOpen;
+        
+        yield return moveTween.WaitForCompletion();
+        
+        isKitchenActivating = false;
     }
 
     public void CookFood()

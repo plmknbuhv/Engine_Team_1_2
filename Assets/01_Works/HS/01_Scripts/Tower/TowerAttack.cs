@@ -8,6 +8,7 @@ public class TowerAttack : MonoBehaviour , ITowerComponent
     
     [SerializeField] private PoolManagerSO poolManager;
     [SerializeField] private PoolTypeSO bulletType;
+    [SerializeField] private PoolTypeSO foodType;
     
     public void Initialize(Tower tower)
     {
@@ -34,7 +35,7 @@ public class TowerAttack : MonoBehaviour , ITowerComponent
                 var targetRotate = Quaternion.Euler(0, 0, (angle - 90 + rand) + i * 10);
         
                 bullet.transform.SetPositionAndRotation(transform.position, targetRotate);
-                bullet.SetUpBullet(InventoryManager.Instance.yogurtData);
+                bullet.SetUpBullet(InventoryManager.Instance.yogurtData, poolManager, foodType);
             }
         }
         else
@@ -45,7 +46,7 @@ public class TowerAttack : MonoBehaviour , ITowerComponent
             var targetRotate = Quaternion.Euler(0, 0, angle - 90 + rand);
         
             bullet.transform.SetPositionAndRotation(transform.position, targetRotate);
-            bullet.SetUpBullet(foodData);
+            bullet.SetUpBullet(foodData, poolManager, foodType);
         }
     }
 

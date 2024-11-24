@@ -70,5 +70,6 @@ public class Food : MonoBehaviour, IPoolable
         transform.rotation = Quaternion.identity;
         FoodDragHandler.isDragging = false;
         FoodDragHandler.isRotating = false;
+        transform.SetParent(ShopManager.Instance.shopCanvas.transform);
     }
 }

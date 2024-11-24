@@ -65,7 +65,7 @@ public class FoodDragHandler : MonoBehaviour,
             StopCoroutine(_coroutine);
         
         InventoryManager.Instance.isCanActiveKitchen = false;
-        MenuManager.Instance.isCanActiveSetting = false;
+        MenuManager.Instance.isCanActiveMenu = false;
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -88,7 +88,7 @@ public class FoodDragHandler : MonoBehaviour,
     private void DropItem()
     {
         InventoryManager.Instance.isCanActiveKitchen = true;
-        MenuManager.Instance.isCanActiveSetting = true;
+        MenuManager.Instance.isCanActiveMenu = true;
         if (!_inventoryChecker.CheckEquipInventory())
         {
             transform.position = returnPosition;

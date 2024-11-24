@@ -17,7 +17,9 @@ public class Bullet : MonoBehaviour, IPoolable
      private float _rotateConstant;
 
      private bool _isDead;
-     
+     private PoolManagerSO _poolManager;
+     private PoolTypeSO _effectType;
+
      private void Awake()
      {
           _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
@@ -70,12 +72,19 @@ public class Bullet : MonoBehaviour, IPoolable
                     enemy.GetDamage(_foodData.damage, 8);
                     break;
           }
-          _myPool.Push(this);
+
+          var effect = _poolManager.Pop(_effectType) as FoodEffect;
+          effect.SetPositionAndPlay(transform.position);
+          
           _isDead = true;
+          
+          _myPool.Push(this);
      }
 
-     public void SetUpBullet(FoodDataSO foodData)
+     public void SetUpBullet(FoodDataSO foodData, PoolManagerSO poolManagerSo, PoolTypeSO poolType)
      {
+          _poolManager = poolManagerSo;
+          _effectType = poolType;
           _foodData = foodData;
           _spriteRenderer.sprite = foodData.sprite;
           

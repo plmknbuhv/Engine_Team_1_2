@@ -14,11 +14,11 @@ public class MenuManager : MonoSingleton<MenuManager>
     public Transform recipeParent;
     public List<Image> pizzaImages;
     
-    public bool isCanActiveSetting = true;
+    public bool isCanActiveMenu = true;
     public bool isMenuActivating;
     public bool isRecipeActivating;
     
-    private bool _isMenuOpen;
+    public bool isMenuOpen;
     private bool _isRecipeOpen;
     private bool _isStart;
 
@@ -82,9 +82,10 @@ public class MenuManager : MonoSingleton<MenuManager>
     public void OpenSetting()
     {
         if (!_isStart) return;
-        if (!isCanActiveSetting) return;
+        if (!isCanActiveMenu) return;
         if (isMenuActivating) return;
         if (isRecipeActivating) return;
+        if (InventoryManager.Instance.kitchen.isOpen) return;
         
         StartCoroutine(OpenMenuCoroutine());
         if(_isRecipeOpen)
@@ -104,8 +105,8 @@ public class MenuManager : MonoSingleton<MenuManager>
             yield return new WaitForSeconds(0.1f);
         
         Tween moveTween = menuRectTrm.transform.DOMoveY(
-            _isMenuOpen ? 16f : 0, 0.9f).SetEase(Ease.OutBack);
-        _isMenuOpen = !_isMenuOpen;
+            isMenuOpen ? 16f : 0, 0.9f).SetEase(Ease.OutBack);
+        isMenuOpen = !isMenuOpen;
         
         yield return moveTween.WaitForCompletion();
         

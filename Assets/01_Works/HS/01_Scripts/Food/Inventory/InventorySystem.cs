@@ -76,12 +76,14 @@ public class InventorySystem : MonoBehaviour
             {
                 if (!InventoryManager.Instance.kitchenFoods.Contains(food))
                     InventoryManager.Instance.kitchenFoods.Add(food);
+                food.transform.SetParent(InventoryManager.Instance.kitchenPanel.transform.parent);
                 food.FoodAttack.StopAttack();
             }
             else
             {
                 if (InventoryManager.Instance.kitchenFoods.Contains(food))
                     InventoryManager.Instance.kitchenFoods.Remove(food);
+                food.transform.SetParent(ShopManager.Instance.shopCanvas.transform);
                 food.FoodAttack.StartAttack();
             }     
             return true;
