@@ -27,6 +27,8 @@ public class ShopManager : MonoSingleton<ShopManager>
 
     private FoodDataSO[] _prevShopDataList = new FoodDataSO[4];
     
+    [SerializeField] private Image buttonImage;
+    
     public int Gold
     {
         get => gold;
@@ -35,7 +37,8 @@ public class ShopManager : MonoSingleton<ShopManager>
             gold = value >= 0 ? value : 0;
             var currentGold = Int32.Parse(goldValueText.text);
 
-            DOTween.To(() => currentGold, goldValue => goldValueText.text = goldValue.ToString(), gold, (currentGold - gold ) / 8f)
+            DOTween.To(() => currentGold, goldValue => goldValueText.text = goldValue.ToString(),
+                    gold, Mathf.Abs(currentGold - gold) / 8f)
                 .SetEase(Ease.OutSine);
         }
     }
@@ -44,6 +47,8 @@ public class ShopManager : MonoSingleton<ShopManager>
     {
         if (Gold < 2) return;
         Gold -= 2;
+        
+        buttonImage.transform.DOPunchScale(Vector3.one * 0.1f,  0.23f, 3);
         
         ClearShop();
         ShowText();
@@ -96,6 +101,7 @@ public class ShopManager : MonoSingleton<ShopManager>
         
         Vector3 foodPosition = new Vector3(shopPointRect.anchoredPosition.x - xSpace, shopPointRect.anchoredPosition.y + number * -213.5682f - ySpace);
         food.RectTransform.anchoredPosition = foodPosition;
+        food.transform.position = new Vector3(food.transform.position.x, food.transform.position.y, 90);
         food.FoodDragHandler.startPosition = food.transform.position;
         food.SetUpFood(foodData);
     }
