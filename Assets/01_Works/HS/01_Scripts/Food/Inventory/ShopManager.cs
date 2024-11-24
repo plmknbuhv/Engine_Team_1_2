@@ -37,7 +37,8 @@ public class ShopManager : MonoSingleton<ShopManager>
             gold = value >= 0 ? value : 0;
             var currentGold = Int32.Parse(goldValueText.text);
 
-            DOTween.To(() => currentGold, goldValue => goldValueText.text = goldValue.ToString(), gold, (currentGold - gold ) / 8f)
+            DOTween.To(() => currentGold, goldValue => goldValueText.text = goldValue.ToString(),
+                    gold, Mathf.Abs(currentGold - gold) / 8f)
                 .SetEase(Ease.OutSine);
         }
     }
@@ -100,6 +101,7 @@ public class ShopManager : MonoSingleton<ShopManager>
         
         Vector3 foodPosition = new Vector3(shopPointRect.anchoredPosition.x - xSpace, shopPointRect.anchoredPosition.y + number * -213.5682f - ySpace);
         food.RectTransform.anchoredPosition = foodPosition;
+        food.transform.position = new Vector3(food.transform.position.x, food.transform.position.y, 90);
         food.FoodDragHandler.startPosition = food.transform.position;
         food.SetUpFood(foodData);
     }
