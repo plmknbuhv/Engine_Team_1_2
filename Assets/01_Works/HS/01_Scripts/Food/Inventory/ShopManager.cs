@@ -27,6 +27,8 @@ public class ShopManager : MonoSingleton<ShopManager>
 
     private FoodDataSO[] _prevShopDataList = new FoodDataSO[4];
     
+    [SerializeField] private Image buttonImage;
+    
     public int Gold
     {
         get => gold;
@@ -44,6 +46,8 @@ public class ShopManager : MonoSingleton<ShopManager>
     {
         if (Gold < 2) return;
         Gold -= 2;
+        
+        buttonImage.transform.DOPunchScale(Vector3.one * 0.1f,  0.23f, 3);
         
         ClearShop();
         ShowText();

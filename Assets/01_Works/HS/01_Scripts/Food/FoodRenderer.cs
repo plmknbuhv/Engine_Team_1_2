@@ -80,7 +80,7 @@ public class FoodRenderer : MonoBehaviour
     private IEnumerator DropAnimationCoroutine()
     {
         isAnimating = true;
-        Tween animCoroutine = transform.DOPunchScale(Vector3.one * 13.5f, 0.35f, 3);
+        Tween animCoroutine = transform.DOPunchScale(Vector3.one * 13.5f, 0.3f, 3);
         yield return animCoroutine.WaitForCompletion();
         isAnimating = false;
     }
