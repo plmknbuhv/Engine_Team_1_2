@@ -77,7 +77,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10000
+  m_SortingOrder: 4
   m_Sprite: {fileID: -7601478637420598352, guid: 76328e07675a25347b36abe60e1e9f2d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -194,13 +194,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f89f8fc1ac604104e85c06fc4d413bf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnDamaged:
+    m_PersistentCalls:
+      m_Calls: []
   speed: 0.4
-  maxHp: 10000
+  maxHp: 10
   hp: 0
   explosion: {fileID: 6136224044231406328, guid: d10899cf2c359c44b91f7f4be3721387, type: 3}
+  hpBar: {fileID: 0}
   boost: {fileID: 0}
-  isStun: 0
-  isSlow: 0
   animator: {fileID: 0}
   <PoolType>k__BackingField: {fileID: 11400000, guid: 247d1c7a1b13b8940acee336063fa29e, type: 2}
   poolManager: {fileID: 11400000, guid: 928c52471a99fba4a983ede3b8649ab4, type: 2}

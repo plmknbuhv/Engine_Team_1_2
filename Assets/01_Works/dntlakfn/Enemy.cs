@@ -4,19 +4,22 @@ using System.Collections;
 using System.Globalization;
 using UnityEngine;
 using UnityEngine.Animations;
+using UnityEngine.Events;
 
 public class Enemy : MonoBehaviour, IPoolable
 {
+    public UnityEvent<float, float> OnDamaged;
     public float speed;
     public int maxHp;
     public int hp;
     public Explosion explosion;
+    public EnemyHpBar hpBar;
     public GameObject boost;
     private float knockbackPower;
     private bool isGetDamage = false;
-    public bool isStun = false;
-    public bool isSlow = false;
-    private bool isDead = false;
+    protected bool isStun = false;
+    protected bool isSlow = false;
+    protected bool isDead = false;
     protected Rigidbody2D rb;
     public Animator animator;
     protected Transform target;
@@ -29,12 +32,12 @@ public class Enemy : MonoBehaviour, IPoolable
 
     public GameObject GameObject => gameObject;
 
-    [SerializeField] private PoolManagerSO poolManager;
+    [SerializeField] protected PoolManagerSO poolManager;
     public static Action OnknockbackStop;
 
     public virtual void Awake()
     {
-        
+        hpBar = GetComponentInChildren<EnemyHpBar>();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         target = FindAnyObjectByType<Tower>().transform;
@@ -93,6 +96,7 @@ public class Enemy : MonoBehaviour, IPoolable
         
 
         hp -= damage;
+        hpBar.SetHpBar(hp, maxHp);
         if(hp <= 0)
         {
             isDead = true;
@@ -154,7 +158,7 @@ public class Enemy : MonoBehaviour, IPoolable
         Move();
     }
 
-    private void Update()
+    public virtual void Update()
     {
         
         if (Input.GetKeyDown(KeyCode.A)) // ÅÂ½ºÆ®
