@@ -12,16 +12,18 @@ public class FirstCheck : MonoBehaviour
     {
         try
         {
-            File.OpenWrite(@"C:\");
+            File.OpenWrite(@"Assets\FC\fc.txt");
+            File.WriteAllText(@"Assets\FC\fc.txt", "false");
+            
             
         }
         catch
         {
-            File.Create(@"C:\ch.txt");
+            File.Create(@"Assets\FC\fc.txt");
             isFirst = true;
             return;
         }
-        isFirst = false;
+        isFirst = bool.Parse(File.ReadAllText(@"Assets\FC\fc.txt"));
         
     }
 
