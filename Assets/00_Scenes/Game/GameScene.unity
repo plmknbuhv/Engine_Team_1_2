@@ -4940,6 +4940,7 @@ MonoBehaviour:
   - {fileID: 1342104182}
   - {fileID: 317287201}
   - {fileID: 389550088}
+  waveBtn: {fileID: 1527214951}
 --- !u!1 &754299573
 GameObject:
   m_ObjectHideFlags: 0
@@ -8266,7 +8267,7 @@ MonoBehaviour:
   - enemys:
     - {fileID: 11400000, guid: 247d1c7a1b13b8940acee336063fa29e, type: 2}
   t: {fileID: 1831292619}
-  startBtn: {fileID: 0}
+  startBtn: {fileID: 1527214951}
   isWaveStart: 0
 --- !u!1 &1429220981
 GameObject:
@@ -8644,6 +8645,7 @@ GameObject:
   - component: {fileID: 1527214950}
   - component: {fileID: 1527214949}
   - component: {fileID: 1527214948}
+  - component: {fileID: 1527214951}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -8668,7 +8670,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 86, y: 126}
+  m_AnchoredPosition: {x: 86, y: 119}
   m_SizeDelta: {x: 346.86, y: 97.12}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1527214948
@@ -8765,6 +8767,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1527214946}
   m_CullTransparentMesh: 1
+--- !u!114 &1527214951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1527214946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5202130b6b0c81948a868a47590f7197, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1573202507
 GameObject:
   m_ObjectHideFlags: 0
@@ -9809,7 +9823,7 @@ MonoBehaviour:
   goldValueText: {fileID: 265602064}
   poolManager: {fileID: 11400000, guid: 928c52471a99fba4a983ede3b8649ab4, type: 2}
   poolType: {fileID: 11400000, guid: 13b61eab7a932874a9ea858af921911c, type: 2}
-  gold: 5
+  gold: 300
   shopPointRect: {fileID: 1581992491}
   foodStartPointTrm: {fileID: 1153806589}
   buttonImage: {fileID: 616088705}

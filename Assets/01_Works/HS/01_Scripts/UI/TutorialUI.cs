@@ -5,6 +5,8 @@ using UnityEngine;
 public class TutorialUI : MonoBehaviour
 {
     [SerializeField] private List<Transform> tutorialTrm = new List<Transform>();
+    [SerializeField] private WaveBtn waveBtn;
+        
     private int _tutorialNum;
 
     private void Start()
@@ -18,6 +20,7 @@ public class TutorialUI : MonoBehaviour
 
         if (_tutorialNum == 3)
         {
+            waveBtn.OnStartGame();
             gameObject.SetActive(false);
             return;
         }

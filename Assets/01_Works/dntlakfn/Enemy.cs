@@ -48,7 +48,7 @@ public class Enemy : MonoBehaviour, IPoolable
     {
         dropGold = Mathf.Clamp(WaveManager.wave/2, 1, 4);
         hp = maxHp;
-        Debug.Log("ц╪╥б ╦╝╪б");
+        Debug.Log("ц╪О©╫О©╫ О©╫О©╫О©╫О©╫");
         targetVec = target.position + new Vector3(UnityEngine.Random.Range(-1.5f, 1.5f), 0, 0);
         if(EnemySpawner.isKoreaLive)
         {
@@ -161,15 +161,15 @@ public class Enemy : MonoBehaviour, IPoolable
     public virtual void Update()
     {
         
-        if (Input.GetKeyDown(KeyCode.A)) // еб╫╨ф╝
+        if (Input.GetKeyDown(KeyCode.A)) // О©╫б╫О©╫ф╝
         {
             GetDamage(10,10);
         }
-        if (Input.GetKeyDown(KeyCode.S)) // еб╫╨ф╝
+        if (Input.GetKeyDown(KeyCode.S)) // О©╫б╫О©╫ф╝
         {
             GetStun(2);
         }
-        if (Input.GetKeyDown(KeyCode.D)) // еб╫╨ф╝
+        if (Input.GetKeyDown(KeyCode.D)) // О©╫б╫О©╫ф╝
         {
             GetSlow(20, 3);
         }
@@ -214,6 +214,6 @@ public class Enemy : MonoBehaviour, IPoolable
 
     public void ResetItem()
     {
-        
+        hpBar.SetHpBar(1, 1);
     }
 }
