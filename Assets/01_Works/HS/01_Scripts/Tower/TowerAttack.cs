@@ -5,6 +5,7 @@ public class TowerAttack : MonoBehaviour , ITowerComponent
 {
     private Tower _tower;
     private EnemyChecker _enemyChecker;
+    private FeedbackPlayer _feedbackPlayer;
     
     [SerializeField] private PoolManagerSO poolManager;
     [SerializeField] private PoolTypeSO bulletType;
@@ -14,6 +15,7 @@ public class TowerAttack : MonoBehaviour , ITowerComponent
     {
         _tower = tower;
         _enemyChecker = _tower.GetCompo<EnemyChecker>();
+        _feedbackPlayer = GetComponentInChildren<FeedbackPlayer>();
     }
 
     public bool CheckCanAttack()
@@ -25,6 +27,7 @@ public class TowerAttack : MonoBehaviour , ITowerComponent
     {
         if (_enemyChecker.Targets.Count < 1) return;
 
+        _feedbackPlayer.PlayFeedbacks();
         if (foodData.foodType == FoodType.Yoe)
         {
             for (var i = -2; i < 3; i++)
@@ -48,6 +51,8 @@ public class TowerAttack : MonoBehaviour , ITowerComponent
             bullet.transform.SetPositionAndRotation(transform.position, targetRotate);
             bullet.SetUpBullet(foodData, poolManager, foodType);
         }
+
+        
     }
 
     private float SetAngle(out float rand)

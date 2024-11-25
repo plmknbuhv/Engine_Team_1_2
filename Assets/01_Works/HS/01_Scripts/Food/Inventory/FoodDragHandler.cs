@@ -188,7 +188,7 @@ public class FoodDragHandler : MonoBehaviour,
         
             _foodRenderer.SetSize(scaleValue);
 
-            if (glowTimer >= 3.75f)
+            if (glowTimer >= 3f)
                 _isCanGrowing = false;
             else if (glowTimer <= 0)
                 _isCanGrowing = true;

@@ -12,7 +12,8 @@ public class GoldText : MonoBehaviour, IPoolable
     public GameObject GameObject => gameObject;
 
     private TextMeshProUGUI _text;
-
+    private Pool _myPool;
+    
     private void Awake()
     {
         _text = GetComponent<TextMeshProUGUI>();
@@ -21,21 +22,23 @@ public class GoldText : MonoBehaviour, IPoolable
     public void SetText(int gold)
     {
         _text.text = $"+{gold}";
+        (transform as RectTransform).localScale = Vector3.one;
         StartCoroutine(ShowTextCoroutine());
     }
 
     private IEnumerator ShowTextCoroutine()
     {
         Sequence sequence = DOTween.Sequence();
-        sequence.Append(_text.DOFade(1f, 0.1f))
+        sequence.Append(_text.DOFade(1f, 0.15f))
             .Insert(0.2f, _text.DOFade(0f, 0.5f));
-        transform.DOMoveY(transform.position.y + 0.2f, 0.6f).SetEase(Ease.Linear);
+        transform.DOMoveY(transform.position.y + 0.25f, 0.65f).SetEase(Ease.Linear);
         yield return sequence.WaitForCompletion();
+        _myPool.Push(this);
     }
 
     public void SetUpPool(Pool pool)
     {
-        
+        _myPool = pool;
     }
 
     public void ResetItem()

@@ -5,6 +5,7 @@ using DG.Tweening;
 using GGMPool;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class InventoryManager : MonoSingleton<InventoryManager>
 {
@@ -25,6 +26,7 @@ public class InventoryManager : MonoSingleton<InventoryManager>
     
     [SerializeField] private RectTransform cookPointRect;
     [SerializeField] private CookingButton cookingButton;
+    [SerializeField] private RectTransform fillImage;
 
     public FoodDataSO yogurtData;
 
@@ -46,6 +48,7 @@ public class InventoryManager : MonoSingleton<InventoryManager>
         if (!isCanActiveKitchen) return;
         if (MenuManager.Instance.isMenuOpen) return;
         if (isKitchenActivating) return;
+        if (!isCanCook) return;
         
         if (Keyboard.current.fKey.wasPressedThisFrame)
         {
@@ -57,11 +60,15 @@ public class InventoryManager : MonoSingleton<InventoryManager>
     {
         isKitchenActivating = true;
         
+        fillImage.transform.gameObject.SetActive(kitchen.isOpen);
+        
         Tween moveTween = kitchenPanel.transform.parent.DOMoveY(
             kitchen.isOpen ? -17.5f : 0, 0.9f).SetEase(Ease.OutBack);
         kitchen.isOpen = !kitchen.isOpen;
         
         yield return moveTween.WaitForCompletion();
+        
+        fillImage.transform.gameObject.SetActive(!kitchen.isOpen);
         
         isKitchenActivating = false;
     }
@@ -69,8 +76,11 @@ public class InventoryManager : MonoSingleton<InventoryManager>
     public void CookFood()
     {
         var successCook = CheckCanCookFood();
-        
-        isCanCook = !successCook; 
+
+        if (successCook)
+        {
+            isCanCook = false; 
+        }
         cookingButton.OnClick(successCook);
     }
 

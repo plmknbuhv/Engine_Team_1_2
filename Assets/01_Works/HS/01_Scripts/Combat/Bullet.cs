@@ -29,7 +29,7 @@ public class Bullet : MonoBehaviour, IPoolable
      private void Update()
      {
           _lifeTimer += Time.deltaTime;
-          transform.position += transform.up * (Time.deltaTime * 12.5f);
+          transform.position += transform.up * (Time.deltaTime * 12f);
           _visualObj.transform.Rotate(Vector3.forward, Time.deltaTime * (_rotateValue / _rotateConstant));
 
           if (_lifeTimer >= 5f)

@@ -29,6 +29,8 @@ public class ShopManager : MonoSingleton<ShopManager>
     
     [SerializeField] private Image buttonImage;
     
+    public PoolTypeSO goldPoolType;
+    
     public int Gold
     {
         get => gold;
@@ -63,7 +65,7 @@ public class ShopManager : MonoSingleton<ShopManager>
             CreateFoodItem(foodDataList[ranIndex], i);
             _prevShopDataList[i] = foodDataList[ranIndex];
             
-            var foodPrice = foodDataList[ranIndex].height * foodDataList[ranIndex].width * 2;
+            var foodPrice = foodDataList[ranIndex].height * foodDataList[ranIndex].width * 3;
             foodPriceTextList[i].text = foodPrice.ToString();
             i++;
         }
@@ -108,18 +110,18 @@ public class ShopManager : MonoSingleton<ShopManager>
 
     public void BuyFood(Food food)
     {
-        if (Gold < food.foodDataSO.height * food.foodDataSO.width * 2) return;
+        if (!CheckCanBuyFood(food)) return;
 
         var foodIndex = shopFoodList.IndexOf(food);
 
         foodPriceTextList[foodIndex].DOFade(0, 0.22f);
-        Gold -= food.foodDataSO.height * food.foodDataSO.width * 2;
+        Gold -= food.foodDataSO.height * food.foodDataSO.width * 3;
         shopFoodList[foodIndex] = null;
         food.isPurchased = true;
     }
 
     public bool CheckCanBuyFood(Food food)
     {
-        return Gold >= food.foodDataSO.height * food.foodDataSO.width * 2;
+        return Gold >= food.foodDataSO.height * food.foodDataSO.width * 3;
     }
 }

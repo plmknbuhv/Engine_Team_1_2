@@ -48,6 +48,7 @@ public class Enemy : MonoBehaviour, IPoolable
     {
         dropGold = Mathf.Clamp(WaveManager.wave/2, 1, 4);
         hp = maxHp;
+        hpBar.SetHpBar(hp, maxHp);
         Debug.Log("ü�� ����");
         targetVec = target.position + new Vector3(UnityEngine.Random.Range(-1.5f, 1.5f), 0, 0);
         if(EnemySpawner.isKoreaLive)
@@ -178,7 +179,11 @@ public class Enemy : MonoBehaviour, IPoolable
             var boom = poolManager.Pop(explosion.PoolType);
             boom.GameObject.transform.position = transform.position;
             ShopManager.Instance.Gold += dropGold;
-
+            var text = poolManager.Pop(ShopManager.Instance.goldPoolType) as GoldText;
+            text.transform.SetParent(ShopManager.Instance.shopCanvas.transform);
+            text.transform.position = hpBar.transform.position;
+            text.SetText(dropGold);
+            
             if(EnemySpawner.isKoreaLive)
             {
                 if(boost != null)
@@ -213,6 +218,6 @@ public class Enemy : MonoBehaviour, IPoolable
 
     public void ResetItem()
     {
-        hpBar.SetHpBar(1, 1);
+        hpBar.SetHpBar(100, 100);
     }
 }
