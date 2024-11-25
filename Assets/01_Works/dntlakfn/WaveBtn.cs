@@ -3,10 +3,7 @@ using UnityEngine;
 
 public class WaveBtn : MonoBehaviour
 {
-    private void OnEnable()
-    {
-        transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y - 200);
-    }
+    
 
     public void OnStartGame()
     {
