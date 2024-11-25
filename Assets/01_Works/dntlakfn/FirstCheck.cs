@@ -12,12 +12,12 @@ public class FirstCheck : MonoBehaviour
     {
         try
         {
-            File.OpenWrite("C:/ch.txt");
+            File.OpenWrite(@"C:\");
             
         }
         catch
         {
-            File.Create("C:/ch.txt");
+            File.Create(@"C:\ch.txt");
             isFirst = true;
             return;
         }
