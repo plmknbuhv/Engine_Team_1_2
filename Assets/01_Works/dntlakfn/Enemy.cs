@@ -46,7 +46,7 @@ public class Enemy : MonoBehaviour, IPoolable
     }
     public virtual void OnEnable()
     {
-        dropGold = Mathf.Clamp(WaveManager.wave/2, 1, 4);
+        dropGold = Mathf.Clamp(WaveManager.wave/3, 1, 4);
         hp = maxHp;
         hpBar.SetHpBar(hp, maxHp);
         Debug.Log("ü�� ����");

@@ -182,12 +182,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2709a19c74f25af4998ba6c7eefe8a42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnDamaged:
+    m_PersistentCalls:
+      m_Calls: []
   speed: 0.5
-  maxHp: 100
+  maxHp: 700
   hp: 0
   explosion: {fileID: 6136224044231406328, guid: d10899cf2c359c44b91f7f4be3721387, type: 3}
+  hpBar: {fileID: 0}
   boost: {fileID: 389209982837358403}
-  isStun: 0
-  isSlow: 0
+  animator: {fileID: 0}
   <PoolType>k__BackingField: {fileID: 11400000, guid: ae01ad5460b30bc4384d8509acd37caa, type: 2}
   poolManager: {fileID: 11400000, guid: 928c52471a99fba4a983ede3b8649ab4, type: 2}

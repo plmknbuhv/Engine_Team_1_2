@@ -9,7 +9,7 @@ public class House : Enemy
 
     public override void OnEnable()
     {
-        
+        base.OnEnable();
         EnemySpawner.isHouseLive = true;
         Debug.Log(EnemySpawner.isHouseLive);
         UniqueSkill();
@@ -27,7 +27,7 @@ public class House : Enemy
 
     protected override void UniqueSkill()
     {
-        explosion.transform.localScale *= 1.5f;
+        explosion.transform.localScale = new Vector3(1.5f,1.5f,1.5f);
     }
 
 }

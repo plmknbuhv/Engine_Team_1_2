@@ -9,6 +9,6 @@ public class Polarbear : Enemy
 
     public override void GetDamage(int damage, float knockbackPower, Action action = null)
     {
-        base.GetDamage(damage, knockbackPower/2, action);
+        base.GetDamage(damage, knockbackPower/5, action);
     }
 }

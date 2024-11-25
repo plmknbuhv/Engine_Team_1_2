@@ -8644,26 +8644,25 @@ MonoBehaviour:
     - {fileID: 11400000, guid: bffe25ae6300a454ea1f2e0f60401722, type: 2}
     - {fileID: 11400000, guid: bb3fe2e85058210459814021b15fdef6, type: 2}
   - enemys:
-    - {fileID: 11400000, guid: db4e958d0e9d98e4788f65cc38fcee56, type: 2}
-    - {fileID: 11400000, guid: bb3fe2e85058210459814021b15fdef6, type: 2}
-  - enemys:
-    - {fileID: 11400000, guid: db4e958d0e9d98e4788f65cc38fcee56, type: 2}
-    - {fileID: 11400000, guid: 82c72eabd43b21e42826fc84c774a939, type: 2}
-  - enemys:
-    - {fileID: 11400000, guid: 82c72eabd43b21e42826fc84c774a939, type: 2}
-    - {fileID: 11400000, guid: 66bf660397ca8784fa9061e62ce2c964, type: 2}
-    - {fileID: 11400000, guid: ae01ad5460b30bc4384d8509acd37caa, type: 2}
-  - enemys:
-    - {fileID: 11400000, guid: 82c72eabd43b21e42826fc84c774a939, type: 2}
-    - {fileID: 11400000, guid: 66bf660397ca8784fa9061e62ce2c964, type: 2}
-    - {fileID: 11400000, guid: ae01ad5460b30bc4384d8509acd37caa, type: 2}
-    - {fileID: 11400000, guid: bb3fe2e85058210459814021b15fdef6, type: 2}
-  - enemys:
-    - {fileID: 11400000, guid: 82c72eabd43b21e42826fc84c774a939, type: 2}
-    - {fileID: 11400000, guid: 66bf660397ca8784fa9061e62ce2c964, type: 2}
-    - {fileID: 11400000, guid: ae01ad5460b30bc4384d8509acd37caa, type: 2}
     - {fileID: 11400000, guid: bffe25ae6300a454ea1f2e0f60401722, type: 2}
     - {fileID: 11400000, guid: bb3fe2e85058210459814021b15fdef6, type: 2}
+  - enemys:
+    - {fileID: 11400000, guid: db4e958d0e9d98e4788f65cc38fcee56, type: 2}
+    - {fileID: 11400000, guid: 82c72eabd43b21e42826fc84c774a939, type: 2}
+  - enemys:
+    - {fileID: 11400000, guid: db4e958d0e9d98e4788f65cc38fcee56, type: 2}
+    - {fileID: 11400000, guid: 82c72eabd43b21e42826fc84c774a939, type: 2}
+  - enemys:
+    - {fileID: 11400000, guid: 66bf660397ca8784fa9061e62ce2c964, type: 2}
+    - {fileID: 11400000, guid: ae01ad5460b30bc4384d8509acd37caa, type: 2}
+  - enemys:
+    - {fileID: 11400000, guid: d6620bcfa2e52c346b8e51f46cd8ad53, type: 2}
+    - {fileID: 11400000, guid: 66bf660397ca8784fa9061e62ce2c964, type: 2}
+    - {fileID: 11400000, guid: ae01ad5460b30bc4384d8509acd37caa, type: 2}
+  - enemys:
+    - {fileID: 11400000, guid: d6620bcfa2e52c346b8e51f46cd8ad53, type: 2}
+    - {fileID: 11400000, guid: dba2e09537a47394b9a80ab2fd425c77, type: 2}
+    - {fileID: 11400000, guid: bffe25ae6300a454ea1f2e0f60401722, type: 2}
   - enemys:
     - {fileID: 11400000, guid: 247d1c7a1b13b8940acee336063fa29e, type: 2}
   t: {fileID: 1831292619}
@@ -9130,7 +9129,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 86, y: -57.00003}
+  m_AnchoredPosition: {x: 86, y: -57}
   m_SizeDelta: {x: 346.86, y: 97.12}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1527214948
@@ -10494,7 +10493,7 @@ MonoBehaviour:
   goldValueText: {fileID: 265602064}
   poolManager: {fileID: 11400000, guid: 928c52471a99fba4a983ede3b8649ab4, type: 2}
   poolType: {fileID: 11400000, guid: 13b61eab7a932874a9ea858af921911c, type: 2}
-  gold: 10000
+  gold: 30
   shopPointRect: {fileID: 1581992491}
   foodStartPointTrm: {fileID: 1153806589}
   buttonImage: {fileID: 616088705}

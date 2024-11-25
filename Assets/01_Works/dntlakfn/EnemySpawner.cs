@@ -55,7 +55,7 @@ public class EnemySpawner : MonoBehaviour
 
             waveManager.WaveEnd();
         }
-        if (timer > 3 && waveManager.isWaveStart && enemySpawnCount < waveManager.Waves[WaveManager.wave])
+        if (timer > 3-(0.25f * WaveManager.wave) && waveManager.isWaveStart && enemySpawnCount < waveManager.Waves[WaveManager.wave])
         {
             timer = 0;
             Spawn();
