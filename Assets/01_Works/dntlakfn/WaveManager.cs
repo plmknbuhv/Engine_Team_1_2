@@ -30,7 +30,7 @@ public class WaveManager : MonoBehaviour
     {
         for(int i = 1; i <= 8; i++)
         {
-            Waves[i] = i % 2 == 0 ? 20 : 20;
+            Waves[i] = i % 2 == 0 ? 40 : 20;
         }
         Waves[8] = 1;
         

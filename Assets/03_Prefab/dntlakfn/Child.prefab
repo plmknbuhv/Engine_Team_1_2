@@ -154,14 +154,12 @@ MonoBehaviour:
   OnDamaged:
     m_PersistentCalls:
       m_Calls: []
-  speed: 1.5
-  maxHp: 50
+  speed: 1.3
+  maxHp: 75
   hp: 50
   explosion: {fileID: 6136224044231406328, guid: d10899cf2c359c44b91f7f4be3721387, type: 3}
   hpBar: {fileID: 0}
   boost: {fileID: 1451088196645016278}
-  isStun: 0
-  isSlow: 0
   animator: {fileID: 0}
   <PoolType>k__BackingField: {fileID: 11400000, guid: bb3fe2e85058210459814021b15fdef6, type: 2}
   poolManager: {fileID: 11400000, guid: 928c52471a99fba4a983ede3b8649ab4, type: 2}

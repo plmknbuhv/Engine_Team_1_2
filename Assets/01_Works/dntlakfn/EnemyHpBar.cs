@@ -22,7 +22,7 @@ public class EnemyHpBar : MonoBehaviour
     public void SetHpBar(float currentHp, float maxHp)
     {
         _lastHitTime = Time.time;
-        hpBarObj.transform.localScale = new Vector3(currentHp / maxHp, 1f, 1f);
+        hpBarObj.transform.localScale = new Vector3(Mathf.Clamp(currentHp / maxHp, 0f, 1f), 1f, 1f);
         //transform.DOShakePosition(0.4f, 1f, 100);
     }
 
