@@ -30,7 +30,7 @@ public class WaveManager : MonoBehaviour
     {
         for(int i = 1; i <= 8; i++)
         {
-            Waves[i] = i % 2 == 0 ? 20 : 14;
+            Waves[i] = i % 2 == 0 ? 20 : 20;
         }
         Waves[8] = 1;
         
@@ -58,6 +58,7 @@ public class WaveManager : MonoBehaviour
     public void WaveEnd()
     {
         startBtn.OnStartGame();
+
         wave++;
         isWaveStart = false;
     }
