@@ -30,8 +30,8 @@ public class GoldText : MonoBehaviour, IPoolable
     {
         Sequence sequence = DOTween.Sequence();
         sequence.Append(_text.DOFade(1f, 0.15f))
-            .Insert(0.2f, _text.DOFade(0f, 0.5f));
-        transform.DOMoveY(transform.position.y + 0.25f, 0.65f).SetEase(Ease.Linear);
+            .Insert(0.35f, _text.DOFade(0f, 0.5f));
+        transform.DOMoveY(transform.position.y + 0.45f, 1.1f).SetEase(Ease.Linear);
         yield return sequence.WaitForCompletion();
         _myPool.Push(this);
     }

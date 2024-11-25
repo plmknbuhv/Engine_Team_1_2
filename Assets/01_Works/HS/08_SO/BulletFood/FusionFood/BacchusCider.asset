@@ -15,7 +15,7 @@ MonoBehaviour:
   foodType: 16
   sprite: {fileID: 21300000, guid: b25de6de00591b44cbae4b742e5f5d68, type: 3}
   attackCooldown: 3
-  damage: 50
+  damage: 45
   width: 1
   height: 2
   foodInstruction: "\uBC15\uC0AC\uB294 \uCD5C\uACE0\uC758 \uC74C\uB8CC\uC8E0."

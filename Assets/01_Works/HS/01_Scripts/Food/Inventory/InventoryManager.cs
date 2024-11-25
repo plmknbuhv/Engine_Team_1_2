@@ -95,6 +95,7 @@ public class InventoryManager : MonoSingleton<InventoryManager>
                 ingredientsList.ForEach(food =>
                 {
                     food.slotList.ForEach(slot => slot.isCanEquip = true);
+                    food.slotList.Clear();
                     food.InventoryChecker.ResetSlots();
                     kitchenFoods.Remove(food);
                     food.myPool.Push(food);

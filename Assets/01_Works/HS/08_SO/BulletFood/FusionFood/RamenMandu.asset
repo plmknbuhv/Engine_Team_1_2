@@ -15,7 +15,7 @@ MonoBehaviour:
   foodType: 18
   sprite: {fileID: 21300000, guid: 3cdd11f742086ba46940ead9e48850ec, type: 3}
   attackCooldown: 6.5
-  damage: 155
+  damage: 170
   width: 3
   height: 2
   foodInstruction: "\uC774 \uC870\uD569\uC740 \uBA39\uAE30\uB9CC \uD574\uB3C4 \uBABB
