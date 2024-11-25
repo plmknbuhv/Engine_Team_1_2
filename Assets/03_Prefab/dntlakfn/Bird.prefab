@@ -28,6 +28,14 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2765608071793008109, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2765608071793008109, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.428
+      objectReference: {fileID: 0}
     - target: {fileID: 2889288556720023779, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_SortingOrder
       value: 3
@@ -162,7 +170,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6416901449145687575, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.59
+      value: 0.436
       objectReference: {fileID: 0}
     - target: {fileID: 8325894798917001309, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_Name
@@ -202,7 +210,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   speed: 2
-  maxHp: 20
+  maxHp: 280
   hp: 20
   explosion: {fileID: 6136224044231406328, guid: d10899cf2c359c44b91f7f4be3721387, type: 3}
   hpBar: {fileID: 0}
