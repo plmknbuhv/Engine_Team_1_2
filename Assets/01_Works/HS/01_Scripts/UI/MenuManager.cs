@@ -24,7 +24,7 @@ public class MenuManager : MonoSingleton<MenuManager>
 
     [SerializeField] private Vector3 defaultRotation = new Vector3(-1, 90, 17.5f);
 
-    private void Awake()
+    private void Start()
     {
         recipeImage.gameObject.SetActive(true);
         foreach (var pizza in pizzaImages)

@@ -47,6 +47,7 @@ Material:
     m_Floats:
     - _GagueValue: 1
     - _GaugeValue: 1
+    - _IsEnterMouse: 0
     - _IsFoodHor: 1
     - _IsFoodVer: 0
     - _IsHor: 0
