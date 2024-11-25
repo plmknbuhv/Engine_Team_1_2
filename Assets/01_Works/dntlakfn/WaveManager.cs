@@ -57,7 +57,7 @@ public class WaveManager : MonoBehaviour
 
     public void WaveEnd()
     {
-        startBtn.gameObject.SetActive(true);
+        startBtn.OnStartGame();
         wave++;
         isWaveStart = false;
     }

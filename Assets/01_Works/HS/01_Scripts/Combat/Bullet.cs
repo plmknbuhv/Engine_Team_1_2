@@ -29,7 +29,7 @@ public class Bullet : MonoBehaviour, IPoolable
      private void Update()
      {
           _lifeTimer += Time.deltaTime;
-          transform.position += transform.up * (Time.deltaTime * 11.5f);
+          transform.position += transform.up * (Time.deltaTime * 12.5f);
           _visualObj.transform.Rotate(Vector3.forward, Time.deltaTime * (_rotateValue / _rotateConstant));
 
           if (_lifeTimer >= 5f)
@@ -72,11 +72,10 @@ public class Bullet : MonoBehaviour, IPoolable
                     enemy.GetDamage(_foodData.damage, 8);
                     break;
           }
-
+          _isDead = true;
+          
           var effect = _poolManager.Pop(_effectType) as FoodEffect;
           effect.SetPositionAndPlay(transform.position);
-          
-          _isDead = true;
           
           _myPool.Push(this);
      }
@@ -89,7 +88,7 @@ public class Bullet : MonoBehaviour, IPoolable
           _spriteRenderer.sprite = foodData.sprite;
           
           var rand = Random.Range(-20, 20);
-          _rotateValue = rand * 3.5f;
+          _rotateValue = rand * 4f;
           _rotateConstant = (foodData.height * foodData.width) / 2f;
      }
      

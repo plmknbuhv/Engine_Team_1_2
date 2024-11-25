@@ -9,13 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f84b2b87726812a499221051a9f6e6f8, type: 3}
-  m_Name: MusTard
+  m_Script: {fileID: 11500000, guid: 1486e263e7016b643b78c6fb1c6caafd, type: 3}
+  m_Name: GoldText_Item
   m_EditorClassIdentifier: 
-  foodType: 5
-  sprite: {fileID: 21300000, guid: 0ca48e12c1587664e8f8dfaa09f4a5ab, type: 3}
-  attackCooldown: 4
-  damage: 30
-  width: 2
-  height: 1
-  foodInstruction: 
+  poolType: {fileID: 11400000, guid: ac9f4a52e1f13f542824c25db75f43e0, type: 2}
+  prefab: {fileID: 1965385422647877068, guid: 7a2889284a50a4e4b9f01859437aa82b, type: 3}
+  initCount: 1

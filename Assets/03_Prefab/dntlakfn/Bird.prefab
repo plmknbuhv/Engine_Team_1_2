@@ -160,6 +160,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.22
       objectReference: {fileID: 0}
+    - target: {fileID: 6416901449145687575, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.59
+      objectReference: {fileID: 0}
     - target: {fileID: 8325894798917001309, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_Name
       value: Bird
@@ -194,12 +198,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df9fad7612f1fcd42b1d6b7d3c171ab2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnDamaged:
+    m_PersistentCalls:
+      m_Calls: []
   speed: 2
   maxHp: 20
   hp: 20
   explosion: {fileID: 6136224044231406328, guid: d10899cf2c359c44b91f7f4be3721387, type: 3}
+  hpBar: {fileID: 0}
   boost: {fileID: 3794141431061967113}
-  isStun: 0
-  isSlow: 0
+  animator: {fileID: 0}
   <PoolType>k__BackingField: {fileID: 11400000, guid: db4e958d0e9d98e4788f65cc38fcee56, type: 2}
   poolManager: {fileID: 11400000, guid: 928c52471a99fba4a983ede3b8649ab4, type: 2}

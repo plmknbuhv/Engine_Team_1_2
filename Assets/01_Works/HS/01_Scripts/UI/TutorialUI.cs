@@ -8,6 +8,7 @@ public class TutorialUI : MonoBehaviour
     [SerializeField] private WaveBtn waveBtn;
         
     private int _tutorialNum;
+    public bool isTutorialEnd;
 
     private void Start()
     {
@@ -18,8 +19,9 @@ public class TutorialUI : MonoBehaviour
     {
         DOTween.KillAll();
 
-        if (_tutorialNum == 3)
+        if (_tutorialNum == 4)
         {
+            isTutorialEnd = true;
             waveBtn.OnStartGame();
             gameObject.SetActive(false);
             return;

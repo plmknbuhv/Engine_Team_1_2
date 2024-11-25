@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,8 +13,17 @@ public class TowerHealthUI : MonoBehaviour
 
     public void SetHpBar(float currentHp, float maxHp)
     {
+        try
+        {
+            hpBarObj.fillAmount = currentHp / maxHp;
+        }
+        catch (DivideByZeroException exception)
+        {
+            Console.WriteLine("최대 체력이 0으로 되어있습니다.");    
+            throw;
+        }// 예외처리
+         
         _lastHitTime = Time.time;
-        hpBarObj.fillAmount = currentHp / maxHp;
         transform.DOShakePosition(0.4f, 1f, 100);
     }
     

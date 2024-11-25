@@ -177,8 +177,7 @@ public class Enemy : MonoBehaviour, IPoolable
         {
             var boom = poolManager.Pop(explosion.PoolType);
             boom.GameObject.transform.position = transform.position;
-
-            //ShopManager.Instance.Gold += dropGold;
+            ShopManager.Instance.Gold += dropGold;
 
             if(EnemySpawner.isKoreaLive)
             {

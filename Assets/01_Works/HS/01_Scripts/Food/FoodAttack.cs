@@ -9,6 +9,7 @@ public class FoodAttack : MonoBehaviour
     private TowerAttack _towerAttack;
     private bool _isCanAttack;
     private float _attackTimer;
+    private float _attackCooldown;
 
     public void Initialize(Food food)
     {
@@ -21,6 +22,7 @@ public class FoodAttack : MonoBehaviour
     public void StartAttack()
     {
         _isCanAttack = true;
+        _attackCooldown = _foodData.attackCooldown + Random.Range(-0.05f, 0.05f);
         StartCoroutine(AttackCoroutine());
     }
 
@@ -42,10 +44,11 @@ public class FoodAttack : MonoBehaviour
                 continue;
 
             _attackTimer += Time.deltaTime;
-            _foodRenderer.AdjustFoodGauge(_attackTimer, _foodData.attackCooldown);
-            if (_attackTimer >= _foodData.attackCooldown)
+            _foodRenderer.AdjustFoodGauge(_attackTimer, _attackCooldown);
+            if (_attackTimer >= _attackCooldown)
             {
                 _towerAttack.Attack(_foodData);
+                _attackCooldown = _foodData.attackCooldown + Random.Range(-0.05f, 0.05f);
                 _attackTimer = 0;
             }
         }
