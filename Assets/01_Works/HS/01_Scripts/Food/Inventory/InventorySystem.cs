@@ -7,7 +7,7 @@ public class InventorySystem : MonoBehaviour
     [SerializeField] private int gridHeight;
     [SerializeField] private Slot slotPrefab;
     private Slot[,] _slotArray;
-    private List<Slot> _preSlotList = new List<Slot>();
+    [SerializeField] private List<Slot> _preSlotList = new List<Slot>();
     public bool isOpen = true;
     public bool isKitchen;
 
@@ -63,9 +63,7 @@ public class InventorySystem : MonoBehaviour
             foreach (var slot in _preSlotList)
                 slot.isCanEquip = false;
 
-            foreach (var slot in food.slotList)
-                slot.isCanEquip = true;
-            
+            food.slotList.ForEach(slot => slot.isCanEquip = true);
             food.slotList.Clear();
             EquipInventory(x, y, itemWidth, itemHeight, food);
 

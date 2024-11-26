@@ -18,9 +18,11 @@ public class Bullet : MonoBehaviour, IPoolable
      private bool _isDead;
      private PoolManagerSO _poolManager;
      private PoolTypeSO _effectType;
+     private FeedbackPlayer _feedbackPlayer;
 
      private void Awake()
      {
+          _feedbackPlayer = GetComponentInChildren<FeedbackPlayer>();
           _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
           _visualObj = transform.Find("Visual").gameObject;
      }
@@ -75,6 +77,7 @@ public class Bullet : MonoBehaviour, IPoolable
           
           var effect = _poolManager.Pop(_effectType) as FoodEffect;
           effect.SetPositionAndPlay(transform.position);
+          _feedbackPlayer.PlayFeedbacks();
           
           _myPool.Push(this);
      }

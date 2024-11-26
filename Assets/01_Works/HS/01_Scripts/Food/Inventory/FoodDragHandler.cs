@@ -96,6 +96,8 @@ public class FoodDragHandler : MonoBehaviour,
     private void DropItem()
     {
         _food.TrailRenderer.enabled = false;
+        InventoryManager.Instance.isCanActiveKitchen = true;
+        MenuManager.Instance.isCanActiveMenu = true;
         
         RaycastHit2D hit = Physics2D.Raycast(GetMousePos(), Vector2.zero);
         if (hit.transform.CompareTag("Garbage") && _food.isPurchased)
@@ -104,15 +106,14 @@ public class FoodDragHandler : MonoBehaviour,
             return;
         }
         GarbageManager.Instance.ShowGarbage(false);
-            
-        InventoryManager.Instance.isCanActiveKitchen = true;
-        MenuManager.Instance.isCanActiveMenu = true;
+        
         if (!_inventoryChecker.CheckEquipInventory())
         {
             transform.position = returnPosition;
             _food.RectTransform.eulerAngles = new Vector3(0,0,_prevRotation);
             (_food.width, _food.height) = (_prevWidth, _prevHeight);
             targetRotation = _prevRotation;
+            _foodRenderer.ChangeFoodRotation(targetRotation);
             foreach (var slot in _food.slotList)
                 slot.isCanEquip = false;
         }
@@ -137,6 +138,7 @@ public class FoodDragHandler : MonoBehaviour,
             _coroutine = StartCoroutine(WavingFoodSizeCoroutine());
         }
         _food.TrailRenderer.enabled = true;
+        _foodAttack.StartAttack();
     }
 
     private IEnumerator WasteCoroutine(RaycastHit2D hit)

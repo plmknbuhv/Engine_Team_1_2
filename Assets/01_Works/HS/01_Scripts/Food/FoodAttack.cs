@@ -10,6 +10,8 @@ public class FoodAttack : MonoBehaviour
     private bool _isCanAttack;
     private float _attackTimer;
     private float _attackCooldown;
+    
+    private Coroutine _coroutine;
 
     public void Initialize(Food food)
     {
@@ -21,9 +23,10 @@ public class FoodAttack : MonoBehaviour
 
     public void StartAttack()
     {
+        if (_isCanAttack) return;
         _isCanAttack = true;
         _attackCooldown = _foodData.attackCooldown + Random.Range(-0.055f, 0.055f);
-        StartCoroutine(AttackCoroutine());
+        _coroutine = StartCoroutine(AttackCoroutine());
     }
 
     public void StopAttack()

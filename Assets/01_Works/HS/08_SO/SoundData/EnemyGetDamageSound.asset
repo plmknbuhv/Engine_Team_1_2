@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ce4ba61b42511524188817aab04f0058, type: 3}
-  m_Name: TowerAttackSound
+  m_Name: EnemyGetDamageSound
   m_EditorClassIdentifier: 
   audioType: 0
-  clip: {fileID: 8300000, guid: 4611966bdaee6834aa2c8ec7555e865b, type: 3}
+  clip: {fileID: 8300000, guid: e67010fa4623d84408bda6c5dbd5d1fb, type: 3}
   loop: 0
   randomizePitch: 1
-  randomPitchModifier: 0.1
-  volume: 0.3
+  randomPitchModifier: 0.05
+  volume: 2
   basePitch: 1
