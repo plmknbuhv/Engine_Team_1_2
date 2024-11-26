@@ -210,7 +210,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   speed: 2
-  maxHp: 280
+  maxHp: 230
   hp: 20
   explosion: {fileID: 6136224044231406328, guid: d10899cf2c359c44b91f7f4be3721387, type: 3}
   hpBar: {fileID: 0}

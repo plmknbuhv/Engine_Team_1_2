@@ -80,6 +80,8 @@ public class EnemySpawner : MonoBehaviour
                 enemy.transform.position = spawnPoint.position + new Vector3(UnityEngine.Random.Range(-7f, 7f), 0);
                 enemy.transform.localRotation = Quaternion.identity;
                 enemyType.Remove(enemyType[rand]);
+                enemySpawnCount++;
+
                 return;
             }
         }
@@ -92,6 +94,7 @@ public class EnemySpawner : MonoBehaviour
                 enemy.transform.position = spawnPoint.position + new Vector3(UnityEngine.Random.Range(-7f, 7f), 6);
                 enemy.transform.localRotation = Quaternion.identity;
                 enemyType.Remove(enemyType[rand]);
+                enemySpawnCount++;
 
                 return;
             }
@@ -105,6 +108,7 @@ public class EnemySpawner : MonoBehaviour
                 enemy.transform.position = spawnPoint.position + new Vector3(UnityEngine.Random.Range(-7f, 7f), 0);
                 enemy.transform.localRotation = Quaternion.identity;
                 enemyType.Remove(enemyType[rand]);
+                enemySpawnCount++;
 
                 return;
             }

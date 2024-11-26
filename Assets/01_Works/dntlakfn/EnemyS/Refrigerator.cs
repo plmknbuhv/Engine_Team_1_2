@@ -55,7 +55,7 @@ public class Refrigerator : Enemy
             if(time > 1f)
             {
                 var boom = poolManager.Pop(explosion.PoolType);
-                boom.GameObject.transform.position = transform.position + new Vector3(UnityEngine.Random.Range(-0.5f, 0.5f), UnityEngine.Random.Range(-1f, 0.5f));
+                boom.GameObject.transform.position = transform.position + new Vector3(UnityEngine.Random.Range(-0.5f, 0.5f), UnityEngine.Random.Range(-1f, 1f));
                 boom.GameObject.transform.localScale = new Vector3(3, 3, 3);
                 time = 0f;
             }
