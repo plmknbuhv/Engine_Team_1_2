@@ -10,11 +10,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 974588486696886724, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_Mass
-      value: 500
+      value: 700
       objectReference: {fileID: 0}
     - target: {fileID: 974588486696886724, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_Constraints
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2409298366163833812, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_Size.x
@@ -213,12 +213,12 @@ MonoBehaviour:
   OnDamaged:
     m_PersistentCalls:
       m_Calls: []
-  speed: 0.1
-  maxHp: 1300
+  speed: 0.3
+  maxHp: 4000
   hp: 0
   explosion: {fileID: 6136224044231406328, guid: d10899cf2c359c44b91f7f4be3721387, type: 3}
   hpBar: {fileID: 0}
-  boost: {fileID: 0}
+  boost: {fileID: 6319606734797741887, guid: 96ec5875162082f4cab8783b33d1db7b, type: 3}
   animator: {fileID: 0}
   <PoolType>k__BackingField: {fileID: 11400000, guid: dba2e09537a47394b9a80ab2fd425c77, type: 2}
   poolManager: {fileID: 11400000, guid: 928c52471a99fba4a983ede3b8649ab4, type: 2}

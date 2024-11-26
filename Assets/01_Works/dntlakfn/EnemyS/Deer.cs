@@ -11,7 +11,7 @@ public class Deer : Enemy
     protected override void UniqueSkill()
     {
         animator.speed = 2;
-        speed = 1.5f;
+        speed = 1f;
 
     }
 
