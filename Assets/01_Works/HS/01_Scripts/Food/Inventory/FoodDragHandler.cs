@@ -87,6 +87,8 @@ public class FoodDragHandler : MonoBehaviour,
         isDragging = false;
         if (isRotating) return;
         
+        _food.TrailRenderer.enabled = false;
+        _food.TrailRenderer.Clear();
         DropItem();
     }
 
@@ -96,12 +98,10 @@ public class FoodDragHandler : MonoBehaviour,
         MenuManager.Instance.isCanActiveMenu = true;
         if (!_inventoryChecker.CheckEquipInventory())
         {
-            _food.TrailRenderer.enabled = false;
             transform.position = returnPosition;
             _food.RectTransform.eulerAngles = new Vector3(0,0,_prevRotation);
             (_food.width, _food.height) = (_prevWidth, _prevHeight);
             targetRotation = _prevRotation;
-            _food.TrailRenderer.enabled = true;
         }
         else
         {
@@ -126,6 +126,7 @@ public class FoodDragHandler : MonoBehaviour,
             _foodRenderer.OnMouseEnter(); 
             _coroutine = StartCoroutine(WavingFoodSizeCoroutine());
         }
+        _food.TrailRenderer.enabled = true;
     }
 
     #endregion

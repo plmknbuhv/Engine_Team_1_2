@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MenuManager : MonoSingleton<MenuManager>
@@ -22,6 +24,8 @@ public class MenuManager : MonoSingleton<MenuManager>
     private bool _isStart;
 
     [SerializeField] private Vector3 defaultRotation = new Vector3(-1, 90, 17.5f);
+
+    [SerializeField] private List<Graphic> gameOverGraphics;
 
     private void Start()
     {
@@ -136,6 +140,29 @@ public class MenuManager : MonoSingleton<MenuManager>
 
     public void GameOver()
     {
+        StartCoroutine(StartDeadCoroutine());
+    }
+    
+    private IEnumerator StartDeadCoroutine()
+    {
+        yield return new WaitForSeconds(0.35f);
+            
+        gameOverGraphics[2].gameObject.SetActive(true);
+        gameOverGraphics[0].gameObject.SetActive(true);
+        gameOverGraphics[0].DOFade(1, 1);
+        gameOverGraphics[1].gameObject.SetActive(true);
+        gameOverGraphics[1].DOFade(1, 1);
         
+        yield return new WaitForSeconds(1.3f);
+
+        var gameOverText = gameOverGraphics[1] as TextMeshProUGUI;
+        
+        Tween tween = DOTween.To(() => 10f, goldValue 
+            => gameOverText.text = "전자레인지가 파괴되었습니다.\n" +
+                                   $"잠시 후 타이틀 화면으로 돌아갑니다...{(int)goldValue}", 0f, 10f).SetEase(Ease.Linear);
+        yield return tween.WaitForCompletion();
+        DOTween.KillAll();
+        
+        SceneManager.LoadScene("TitleScene");
     }
 }

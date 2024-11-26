@@ -42,6 +42,7 @@ public class FoodAttack : MonoBehaviour
             yield return null;
             if (!_towerAttack.CheckCanAttack())
                 continue;
+            if (_tower.isDead) break;
 
             _attackTimer += Time.deltaTime;
             _foodRenderer.AdjustFoodGauge(_attackTimer, _attackCooldown);

@@ -40,7 +40,7 @@ public class ShopManager : MonoSingleton<ShopManager>
             var currentGold = Int32.Parse(goldValueText.text);
 
             DOTween.To(() => currentGold, goldValue => goldValueText.text = goldValue.ToString(),
-                    gold, Mathf.Abs(currentGold - gold) / 10f)
+                    gold, Mathf.Abs(currentGold - gold) / 8f)
                 .SetEase(Ease.OutSine);
         }
     }

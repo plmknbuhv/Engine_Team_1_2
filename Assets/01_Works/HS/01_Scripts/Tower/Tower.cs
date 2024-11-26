@@ -14,6 +14,7 @@ public class Tower : MonoBehaviour
     private float _damageTimer;
     [SerializeField] private int maxHealth = 5;
     private int _health;
+    public bool isDead;
     
     [SerializeField] private FeedbackPlayer hitFeedback;
     
@@ -31,7 +32,6 @@ public class Tower : MonoBehaviour
             if (value <= 0)
             {
                 _health = 0;
-                OnDeathEvent?.Invoke();
                 if (_coroutine != null)
                     StopCoroutine(_coroutine);
             }
@@ -76,7 +76,7 @@ public class Tower : MonoBehaviour
 
     private IEnumerator TakeDamageCoroutine()
     {
-        while (true)
+        while (!isDead)
         {
             yield return null;
             
