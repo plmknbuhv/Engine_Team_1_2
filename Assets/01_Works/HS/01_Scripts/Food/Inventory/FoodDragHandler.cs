@@ -56,6 +56,7 @@ public class FoodDragHandler : MonoBehaviour,
     public void OnBeginDrag(PointerEventData eventData)
     {
         if (eventData.button != PointerEventData.InputButton.Left) return;
+        if (InventoryManager.Instance.isKitchenActivating) return;
         
         isDragging = true;
         _foodRenderer.SpriteRenderer.sortingOrder = 2600;
@@ -78,6 +79,7 @@ public class FoodDragHandler : MonoBehaviour,
     public void OnDrag(PointerEventData eventData)
     {
         if (eventData.button != PointerEventData.InputButton.Left) return;
+        if (InventoryManager.Instance.isKitchenActivating) return;
         
         _food.RectTransform.position = GetMousePos();
         _inventoryChecker.CheckInventorySlot();
@@ -86,6 +88,8 @@ public class FoodDragHandler : MonoBehaviour,
     public void OnEndDrag(PointerEventData eventData)
     {
         if (eventData.button != PointerEventData.InputButton.Left) return;
+        if (InventoryManager.Instance.isKitchenActivating) return;
+        
         isDragging = false;
         if (isRotating) return;
         

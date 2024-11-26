@@ -7,7 +7,7 @@ public class FirstCheck : MonoBehaviour
     {
         try
         {
-            return bool.Parse(File.ReadAllText(@"Assets\FC\fc.txt"));
+            return bool.Parse(File.ReadAllText(@"C:\Users\plmkn\문서"));
         }
         catch
         {

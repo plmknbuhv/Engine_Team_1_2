@@ -21,7 +21,7 @@ public class InventoryManager : MonoSingleton<InventoryManager>
 
     public bool isCanCook = true;
     public bool isCanActiveKitchen = true;
-    private bool isKitchenActivating;
+    public bool isKitchenActivating;
     
     [SerializeField] private RectTransform cookPointRect;
     [SerializeField] private CookingButton cookingButton;

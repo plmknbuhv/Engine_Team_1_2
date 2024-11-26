@@ -11525,7 +11525,7 @@ MonoBehaviour:
   goldValueText: {fileID: 265602064}
   poolManager: {fileID: 11400000, guid: 928c52471a99fba4a983ede3b8649ab4, type: 2}
   poolType: {fileID: 11400000, guid: 13b61eab7a932874a9ea858af921911c, type: 2}
-  gold: 10000
+  gold: 30
   shopPointRect: {fileID: 1581992491}
   foodStartPointTrm: {fileID: 1153806589}
   buttonImage: {fileID: 616088705}
@@ -12215,6 +12215,7 @@ MonoBehaviour:
   kitchenPanel: {fileID: 1814924842}
   isCanCook: 1
   isCanActiveKitchen: 1
+  isKitchenActivating: 0
   cookPointRect: {fileID: 478801962}
   cookingButton: {fileID: 596433342}
   fillImage: {fileID: 130998445}
