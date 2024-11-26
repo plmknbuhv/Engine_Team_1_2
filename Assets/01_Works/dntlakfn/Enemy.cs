@@ -25,6 +25,7 @@ public class Enemy : MonoBehaviour, IPoolable
     protected Transform target;
     protected int dropGold;
     protected Vector3 targetVec;
+    protected float currentSpeed;
     
     
 
@@ -48,6 +49,11 @@ public class Enemy : MonoBehaviour, IPoolable
     {
         dropGold = Mathf.Clamp(WaveManager.wave/3, 1, 4);
         hp = maxHp;
+        if(isSlow)
+        {
+            speed = currentSpeed;
+            isSlow = false;
+        }
         hpBar.SetHpBar(hp, maxHp);
         Debug.Log("ü�� ����");
         targetVec = target.position + new Vector3(UnityEngine.Random.Range(-1.5f, 1.5f), 0, 0);
@@ -132,7 +138,7 @@ public class Enemy : MonoBehaviour, IPoolable
     public void GetSlow(float percent, float time)
     {
         if(isSlow) return;
-        float currentSpeed = speed;
+        currentSpeed = speed;
         speed = currentSpeed * (percent / 100);
         animator.speed = (percent / 100);
 
