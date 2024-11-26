@@ -43,20 +43,22 @@ public class Enemy : MonoBehaviour, IPoolable
         animator = GetComponent<Animator>();
         target = FindAnyObjectByType<Tower>().transform;
         OnknockbackStop += KnockBackStop;
-        
+        currentSpeed = speed;
     }
     public virtual void OnEnable()
     {
         dropGold = Mathf.Clamp(WaveManager.wave/3, 1, 4);
         hp = maxHp;
+        
         if(isSlow)
         {
             speed = currentSpeed;
             isSlow = false;
         }
+        
         hpBar.SetHpBar(hp, maxHp);
         Debug.Log("ü�� ����");
-        targetVec = target.position + new Vector3(UnityEngine.Random.Range(-1.5f, 1.5f), 0, 0);
+        targetVec = target.position + new Vector3(UnityEngine.Random.Range(-1.2f, 1.2f), 0, 0);
         if(EnemySpawner.isKoreaLive)
         {
             boost.SetActive(true);
@@ -225,5 +227,8 @@ public class Enemy : MonoBehaviour, IPoolable
     public void ResetItem()
     {
         hpBar.SetHpBar(100, 100);
+        speed = currentSpeed;
+        animator.speed = 1;
+        isSlow = false;
     }
 }
