@@ -63,9 +63,12 @@ public class InventorySystem : MonoBehaviour
             foreach (var slot in _preSlotList)
                 slot.isCanEquip = false;
 
-            food.slotList.ForEach(slot => slot.isCanEquip = true);
+            foreach (var slot in food.slotList)
+                slot.isCanEquip = true;
+            
             food.slotList.Clear();
             EquipInventory(x, y, itemWidth, itemHeight, food);
+            food.slotList.ForEach(slot => slot.isCanEquip = false);
 
             if (!food.isPurchased)
                 ShopManager.Instance.BuyFood(food);
