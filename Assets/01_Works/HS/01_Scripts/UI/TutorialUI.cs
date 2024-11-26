@@ -1,24 +1,31 @@
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TutorialUI : MonoBehaviour
 {
     [SerializeField] private List<Transform> tutorialTrm = new List<Transform>();
     [SerializeField] private WaveBtn waveBtn;
-        
+    [SerializeField] private FirstCheck firstCheck;
+    [SerializeField] private Button nextButton;
+    
     private int _tutorialNum;
     public bool isTutorialEnd;
 
     private void Start()
     {
-        StartMove();
+        if (firstCheck.CheckIsFirstPlay())
+            StartMove();
+        else
+            waveBtn.OnStartGame();
     }
 
     public void StartMove()
     {
         DOTween.KillAll();
 
+        nextButton.gameObject.SetActive(true);
         if (_tutorialNum == 4)
         {
             isTutorialEnd = true;

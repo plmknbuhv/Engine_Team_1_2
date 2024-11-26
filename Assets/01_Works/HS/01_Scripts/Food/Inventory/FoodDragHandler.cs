@@ -94,6 +94,13 @@ public class FoodDragHandler : MonoBehaviour,
 
     private void DropItem()
     {
+        RaycastHit2D hit = Physics2D.Raycast(GetMousePos(), Vector2.zero);
+        if (hit.transform.CompareTag("Garbage") && _food.isPurchased)
+        {
+            StartCoroutine(WasteCoroutine(hit));
+            return;
+        }
+            
         InventoryManager.Instance.isCanActiveKitchen = true;
         MenuManager.Instance.isCanActiveMenu = true;
         if (!_inventoryChecker.CheckEquipInventory())
@@ -102,6 +109,8 @@ public class FoodDragHandler : MonoBehaviour,
             _food.RectTransform.eulerAngles = new Vector3(0,0,_prevRotation);
             (_food.width, _food.height) = (_prevWidth, _prevHeight);
             targetRotation = _prevRotation;
+            foreach (var slot in _food.slotList)
+                slot.isCanEquip = false;
         }
         else
         {
@@ -114,9 +123,6 @@ public class FoodDragHandler : MonoBehaviour,
             _foodRenderer.DropAnimation();
             _equipFeedbackPlayer.PlayFeedbacks();
         }
-        
-        foreach (var slot in _food.slotList)
-            slot.isCanEquip = false;
         _foodRenderer.SpriteRenderer.sortingOrder = 2500;
         _foodRenderer.AdjustFoodSize();
         _inventoryChecker.ResetSlots();
@@ -127,6 +133,17 @@ public class FoodDragHandler : MonoBehaviour,
             _coroutine = StartCoroutine(WavingFoodSizeCoroutine());
         }
         _food.TrailRenderer.enabled = true;
+    }
+
+    private IEnumerator WasteCoroutine(RaycastHit2D hit)
+    {
+        var waste = hit.transform.GetComponent<WasteBasket>();
+        
+        Tween animCoroutine = transform.DOScale(Vector3.zero, 0.5f).SetEase(Ease.InBack);
+        yield return animCoroutine.WaitForCompletion();
+        waste.ThrowGarbage(transform.position);
+        
+        _food.myPool.Push(_food);
     }
 
     #endregion
