@@ -15,7 +15,7 @@ public class TitleUI : MonoBehaviour
     
     private Coroutine _coroutine;
     private Sequence _sequence;
-    
+    private bool _isStart;
     
     private void Start()
     {
@@ -73,6 +73,8 @@ public class TitleUI : MonoBehaviour
 
     public void OnStartButtonClicked()
     {
+        if (_isStart) return;
+        _isStart = true;
         StartCoroutine(StartTranslateCoroutine());
     }
 
