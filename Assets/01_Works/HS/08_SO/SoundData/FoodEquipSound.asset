@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ce4ba61b42511524188817aab04f0058, type: 3}
-  m_Name: TowerGetDamageSound
+  m_Name: FoodEquipSound
   m_EditorClassIdentifier: 
   audioType: 0
-  clip: {fileID: 8300000, guid: 4f6cdf5658058114ea87cb3880184687, type: 3}
+  clip: {fileID: 8300000, guid: 72e99bd061bf4aa42808c624ec6abf22, type: 3}
   loop: 0
-  randomizePitch: 1
+  randomizePitch: 0
   randomPitchModifier: 0.05
-  volume: 0.7
+  volume: 1
   basePitch: 1

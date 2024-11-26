@@ -55,20 +55,20 @@ public class Bullet : MonoBehaviour, IPoolable
           {
                case FoodType.CheesePizza:
                     enemy.GetSlow(30f, 2);
-                    enemy.GetDamage(_foodData.damage, 8);
+                    enemy.GetDamage(_foodData.damage, 7);
                     break;
                case FoodType.GimBap2XL:
-                    enemy.GetDamage(_foodData.damage, 20);
+                    enemy.GetDamage(_foodData.damage, 18);
                     break;
                case FoodType.TwoEgg:
-                    enemy.GetDamage(_foodData.damage, 20);
+                    enemy.GetDamage(_foodData.damage, 18);
                     break;
                case FoodType.RamenMandu:
                     enemy.GetStun(2);
-                    enemy.GetDamage(_foodData.damage, 8);
+                    enemy.GetDamage(_foodData.damage, 7);
                     break;
                default:
-                    enemy.GetDamage(_foodData.damage, 8);
+                    enemy.GetDamage(_foodData.damage, 7);
                     break;
           }
           _isDead = true;

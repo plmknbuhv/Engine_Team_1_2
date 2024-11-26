@@ -28,12 +28,15 @@ public class InventoryManager : MonoSingleton<InventoryManager>
     [SerializeField] private RectTransform fillImage;
 
     public FoodDataSO yogurtData;
+    
+    private FeedbackPlayer _feedbackPlayer;
 
     private void Awake()
     {
         kitchen = kitchenPanel.GetComponentInChildren<InventorySystem>();
         kitchen.isOpen = false;
         kitchen.isKitchen = true;
+        _feedbackPlayer = GetComponentInChildren<FeedbackPlayer>();
     }
 
     private void Update()
@@ -79,6 +82,7 @@ public class InventoryManager : MonoSingleton<InventoryManager>
         if (successCook)
         {
             isCanCook = false; 
+            _feedbackPlayer.PlayFeedbacks();
         }
         cookingButton.OnClick(successCook);
     }

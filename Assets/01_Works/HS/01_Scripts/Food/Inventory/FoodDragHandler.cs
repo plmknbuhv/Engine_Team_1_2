@@ -26,6 +26,9 @@ public class FoodDragHandler : MonoBehaviour,
     private bool _isMouseOver;
     
     private Coroutine _coroutine;
+    
+    private FeedbackPlayer _equipFeedbackPlayer;
+    private FeedbackPlayer _swingFeedbackPlayer;
 
     private void Awake()
     {
@@ -33,6 +36,8 @@ public class FoodDragHandler : MonoBehaviour,
         _foodRenderer = GetComponent<FoodRenderer>();
         _inventoryChecker = GetComponent<InventoryChecker>();
         _foodAttack = GetComponent<FoodAttack>();
+        _equipFeedbackPlayer = transform.Find("EquipFeedback").GetComponent<FeedbackPlayer>();
+        _swingFeedbackPlayer = transform.Find("SwingFeedback").GetComponent<FeedbackPlayer>();
     }
 
     private void Start()
@@ -91,10 +96,12 @@ public class FoodDragHandler : MonoBehaviour,
         MenuManager.Instance.isCanActiveMenu = true;
         if (!_inventoryChecker.CheckEquipInventory())
         {
+            _food.TrailRenderer.enabled = false;
             transform.position = returnPosition;
             _food.RectTransform.eulerAngles = new Vector3(0,0,_prevRotation);
             (_food.width, _food.height) = (_prevWidth, _prevHeight);
             targetRotation = _prevRotation;
+            _food.TrailRenderer.enabled = true;
         }
         else
         {
@@ -105,6 +112,7 @@ public class FoodDragHandler : MonoBehaviour,
             }
 
             _foodRenderer.DropAnimation();
+            _equipFeedbackPlayer.PlayFeedbacks();
         }
         
         foreach (var slot in _food.slotList)
@@ -137,11 +145,10 @@ public class FoodDragHandler : MonoBehaviour,
 
     private IEnumerator FoodRotateCoroutine()
     {
+        _swingFeedbackPlayer.PlayFeedbacks();
         (_food.width, _food.height) = (_food.height, _food.width);
         
-        print(targetRotation);
         targetRotation = Mathf.Approximately(targetRotation, 90) ? 0 : 90;
-        print(targetRotation);
         Tween foodRotateTween = _food.RectTransform.DORotate(new Vector3(0,0,targetRotation), 0.7f).SetEase(Ease.OutCubic);
         _foodRenderer.ChangeFoodRotation(targetRotation);
         

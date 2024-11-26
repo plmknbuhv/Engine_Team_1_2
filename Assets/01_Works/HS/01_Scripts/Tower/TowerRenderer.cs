@@ -6,6 +6,7 @@ public class TowerRenderer : MonoBehaviour, ITowerComponent
 {
     private Tower _tower;
     private SpriteRenderer _spriteRenderer;
+    private Animator _animator;
     
     [SerializeField] private List<Sprite> sprites;
     
@@ -23,5 +24,10 @@ public class TowerRenderer : MonoBehaviour, ITowerComponent
     public void ShakeSprite(float currentHp, float maxHp)
     {
         transform.DOShakePosition(1f, 0.25f, 7);
+    }
+
+    public void AnimateTowerDead()
+    {
+        // _animator
     }
 }

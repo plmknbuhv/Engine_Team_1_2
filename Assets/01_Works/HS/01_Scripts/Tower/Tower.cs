@@ -15,6 +15,8 @@ public class Tower : MonoBehaviour
     [SerializeField] private int maxHealth = 5;
     private int _health;
     
+    [SerializeField] private FeedbackPlayer hitFeedback;
+    
     private Coroutine _coroutine;
     
     public UnityEvent OnDeathEvent;

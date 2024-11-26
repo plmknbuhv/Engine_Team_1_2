@@ -15,6 +15,7 @@ public class Food : MonoBehaviour, IPoolable
     public InventoryChecker InventoryChecker { get; private set; }
     private BoxCollider2D _boxCollider;
     public FoodAttack FoodAttack { get; private set; }
+    public TrailRenderer TrailRenderer { get; private set; }
     
     public RectTransform RectTransform { get; private set; }
     public bool isPurchased;
@@ -33,6 +34,7 @@ public class Food : MonoBehaviour, IPoolable
         RectTransform = GetComponent<RectTransform>();
         FoodRenderer = GetComponent<FoodRenderer>();
         FoodAttack = GetComponent<FoodAttack>();
+        TrailRenderer = GetComponentInChildren<TrailRenderer>();
     }
 
     public void SetUpFood(FoodDataSO foodDataSO)
@@ -50,7 +52,6 @@ public class Food : MonoBehaviour, IPoolable
         
         var colliderSize = new Vector2(width * 0.5f, height * 0.5f);
         _boxCollider.size = colliderSize;
-        //transform.SetSiblingIndex(6);
     }
     
     public void SetUpPool(Pool pool)

@@ -91,7 +91,7 @@ public class MenuManager : MonoSingleton<MenuManager>
             StartCoroutine(OpenRecipeCoroutine());
     }
 
-    public void GameOver()
+    public void GameQuit()
     {
         Application.Quit();
     }
@@ -132,5 +132,10 @@ public class MenuManager : MonoSingleton<MenuManager>
         yield return tween.WaitForCompletion();
         
         isRecipeActivating = false;
+    }
+
+    public void GameOver()
+    {
+        
     }
 }

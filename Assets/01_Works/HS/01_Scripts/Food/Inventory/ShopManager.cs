@@ -50,7 +50,7 @@ public class ShopManager : MonoSingleton<ShopManager>
         if (Gold < 2) return;
         Gold -= 2;
         
-        buttonImage.transform.DOPunchScale(Vector3.one * 0.1f,  0.23f, 3);
+        buttonImage.transform.DOPunchScale(Vector3.one * 0.1f,  0.21f, 3);
         
         ClearShop();
         ShowText();
