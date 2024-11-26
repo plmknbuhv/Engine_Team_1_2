@@ -140,9 +140,10 @@ public class FoodDragHandler : MonoBehaviour,
         {
             _foodRenderer.OnMouseEnter(); 
             _coroutine = StartCoroutine(WavingFoodSizeCoroutine());
+            _foodAttack.StartAttack();
         }
         _food.TrailRenderer.enabled = true;
-        _foodAttack.StartAttack();
+        
     }
 
     private IEnumerator WasteCoroutine(RaycastHit2D hit)
