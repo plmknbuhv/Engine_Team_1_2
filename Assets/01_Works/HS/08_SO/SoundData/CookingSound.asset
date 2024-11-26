@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ce4ba61b42511524188817aab04f0058, type: 3}
-  m_Name: TowerAttackSound
+  m_Name: CookingSound
   m_EditorClassIdentifier: 
   audioType: 0
-  clip: {fileID: 8300000, guid: 4611966bdaee6834aa2c8ec7555e865b, type: 3}
+  clip: {fileID: 8300000, guid: 4c9fffa958178d2458837a9a777b57c2, type: 3}
   loop: 0
   randomizePitch: 1
-  randomPitchModifier: 0.1
-  volume: 0.22
+  randomPitchModifier: 0.05
+  volume: 0.75
   basePitch: 1

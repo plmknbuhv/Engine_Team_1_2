@@ -5,7 +5,7 @@ public class TowerAttack : MonoBehaviour , ITowerComponent
 {
     private Tower _tower;
     private EnemyChecker _enemyChecker;
-    private FeedbackPlayer _feedbackPlayer;
+    [SerializeField] private FeedbackPlayer _feedbackPlayer;
     
     [SerializeField] private PoolManagerSO poolManager;
     [SerializeField] private PoolTypeSO bulletType;
@@ -15,7 +15,6 @@ public class TowerAttack : MonoBehaviour , ITowerComponent
     {
         _tower = tower;
         _enemyChecker = _tower.GetCompo<EnemyChecker>();
-        _feedbackPlayer = GetComponentInChildren<FeedbackPlayer>();
     }
 
     public bool CheckCanAttack()

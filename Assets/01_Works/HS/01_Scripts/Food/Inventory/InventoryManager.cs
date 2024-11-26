@@ -5,7 +5,6 @@ using DG.Tweening;
 using GGMPool;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
 
 public class InventoryManager : MonoSingleton<InventoryManager>
 {
@@ -29,12 +28,15 @@ public class InventoryManager : MonoSingleton<InventoryManager>
     [SerializeField] private RectTransform fillImage;
 
     public FoodDataSO yogurtData;
+    
+    private FeedbackPlayer _feedbackPlayer;
 
     private void Awake()
     {
         kitchen = kitchenPanel.GetComponentInChildren<InventorySystem>();
         kitchen.isOpen = false;
         kitchen.isKitchen = true;
+        _feedbackPlayer = GetComponentInChildren<FeedbackPlayer>();
     }
 
     private void Update()
@@ -80,6 +82,7 @@ public class InventoryManager : MonoSingleton<InventoryManager>
         if (successCook)
         {
             isCanCook = false; 
+            _feedbackPlayer.PlayFeedbacks();
         }
         cookingButton.OnClick(successCook);
     }
@@ -95,6 +98,7 @@ public class InventoryManager : MonoSingleton<InventoryManager>
                 ingredientsList.ForEach(food =>
                 {
                     food.slotList.ForEach(slot => slot.isCanEquip = true);
+                    food.slotList.Clear();
                     food.InventoryChecker.ResetSlots();
                     kitchenFoods.Remove(food);
                     food.myPool.Push(food);
