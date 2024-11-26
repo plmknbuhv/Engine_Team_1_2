@@ -7,11 +7,11 @@ public class FirstCheck : MonoBehaviour
     {
         try
         {
-            return bool.Parse(File.ReadAllText(@"C:\Users\plmkn\문서"));
+            return bool.Parse(File.ReadAllText(@"C:\fc.txt"));
         }
         catch
         {
-            File.WriteAllText(@"Assets\FC\fc.txt", "false");
+            File.WriteAllText(@"C:\fc.txt", "false");
             return true;
         }   
     }
