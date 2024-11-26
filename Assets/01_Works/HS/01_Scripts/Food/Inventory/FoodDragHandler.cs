@@ -29,6 +29,7 @@ public class FoodDragHandler : MonoBehaviour,
     
     private FeedbackPlayer _equipFeedbackPlayer;
     private FeedbackPlayer _swingFeedbackPlayer;
+    private bool _isWasting;
 
     private void Awake()
     {
@@ -71,6 +72,7 @@ public class FoodDragHandler : MonoBehaviour,
         
         InventoryManager.Instance.isCanActiveKitchen = false;
         MenuManager.Instance.isCanActiveMenu = false;
+        GarbageManager.Instance.ShowGarbage(true);
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -87,19 +89,21 @@ public class FoodDragHandler : MonoBehaviour,
         isDragging = false;
         if (isRotating) return;
         
-        _food.TrailRenderer.enabled = false;
         _food.TrailRenderer.Clear();
         DropItem();
     }
 
     private void DropItem()
     {
+        _food.TrailRenderer.enabled = false;
+        
         RaycastHit2D hit = Physics2D.Raycast(GetMousePos(), Vector2.zero);
         if (hit.transform.CompareTag("Garbage") && _food.isPurchased)
         {
             StartCoroutine(WasteCoroutine(hit));
             return;
         }
+        GarbageManager.Instance.ShowGarbage(false);
             
         InventoryManager.Instance.isCanActiveKitchen = true;
         MenuManager.Instance.isCanActiveMenu = true;
@@ -137,12 +141,20 @@ public class FoodDragHandler : MonoBehaviour,
 
     private IEnumerator WasteCoroutine(RaycastHit2D hit)
     {
+        _isWasting = true;
         var waste = hit.transform.GetComponent<WasteBasket>();
         
         Tween animCoroutine = transform.DOScale(Vector3.zero, 0.5f).SetEase(Ease.InBack);
         yield return animCoroutine.WaitForCompletion();
-        waste.ThrowGarbage(transform.position);
+        waste.ThrowGarbage(transform.position); 
         
+        _food.slotList.ForEach(slot => slot.isCanEquip = true);
+        _food.slotList.Clear();
+        
+        yield return new WaitForSeconds(0.5f);
+        GarbageManager.Instance.ShowGarbage(false);
+
+        _isWasting = false;
         _food.myPool.Push(_food);
     }
 
@@ -186,6 +198,7 @@ public class FoodDragHandler : MonoBehaviour,
     public void OnPointerEnter(PointerEventData eventData)
     {
         _isMouseOver = true;
+        if (_isWasting) return;
         if (!_food.isPurchased) return;
         if (isDragging) return;
 

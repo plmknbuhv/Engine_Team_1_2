@@ -6953,16 +6953,16 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 868960149}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -5399.9995}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0, y: 0, z: -5418}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 366649848}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 485.82, y: 439.95}
-  m_SizeDelta: {x: 107.74, y: 150}
+  m_AnchoredPosition: {x: 488, y: 456}
+  m_SizeDelta: {x: 89, y: 123.91}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &868960151
 MonoBehaviour:
@@ -7034,7 +7034,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.7757244, y: -0.2400055}
+  m_Offset: {x: 0.874588, y: -0.90013313}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -7045,8 +7045,8 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 122.88167, y: 164.34314}
-  m_EdgeRadius: 0
+  m_Size: {x: 73.85306, y: 117.92633}
+  m_EdgeRadius: 0.19
 --- !u!114 &868960154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10804,6 +10804,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e25bd3d8072c1d44abf1a8887955432b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wasteBasket: {fileID: 868960154}
 --- !u!1 &1814924842
 GameObject:
   m_ObjectHideFlags: 0
@@ -11368,7 +11369,7 @@ MonoBehaviour:
   goldValueText: {fileID: 265602064}
   poolManager: {fileID: 11400000, guid: 928c52471a99fba4a983ede3b8649ab4, type: 2}
   poolType: {fileID: 11400000, guid: 13b61eab7a932874a9ea858af921911c, type: 2}
-  gold: 30
+  gold: 10000
   shopPointRect: {fileID: 1581992491}
   foodStartPointTrm: {fileID: 1153806589}
   buttonImage: {fileID: 616088705}
