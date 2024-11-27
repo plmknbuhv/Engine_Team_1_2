@@ -32,6 +32,22 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: 2.8118725
       objectReference: {fileID: 0}
+    - target: {fileID: 3253975176878950394, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.1216413
+      objectReference: {fileID: 0}
+    - target: {fileID: 3253975176878950394, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.9328
+      objectReference: {fileID: 0}
+    - target: {fileID: 3253975176878950394, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 3253975176878950394, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.6856
+      objectReference: {fileID: 0}
     - target: {fileID: 3440276572167425141, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_SortingOrder
       value: 4
