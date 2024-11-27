@@ -9505,6 +9505,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyList:
   - enemys:
+    - {fileID: 11400000, guid: 247d1c7a1b13b8940acee336063fa29e, type: 2}
+  - enemys:
     - {fileID: 11400000, guid: bffe25ae6300a454ea1f2e0f60401722, type: 2}
     - {fileID: 11400000, guid: bb3fe2e85058210459814021b15fdef6, type: 2}
   - enemys:
@@ -9527,8 +9529,6 @@ MonoBehaviour:
     - {fileID: 11400000, guid: d6620bcfa2e52c346b8e51f46cd8ad53, type: 2}
     - {fileID: 11400000, guid: dba2e09537a47394b9a80ab2fd425c77, type: 2}
     - {fileID: 11400000, guid: bffe25ae6300a454ea1f2e0f60401722, type: 2}
-  - enemys:
-    - {fileID: 11400000, guid: 247d1c7a1b13b8940acee336063fa29e, type: 2}
   t: {fileID: 1831292619}
   startBtn: {fileID: 1527214951}
   isWaveStart: 0
@@ -10008,7 +10008,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 86, y: -57.00003}
+  m_AnchoredPosition: {x: 86, y: -57.000015}
   m_SizeDelta: {x: 346.86, y: 97.12}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1527214948
