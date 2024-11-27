@@ -143,7 +143,10 @@ public class FoodDragHandler : MonoBehaviour,
                 _foodRenderer.EnterMouse(); 
                 _coroutine = StartCoroutine(WavingFoodSizeCoroutine());
             }
-            _foodAttack.StartAttack();
+            if (!InventoryManager.Instance.kitchenFoods.Contains(_food))
+            {
+                _foodAttack.StartAttack();
+            }
         }
         
         _food.TrailRenderer.enabled = true;

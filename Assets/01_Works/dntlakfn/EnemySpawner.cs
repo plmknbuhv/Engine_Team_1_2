@@ -50,7 +50,7 @@ public class EnemySpawner : MonoBehaviour
             }
             catch
             {
-                Debug.Log("ÀÌ°Ô ³¡");
+                Debug.Log("ï¿½Ì°ï¿½ ï¿½ï¿½");
             }
 
             waveManager.WaveEnd();
@@ -91,7 +91,7 @@ public class EnemySpawner : MonoBehaviour
             else
             {
                 enemy = poolManager.Pop(enemyType[rand]) as Enemy;
-                enemy.transform.position = spawnPoint.position + new Vector3(UnityEngine.Random.Range(-7f, 7f), 6);
+                enemy.transform.position = spawnPoint.position + new Vector3(UnityEngine.Random.Range(-7f, 7f), 4);
                 enemy.transform.localRotation = Quaternion.identity;
                 enemyType.Remove(enemyType[rand]);
                 enemySpawnCount++;

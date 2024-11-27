@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ce4ba61b42511524188817aab04f0058, type: 3}
-  m_Name: EnemyGetDamageSound
+  m_Name: DeadMonsterSound
   m_EditorClassIdentifier: 
   audioType: 0
-  clip: {fileID: 8300000, guid: e67010fa4623d84408bda6c5dbd5d1fb, type: 3}
+  clip: {fileID: 8300000, guid: 0cf181060c0cedb4f87fe1f00aff245c, type: 3}
   loop: 0
   randomizePitch: 1
-  randomPitchModifier: 0.1
-  volume: 3
+  randomPitchModifier: 0.05
+  volume: 1
   basePitch: 1

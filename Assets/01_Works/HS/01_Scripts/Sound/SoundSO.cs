@@ -16,7 +16,7 @@ public class SoundSO : ScriptableObject
 
     [Range(0, 1f)]
     public float randomPitchModifier = 0.1f;
-    [Range(0.1f, 2f)]
+    [Range(0.1f, 3f)]
     public float volume = 1f;
     [Range(0.1f, 3f)]
     public float basePitch = 1f;

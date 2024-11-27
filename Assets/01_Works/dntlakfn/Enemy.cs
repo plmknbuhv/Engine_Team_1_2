@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour, IPoolable
     private bool isGetDamage = false;
     protected bool isStun = false;
     protected bool isSlow = false;
-    protected bool isDead = false;
+    public bool isDead = false;
     protected Rigidbody2D rb;
     public Animator animator;
     protected Transform target;
