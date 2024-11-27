@@ -10,6 +10,7 @@ public class Refrigerator : Enemy
 {
     bool bd;
     float time;
+    
     // 보스, 큼, 넉백,스턴 안받음, 느림
 
     private void Start()
@@ -28,6 +29,7 @@ public class Refrigerator : Enemy
         {
             if (isDead)
             {
+                GetComponent<BoxCollider2D>().enabled = false;
                 isDead = false;
                 speed = 0;
                 animator.enabled = false;
@@ -37,7 +39,8 @@ public class Refrigerator : Enemy
                 boom.GameObject.transform.localScale = new Vector3(3,3,3);
                 bd = true;
 
-                StartCoroutine(Shake(5));
+                
+                transform.DOShakePosition(5, 2.5f, 1000);
                 var fade = FindAnyObjectByType<Fade>();
                 fade.gameObject.SetActive(true);
                 StartCoroutine(fade.FadeIn(5));
@@ -68,20 +71,7 @@ public class Refrigerator : Enemy
 
     }
 
-    IEnumerator Shake(float duration)
-    {
-        float time = 0;
-
-        while (time / duration < 1f)
-        {
-            time += Time.deltaTime;
-            float a = Mathf.Lerp(0, 1, time / duration);
-            transform.DOShakePosition(0.1f, 0.2f, 1);
-
-            yield return null;
-        }
-        
-    }
+    
 
 
 }
