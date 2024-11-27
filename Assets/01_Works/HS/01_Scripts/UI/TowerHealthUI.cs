@@ -22,7 +22,7 @@ public class TowerHealthUI : MonoBehaviour
             Console.WriteLine("최대 체력이 0으로 되어있습니다.");    
             throw;
         }// 예외처리
-         
+        
         _lastHitTime = Time.time;
         transform.DOShakePosition(0.4f, 1f, 100);
     }

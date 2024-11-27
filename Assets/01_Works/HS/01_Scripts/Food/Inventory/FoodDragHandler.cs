@@ -60,7 +60,7 @@ public class FoodDragHandler : MonoBehaviour,
         
         isDragging = true;
         _foodRenderer.SpriteRenderer.sortingOrder = 2600;
-        _foodRenderer.OnMouseExit();
+        _foodRenderer.ExitMouse();
         _prevRotation = _food.RectTransform.rotation.eulerAngles.z;
         _prevHeight = _food.height;
         _prevWidth = _food.width;
@@ -136,12 +136,16 @@ public class FoodDragHandler : MonoBehaviour,
         _foodRenderer.AdjustFoodSize();
         _inventoryChecker.ResetSlots();
 
-        if (_food.isPurchased && _isMouseOver)
+        if (_food.isPurchased)
         {
-            _foodRenderer.OnMouseEnter(); 
-            _coroutine = StartCoroutine(WavingFoodSizeCoroutine());
+            if (_isMouseOver)
+            {
+                _foodRenderer.EnterMouse(); 
+                _coroutine = StartCoroutine(WavingFoodSizeCoroutine());
+            }
             _foodAttack.StartAttack();
         }
+        
         _food.TrailRenderer.enabled = true;
         
     }
@@ -208,8 +212,10 @@ public class FoodDragHandler : MonoBehaviour,
         if (_isWasting) return;
         if (!_food.isPurchased) return;
         if (isDragging) return;
+        if (!_isMouseOver) return;
 
-        _foodRenderer.OnMouseEnter();
+        print("Enter");
+        _foodRenderer.EnterMouse();
         _coroutine = StartCoroutine(WavingFoodSizeCoroutine());
     }
 
@@ -242,11 +248,11 @@ public class FoodDragHandler : MonoBehaviour,
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if(isDragging) return;
         _isMouseOver = false;
+        if(isDragging) return;
         if (!_food.isPurchased) return;
         
-        _foodRenderer.OnMouseExit();
+        _foodRenderer.ExitMouse();
         if (_coroutine != null)
             StopCoroutine(_coroutine);
         _foodRenderer.SetSize(1.97f);

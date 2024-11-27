@@ -89,7 +89,7 @@ public class Bullet : MonoBehaviour, IPoolable
           _foodData = foodData;
           _spriteRenderer.sprite = foodData.sprite;
           
-          var rand = Random.Range(-20, 20);
+          var rand = Random.Range(-22f, 22f);
           _rotateValue = rand * 4f;
           _rotateConstant = (foodData.height * foodData.width) / 2f;
      }

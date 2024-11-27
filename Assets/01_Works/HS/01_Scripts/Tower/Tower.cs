@@ -85,8 +85,16 @@ public class Tower : MonoBehaviour
                 if (_attackingEnemy.Count > 0)
                 {
                     _damageTimer = 0;
-                    Health--;
-                    _attackingEnemy[0].GetDamage(999999, 0);
+                    if (EnemySpawner.isBossLive)
+                    {
+                        Health = 0;
+                        _attackingEnemy[0].GetDamage(0, 0);
+                    }
+                    else
+                    {
+                        Health--;
+                        _attackingEnemy[0].GetDamage(999999, 0);
+                    }
                 }
                 else
                     continue;

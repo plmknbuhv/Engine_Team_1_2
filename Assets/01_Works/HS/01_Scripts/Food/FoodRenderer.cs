@@ -59,15 +59,16 @@ public class FoodRenderer : MonoBehaviour
             scaleValue * (1f / _canvasRectTransform.lossyScale.y));
     }
     
-    public void OnMouseEnter()
+    public void EnterMouse()
     {
         if (!_food.isPurchased) return;
         if (_foodDragHandler.isDragging) return;
         
+        print("Change");
         material.SetFloat(_isEnterMouse, 1f);
     }
     
-    public void OnMouseExit()
+    public void ExitMouse()
     {
         material.SetFloat(_isEnterMouse, 0f);
     }
