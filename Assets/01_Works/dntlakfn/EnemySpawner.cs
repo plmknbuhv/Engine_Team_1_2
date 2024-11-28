@@ -27,6 +27,8 @@ public class EnemySpawner : MonoBehaviour
     {
         waveManager = FindAnyObjectByType<WaveManager>();
         enemyType = waveManager.enemyList[0].enemys;
+        enemySpawnCount = 0;
+        enemyCount = 0;
         timer = 0;
 
     }

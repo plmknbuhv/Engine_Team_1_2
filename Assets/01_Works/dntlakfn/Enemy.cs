@@ -69,6 +69,7 @@ public class Enemy : MonoBehaviour, IPoolable
 
     protected virtual void Move()
     {
+        if (isStun) return;
         if (isGetDamage)
         {
             animator.SetBool("isHit", false);
@@ -127,6 +128,7 @@ public class Enemy : MonoBehaviour, IPoolable
     {
         isStun = true;
         animator.speed = 0;
+        rb.velocity = Vector2.zero;
         yield return  new WaitForSeconds(time);
         animator.speed = 1;
         isStun = false;

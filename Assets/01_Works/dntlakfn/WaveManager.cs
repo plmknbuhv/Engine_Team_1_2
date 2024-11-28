@@ -33,7 +33,7 @@ public class WaveManager : MonoBehaviour
             Waves[i] = i % 2 == 0 ? 40 : 20;
         }
         Waves[8] = 1;
-        
+        wave = 1;
         
     }
 
