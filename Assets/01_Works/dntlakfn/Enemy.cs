@@ -55,7 +55,7 @@ public class Enemy : MonoBehaviour, IPoolable
             speed = currentSpeed;
             isSlow = false;
         }
-        
+        isStun = false;
         hpBar.SetHpBar(hp, maxHp);
         Debug.Log("ü�� ����");
         targetVec = target.position + new Vector3(UnityEngine.Random.Range(-1.2f, 1.2f), 0, 0);
