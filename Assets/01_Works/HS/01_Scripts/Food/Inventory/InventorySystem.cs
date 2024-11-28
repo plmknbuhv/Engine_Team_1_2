@@ -108,7 +108,7 @@ public class InventorySystem : MonoBehaviour
         return isCanEquip;
     }
 
-    public void CheckSlot(Vector3 worldPosition, int itemWidth, int itemHeight)
+    public void CheckSlot(Vector3 worldPosition, int itemWidth, int itemHeight, bool isRotating)
     {
         GetXY(worldPosition, out var x, out var y, itemWidth, itemHeight);
         
@@ -130,7 +130,8 @@ public class InventorySystem : MonoBehaviour
         if (_preSlotList.Count < itemWidth * itemHeight) return;
 
         foreach (var slot in _preSlotList)
-        {
+        {   
+            if (isRotating) return;
             slot.ShowSlotAvailability();
         }
     }

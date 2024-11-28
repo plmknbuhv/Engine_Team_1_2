@@ -35,7 +35,7 @@ public class InventoryChecker : MonoBehaviour
         {
             if (GetLocalMousePos(i) == Vector3.zero) continue;
             InventoryManager.Instance.inventoryList[i].CheckSlot(GetLocalMousePos(i),
-                _food.width, _food.height);
+                _food.width, _food.height, _food.FoodDragHandler.isRotating);
         }
     }
 

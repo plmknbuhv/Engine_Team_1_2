@@ -26,7 +26,7 @@ public class TutorialUI : MonoBehaviour
         DOTween.KillAll();
 
         nextButton.gameObject.SetActive(true);
-        if (_tutorialNum == 4)
+        if (_tutorialNum == 5)
         {
             isTutorialEnd = true;
             waveBtn.OnStartGame();

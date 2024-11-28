@@ -93,12 +93,12 @@ public class FoodDragHandler : MonoBehaviour,
         isDragging = false;
         if (isRotating) return;
         
-        _food.TrailRenderer.Clear();
         DropItem();
     }
 
     private void DropItem()
     {
+        _food.TrailRenderer.Clear();
         _food.TrailRenderer.enabled = false;
         InventoryManager.Instance.isCanActiveKitchen = true;
         MenuManager.Instance.isCanActiveMenu = true;
@@ -177,11 +177,11 @@ public class FoodDragHandler : MonoBehaviour,
     #region Rotate
     private void RotateFood()
     {
-        if(!isDragging) return;
-        if(isRotating) return;
-        
         if (Mouse.current.rightButton.wasPressedThisFrame)
         {
+            if(!isDragging) return;
+            if(isRotating) return;
+            
             isRotating = true;
             StartCoroutine(FoodRotateCoroutine());
         }
@@ -190,15 +190,21 @@ public class FoodDragHandler : MonoBehaviour,
     private IEnumerator FoodRotateCoroutine()
     {
         _swingFeedbackPlayer.PlayFeedbacks();
+        foreach (var slot in _food.slotList)
+            slot.isCanEquip = false;
         (_food.width, _food.height) = (_food.height, _food.width);
         
         targetRotation = Mathf.Approximately(targetRotation, 90) ? 0 : 90;
         Tween foodRotateTween = _food.RectTransform.DORotate(new Vector3(0,0,targetRotation), 0.7f).SetEase(Ease.OutCubic);
         _foodRenderer.ChangeFoodRotation(targetRotation);
         
+        
         _inventoryChecker.ResetSlots();
         
         yield return foodRotateTween.WaitForCompletion();
+        
+        foreach (var slot in _food.slotList)
+            slot.isCanEquip = true;
         
         _foodRenderer.AdjustFoodSize();
         _inventoryChecker.CheckInventorySlot();
