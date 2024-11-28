@@ -80,6 +80,7 @@ public class FoodDragHandler : MonoBehaviour,
     {
         if (eventData.button != PointerEventData.InputButton.Left) return;
         if (InventoryManager.Instance.isKitchenActivating) return;
+        if (!isDragging) return;
         
         _food.RectTransform.position = GetMousePos();
         _inventoryChecker.CheckInventorySlot();
@@ -89,6 +90,7 @@ public class FoodDragHandler : MonoBehaviour,
     {
         if (eventData.button != PointerEventData.InputButton.Left) return;
         if (InventoryManager.Instance.isKitchenActivating) return;
+        if (!isDragging) return;
         
         isDragging = false;
         if (isRotating) return;
