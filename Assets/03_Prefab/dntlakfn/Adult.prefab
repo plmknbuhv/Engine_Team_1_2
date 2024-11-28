@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 974588486696886724, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_Constraints
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2409298366163833812, guid: bd6ab228bff49a84184ab802709e0c04, type: 3}
       propertyPath: m_Size.x
@@ -214,7 +214,9 @@ MonoBehaviour:
   explosion: {fileID: 6136224044231406328, guid: d10899cf2c359c44b91f7f4be3721387, type: 3}
   hpBar: {fileID: 0}
   boost: {fileID: 9089784434282483576}
+  isDead: 0
   animator: {fileID: 0}
+  targetVec: {x: 0, y: 0, z: 0}
   <PoolType>k__BackingField: {fileID: 11400000, guid: bffe25ae6300a454ea1f2e0f60401722, type: 2}
   poolManager: {fileID: 11400000, guid: 928c52471a99fba4a983ede3b8649ab4, type: 2}
 --- !u!1 &9089784434282483576 stripped

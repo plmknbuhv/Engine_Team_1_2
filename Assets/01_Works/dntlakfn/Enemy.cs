@@ -24,7 +24,7 @@ public class Enemy : MonoBehaviour, IPoolable
     public Animator animator;
     protected Transform target;
     protected int dropGold;
-    protected Vector3 targetVec;
+    [SerializeField] protected Vector3 targetVec;
     protected float currentSpeed;
     
     
@@ -69,14 +69,8 @@ public class Enemy : MonoBehaviour, IPoolable
 
     protected virtual void Move()
     {
-        if (isStun)
-        {
-            GetStun(5);
-            return;
-        }
         if (isGetDamage)
         {
-            
             animator.SetBool("isHit", false);
             animator.speed = 1.7f;
             rb.velocity = new Vector2(0, -Math.Clamp(knockbackPower -= 1.5f, 0, 10));
@@ -89,11 +83,12 @@ public class Enemy : MonoBehaviour, IPoolable
         }
         else
         {
-            transform.position = Vector2.MoveTowards(transform.position, targetVec, speed * Time.deltaTime);
+            var dir = targetVec - transform.position;
+            dir = dir.normalized * speed;
+            rb.velocity = dir;
         }
         transform.position  = new Vector3(transform.position.x, transform.position.y, transform.position.y/10);
-        
-        
+        // 레이어
     }
 
     public virtual void GetDamage(int damage, float knockbackPower, Action action = null)
@@ -169,19 +164,6 @@ public class Enemy : MonoBehaviour, IPoolable
 
     public virtual void Update()
     {
-        
-        if (Input.GetKeyDown(KeyCode.A)) // �½�Ʈ
-        {
-            GetDamage(10,10);
-        }
-        if (Input.GetKeyDown(KeyCode.S)) // �½�Ʈ
-        {
-            GetStun(2);
-        }
-        if (Input.GetKeyDown(KeyCode.D)) // �½�Ʈ
-        {
-            GetSlow(20, 3);
-        }
         if (isDead)
         {
             var boom = poolManager.Pop(explosion.PoolType);
@@ -230,5 +212,7 @@ public class Enemy : MonoBehaviour, IPoolable
         speed = currentSpeed;
         animator.speed = 1;
         isSlow = false;
+        isStun = false;
+        isGetDamage = false;
     }
 }

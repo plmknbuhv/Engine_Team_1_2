@@ -116,7 +116,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 5
+  m_Constraints: 4
 --- !u!61 &112084014390057734
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -204,7 +204,9 @@ MonoBehaviour:
   explosion: {fileID: 6136224044231406328, guid: d10899cf2c359c44b91f7f4be3721387, type: 3}
   hpBar: {fileID: 0}
   boost: {fileID: 0}
+  isDead: 0
   animator: {fileID: 0}
+  targetVec: {x: 0, y: 0, z: 0}
   <PoolType>k__BackingField: {fileID: 11400000, guid: 247d1c7a1b13b8940acee336063fa29e, type: 2}
   poolManager: {fileID: 11400000, guid: 928c52471a99fba4a983ede3b8649ab4, type: 2}
 --- !u!1 &6412466671282347205
