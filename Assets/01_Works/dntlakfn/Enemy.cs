@@ -56,6 +56,8 @@ public class Enemy : MonoBehaviour, IPoolable
             isSlow = false;
         }
         isStun = false;
+        isGetDamage = false;
+        isDead = false;
         hpBar.SetHpBar(hp, maxHp);
         Debug.Log("ü�� ����");
         targetVec = target.position + new Vector3(UnityEngine.Random.Range(-1.2f, 1.2f), 0, 0);
@@ -78,7 +80,7 @@ public class Enemy : MonoBehaviour, IPoolable
             if (knockbackPower <= 0)
             {
                 animator.speed = 1f;
-                OnknockbackStop?.Invoke();
+                KnockBackStop();
                 isGetDamage = false;
             }
         }
